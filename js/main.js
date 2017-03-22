@@ -1,3 +1,4 @@
+<<<<<<< refs/remotes/origin/wp
 $(document).ready(function(){
 
         $('.prettySocial').prettySocial();
@@ -37,6 +38,8 @@ $('.content').addClass("aotw-height");
 var instauser = $('.insta-user').attr('data-instagram');
 
 
+=======
+>>>>>>> Add files via upload
 $.ajax({
     url: "http://query.yahooapis.com/v1/public/yql",
 
@@ -48,7 +51,11 @@ $.ajax({
 
     // Tell YQL what we want and that we want JSON
     data: {
+<<<<<<< refs/remotes/origin/wp
         q: 'select items from json where url="https://www.instagram.com/' + instauser + '/media"',
+=======
+        q: "select items from json where url=\"https://www.instagram.com/blanca_suarez/media\"",
+>>>>>>> Add files via upload
         format: "json"
     },
 
@@ -77,6 +84,7 @@ $.ajax({
 
 
 
+<<<<<<< refs/remotes/origin/wp
 
   
 }
@@ -85,6 +93,8 @@ $.ajax({
 
 
 
+=======
+>>>>>>> Add files via upload
 function screenClass() {
     //    var $clone =	$('.right-menu ul.menu').children('li').first().clone();
 
@@ -93,7 +103,11 @@ function screenClass() {
     } else {
         $('body').removeClass('mobile-active');
 
+<<<<<<< refs/remotes/origin/wp
         var header = $(".show-desktop");
+=======
+        var header = $("header");
+>>>>>>> Add files via upload
         $(window).scroll(function() {
             var scroll = $(window).scrollTop();
 
@@ -117,15 +131,49 @@ $(window).bind('resize',function(){
 
 
 $( ".bars" ).click(function() {
+<<<<<<< refs/remotes/origin/wp
     $('.left-menu ul.menu').toggleClass('mobile-menu');
+=======
+    $('.right-menu ul.menu').toggleClass('mobile-menu');
+    console.log('Clicked');
+>>>>>>> Add files via upload
 
 });
 
 
 
+<<<<<<< refs/remotes/origin/wp
 
 
 /*
+=======
+$.ajax({
+    url: "http://itunes.apple.com/search?term=maggie+rogers",
+    dataType: 'JSONP'
+})
+    .done(function(data) { 
+    
+    var artistimage = data.results[0].artworkUrl100;
+    artistimage = artistimage.replace('100x100bb','1200x1200bb');
+    
+    var releasedate = data.results[0].releaseDate;
+    var seconddate = moment(releasedate).format('MMMM D, YYYY');
+
+    $('.case').prepend($('<img>',{id:'theImg',src:artistimage}))
+    $( ".release" ).append( "<strong>Purchase:</strong> <a href=\""+data.results[0].collectionViewUrl+"\" target=\"_blank\">iTunes</a><br><strong>Artist:</strong> "+data.results[0].artistName+"<br><strong>Title:</strong> "+data.results[0].collectionName+"<br><strong>Release Date:</strong> "+seconddate+"<br>" );
+    
+    $('.vinyl-record').fadeIn("slow");
+
+
+
+
+})
+    .fail(function(data) { console.log(data); })
+
+
+
+
+>>>>>>> Add files via upload
 var configProfile = {
     "profile": {"screenName": 'maggierogers'},
     "domId": 'example1',
@@ -139,6 +187,7 @@ var configProfile = {
     "showRetweet": false,
 };
 twitterFetcher.fetch(configProfile);
+<<<<<<< refs/remotes/origin/wp
 */
 
 /*** Gallery ***/
@@ -656,3 +705,15 @@ var configProfile = {
 twitterFetcher.fetch(configProfile);
 
 
+=======
+
+
+/*** Gallery ***/
+
+$( ".galleries" ).click(function() {
+    
+    $('body').addClass('gallery-active');
+    console.log('Clicked');
+
+});
+>>>>>>> Add files via upload
