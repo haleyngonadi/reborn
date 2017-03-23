@@ -41,10 +41,12 @@
 
 	<div class="entry-content">
 
+
 		<?php if(has_post_format('gallery')) : ?>
 	
 		<?php $images = get_post_meta( $post->ID, '_format_gallery_images', true ); ?>
-		
+
+
 		<?php if($images) : ?>
 
 
@@ -52,19 +54,34 @@
 
 			<div class="gallery-main" style="background-image: url('<?php $the_feature = wp_get_attachment_image_src( $images[0], 'full-thumb' );
 			echo $the_feature[0]; ?>')">
-			<div id="gallery-count"><span class="gallery-size"><?php echo sizeof($images); ?> Photos <i class="fa fa-caret-right" aria-hidden="true"></i> </span> </div>
+			<div id="gallery-count"><span class="gallery-size"><?php echo sizeof($images); ?> Photos</span> </div>
 			</div>
 
+
 		<div class="galleries">
-		<ul class="bxslider">
+		<span class="close-button"><i class="fa fa-close" aria-hidden="true"></i></span>
+
+			<div class="gallery-button">
+                    <div id="prev-photo"class="photo-button pull-left"><i class="fa fa-caret-left" aria-hidden="true"></i></div>
+                    <div id="next-photo"class="photo-button pull-right"><i class="fa fa-caret-right" aria-hidden="true"></i></div>
+                </div>
+
+                
+	<div class="owl-carousel owl-theme">
+
 		<?php foreach($images as $image) : ?>
 			
 			<?php $the_image = wp_get_attachment_image_src( $image, 'full-thumb' ); ?> 
 			<?php $the_caption = get_post_field('post_excerpt', $image); ?>
-			<li><img src="<?php echo $the_image[0]; ?>" <?php if($the_caption) : ?>title="<?php echo $the_caption; ?>"<?php endif; ?> /></li>
+			<div class="item">
+			<img class="owl-lazy" data-src="<?php echo $the_image[0]; ?>" <?php if($the_caption) : ?>title="<?php echo $the_caption; ?>"<?php endif; ?> />
+			</div>
 			
 		<?php endforeach; ?>
-		</ul>
+
+
+		</div>
+		
 		</div>
 		<?php endif; ?>
 <?php endif; ?>

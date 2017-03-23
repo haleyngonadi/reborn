@@ -68,7 +68,7 @@ header {
     position: fixed;
     z-index: 2;
     max-height: 103px
-/*    background:-webkit-linear-gradient(left,#dc1342,#332F3E);*/
+/*    background:-webkit-linear-gradient(left,#dc1432,#332F3E);*/
 
 }
 
@@ -131,7 +131,7 @@ span.logo-text:before {
     width: 24px;
     height: 48px;
     content: "";
-    background: #dc1342;
+    background: #dc1432;
     position: absolute;
     top: 5%;
     transform: rotate(-125deg);
@@ -176,7 +176,7 @@ span.logo-text:before {
     font-size: 44px;
     color: white;
     font-family: Electro, serif;
-    background: #dc1342;
+    background: #dc1432;
     padding: 3px 25px;
     position: absolute;
     left: 0;
@@ -212,7 +212,7 @@ span.logo-text:before {
     width: 50px;
     height: 50px;
     position: absolute;
-    background: #dc1342;
+    background: #dc1432;
     transform: rotate(-45deg);
     top: -9px;
     z-index: -1;
@@ -290,7 +290,7 @@ margin-bottom: 0
     width: 63px;
     height: 12px;
     position: absolute;
-    background: #dc1342;
+    background: #dc1432;
     z-index: -1;
     transform: translate(-50%, 50%) rotate(-25deg);
     top: 28%;
@@ -400,7 +400,7 @@ button.submit {
     font-family: 'Abril Fatface', cursive;
         border: 0px solid transparent;
         position: relative;
-/*    background:-webkit-linear-gradient(left,#dc1342,#332F3E);*/
+/*    background:-webkit-linear-gradient(left,#dc1432,#332F3E);*/
 
 
 }
@@ -543,7 +543,7 @@ letter-spacing: 1px;
     display: inline-block;
     line-height: 1;
     font-family: 'Abril Fatface', cursive;
-    background: -webkit-linear-gradient(left, #dc1342, #332F3E);
+    background: -webkit-linear-gradient(left, #dc1432, #332F3E);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
@@ -553,7 +553,7 @@ letter-spacing: 1px;
     content: "";
     position: absolute;
     top: 50%;
-    border: 1px dashed #dc1342;
+    border: 1px dashed #dc1432;
     width: 99999px;
 }
 .pinline span:before {
@@ -599,7 +599,7 @@ display: block;
 }
 
 span.square-date {
-    background: #dc1342;
+    background: #dc1432;
     padding: 3px 8px;
     color: white;
     text-transform: uppercase;
@@ -765,7 +765,7 @@ footer a {
 /*** Load More ***/
 
 section.more-stories {
-    background: #dc1342;
+    background: #dc1432;
     padding: 20px;
     color: white;
     text-align: center;
@@ -799,18 +799,24 @@ section.more-stories {
 /*** Gallery ***/
 
 .photo-button {
-    background: #dc1342;
+    background: #dc1432;
     color: white;
-    padding: 8px 18px;
+    padding: 8px 15px;
     font-size: 20px;
 }
 .galleries {
     position: relative;
     background: #332f3e;
-    transition: all 600ms;
     visibility: hidden;
     opacity: 0;
-      transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    width: 0;
+    height: 0;
+    -webkit-transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
+    -moz-transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
+    -o-transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
+    transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
+
+
 }
 
 .gallery-button {
@@ -819,6 +825,7 @@ section.more-stories {
     width: 100%;
     transform: translateY(-50%);
     z-index: 9999;
+    max-width: 70%
 }
 
 
@@ -851,6 +858,8 @@ section.more-stories {
     height: 100%;
     top: 0;
     left: 0;
+    visibility: visible;
+    opacity: 1;
 }
 
 .gallery-active .galleries img {
@@ -875,11 +884,21 @@ section.more-stories {
     display: none;
 }
 
+span.close-button {
+    background: #dc1432;
+    position: absolute;
+    right: 0;
+    color: white;
+    z-index: 999999;
+    padding: 10px 12px;
+    top: 30px;
+    cursor: pointer;
+}
 
 .gallery-main {
     min-height: 450px;
     background-size: cover;
-    margin: 30px 0;
+    margin: 30px 0 20px;
     display: flex;
     align-items: center;
     position: relative;
@@ -905,8 +924,22 @@ div#gallery-count:before {
 }
 
 span.gallery-size {
-    padding: 7px 20px;
+    padding: 10px 15px;
     display: inline-block;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+span.gallery-size:hover {
+letter-spacing: 1px;
+
+    }
+
+
+span.gallery-size:after {
+    content: "\f0da";
+    font-family: FontAwesome;
+    margin-left: 5px;
 }
 
 /*** Complete Block ***/
@@ -937,7 +970,7 @@ p.tweet {
 }
 
 p.tweet a {
-    color: #dc1342;
+    color: #dc1432;
 }
 
 ul.news-aotw {
@@ -1125,6 +1158,7 @@ h3.footer-text {
     top: 49%;
     transform: translateY(-49%);
     transition: all 600ms;
+    opacity: 0
 
 }
 
@@ -1207,7 +1241,7 @@ margin: 30px 0;
     font-size: 12px;
     font-weight: 400;
     position: relative !important;
-    background: #dc1342;
+    background: #dc1432;
     display: inline-block;
     padding: 7px 3px;
     margin: 0 5px 5px 0;
@@ -1470,7 +1504,7 @@ span.smtxt {
 }
 
 li.share-button {
-    background: #dc1342;
+    background: #dc1432;
     padding: 0px 0 0 15px;
     font-family: Montserrat;
     text-transform: uppercase;
@@ -1582,7 +1616,7 @@ span.feature-credits:hover:before {
 }
 
 c {
-    background: #dc1342;
+    background: #dc1432;
     width: 44px;
     text-align: center;
     padding: 10px 6px;
@@ -1641,7 +1675,7 @@ c:after {
 }
 
 span.bio-title {
-       background: #dc1342;
+       background: #dc1432;
     padding: 12px 12px 6px;
     display: inline-block;
     color: white;
@@ -1688,7 +1722,7 @@ left: 50%;
 
 .aotw-page span.logo-text:before {
     content: "";
-    background: #dc1342;
+    background: #dc1432;
     width: 100%;
     height: 16px;
     position: absolute;
@@ -1864,7 +1898,7 @@ padding: 0;
 	}
 
 	header {
-		background: #dc1342;
+		background: #dc1432;
 		padding-bottom: 0;
 	}
 

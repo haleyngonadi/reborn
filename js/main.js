@@ -102,7 +102,7 @@ $.ajax({
 
 
 
-
+/*
 var configProfile = {
     "profile": {"screenName": 'maggierogers'},
     "domId": 'example1',
@@ -116,13 +116,42 @@ var configProfile = {
     "showRetweet": false,
 };
 twitterFetcher.fetch(configProfile);
-
+*/
 
 /*** Gallery ***/
 
-$( ".galleries" ).click(function() {
+owl = $('.owl-carousel').owlCarousel({
+    loop:false,
+    nav:false,
+    animateOut: 'slideOutDown',
+    animateIn: 'flipInX',
+    items:1,
+lazyLoad:true,
+autoHeight:true
+});
+
+
+$( ".gallery-size" ).click(function() {
     
     $('body').addClass('gallery-active');
-    console.log('Clicked');
+    console.log('Shame');
+    owl.trigger('refresh.owl.carousel');
 
+
+});
+
+$( ".close-button" ).click(function() {
+    
+    $('body').removeClass('gallery-active');
+
+});
+
+    
+
+$("#prev-photo").click(function () {
+    owl.trigger('prev.owl.carousel');
+});
+
+$("#next-photo").click(function () {
+    owl.trigger('next.owl.carousel');
 });
