@@ -44,6 +44,7 @@ padding: 0;
 .wrapper {
     background: white;
     position: relative;
+    padding-top: 105px;
 }
 
 .pt-page-current {
@@ -806,8 +807,10 @@ section.more-stories {
 .galleries {
     position: relative;
     background: #332f3e;
-    min-height: 536px;
-    transition: .5s;
+    transition: all 600ms;
+    visibility: hidden;
+    opacity: 0;
+      transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .gallery-button {
@@ -872,6 +875,39 @@ section.more-stories {
     display: none;
 }
 
+
+.gallery-main {
+    min-height: 450px;
+    background-size: cover;
+    margin: 30px 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+div#gallery-count {
+    position: absolute;
+    right: 0;
+    background: #332f3e;
+    color: white;
+   text-align: center;
+       font-family: Montserrat;
+    text-transform: uppercase;
+}
+
+
+div#gallery-count:before {
+    content: "Browse";
+    display: block;
+    background: #25222d;
+    font-weight: 700;
+        padding: 2px 12px;
+}
+
+span.gallery-size {
+    padding: 7px 20px;
+    display: inline-block;
+}
 
 /*** Complete Block ***/
 
@@ -1078,46 +1114,88 @@ h3.footer-text {
 
 /*** Inner Pages ***/
 
-.oldposts i {
-    padding: 12px 10px;
+.oldposts a {
+
+    position: fixed;
     background: #332f3e;
-
-}
-
-div#prev-post {
-    position: fixed;
-    background: #25222d;
     font-family: Montserrat;
     text-transform: uppercase;
     color: white;
     letter-spacing: 2px;
-    padding: 0px 11px 0px 0px;
     top: 49%;
     transform: translateY(-49%);
+    transition: all 600ms;
 
 }
 
-div#next-post {
-    position: fixed;
-    background: #25222d;
-    font-family: Montserrat;
-    text-transform: uppercase;
-    color: white;
-    letter-spacing: 2px;
+div#prev-post a {
+    left: 0;
+
+}
+
+div#next-post a {
     right: 0;
-    padding: 0px 0px 0px 11px;
-    top: 49%;
-    transform: translateY(-49%);
 
 }
 
-div#prev-post i {
-    margin-right: 5px;   
+div#prev-post a:before {
+    font-family: FontAwesome;
+    position: absolute;
+    content: "\f0a8";
+        background: #25222d;
+         padding: 8px 10px;
+         left: 0;
+transition: all 600ms;
+
+
 }
 
-div#next-post i {
- margin-left: 5px;   
+
+div#prev-post a:hover:before, div#next-post a:hover:after {
+         padding: 8px 13px;
+
 }
+
+div#prev-post a:hover span {
+        margin-left: 35px;
+
+}
+
+div#next-post a:hover span {
+        margin-right: 35px;
+
+}
+
+
+
+div#prev-post span {
+    padding: 8px 10px;
+    margin-left: 33px;
+    display: inline-block;
+    transition: all 600ms;
+}
+
+div#next-post span {
+    padding: 8px 10px;
+    margin-right: 33px;
+    display: inline-block;
+        transition: all 600ms;
+
+}
+
+div#next-post a:after {
+     font-family: FontAwesome;
+    position: absolute;
+    content: "\f0a9";  
+    background: #25222d;
+     padding: 8px 10px;
+     right: 0;
+         transition: all 600ms;
+
+}
+
+
+
 
 .tags {
 margin: 30px 0;
@@ -1220,7 +1298,7 @@ margin: 30px 0;
 
 .single-content {
     max-width: 780px;
-    margin: 0 auto;
+    margin: 30px auto;
 
 }
 

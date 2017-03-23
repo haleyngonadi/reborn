@@ -1,0 +1,112 @@
+<?php
+/**
+ * The default template for displaying content
+ *
+ * Used for both single and index/archive/search.
+ *
+ * @package WordPress
+ * @subpackage Twenty_Fifteen
+ * @since Twenty Fifteen 1.0
+ */
+?>
+
+<article id="post-<?php the_ID(); ?>" <?php post_class('single-content'); ?>>
+
+
+	<div class="single-header">
+
+	<span class="full-date"><?php $category = get_the_category(); echo $category[0]->cat_name; ?></span>
+									<?php
+			if ( is_single() ) :
+				the_title( '<span class="full-title">', '</span>' );
+			else :
+				the_title( sprintf( '<span class="full-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></span>' );
+			endif;
+		?>
+								</span>
+                        <span class="details">Posted by <?php echo get_the_author_link(); ?> &bull; <?php the_date('F j, Y'); ?></span>
+
+								<ul class="social-share">
+                                    <li class="share-button" style="display:none">Share This <i class="fa fa-arrow-right" aria-hidden="true"></i></li>
+                                    <li><a href=""><i class="fa fa-twitter-square" aria-hidden="true"><span class="itext">Tweet</span></i></a></li>
+                                    <li><a href=""><i class="fa fa-facebook-square" aria-hidden="true"><span class="itext">Share</span></i></a></li>
+                                    <li><a href=""><i class="fa fa-pinterest" aria-hidden="true"><span class="itext">Pin It</span></i></a></li>
+                                    <li><a href=""><i class="fa fa-envelope" aria-hidden="true"><span class="itext">Email</span></i></a></li>
+
+            </ul>
+
+
+		
+	</div><!-- .entry-header -->
+
+	<div class="entry-content">
+
+		<?php if(has_post_format('gallery')) : ?>
+	
+		<?php $images = get_post_meta( $post->ID, '_format_gallery_images', true ); ?>
+		
+		<?php if($images) : ?>
+
+
+			
+
+			<div class="gallery-main" style="background-image: url('<?php $the_feature = wp_get_attachment_image_src( $images[0], 'full-thumb' );
+			echo $the_feature[0]; ?>')">
+			<div id="gallery-count"><span class="gallery-size"><?php echo sizeof($images); ?> Photos <i class="fa fa-caret-right" aria-hidden="true"></i> </span> </div>
+			</div>
+
+		<div class="galleries">
+		<ul class="bxslider">
+		<?php foreach($images as $image) : ?>
+			
+			<?php $the_image = wp_get_attachment_image_src( $image, 'full-thumb' ); ?> 
+			<?php $the_caption = get_post_field('post_excerpt', $image); ?>
+			<li><img src="<?php echo $the_image[0]; ?>" <?php if($the_caption) : ?>title="<?php echo $the_caption; ?>"<?php endif; ?> /></li>
+			
+		<?php endforeach; ?>
+		</ul>
+		</div>
+		<?php endif; ?>
+<?php endif; ?>
+
+		<?php
+			/* translators: %s: Name of current post */
+			the_content( sprintf(
+				__( 'Continue reading %s', 'twentyfifteen' ),
+				the_title( '<span class="screen-reader-text">', '</span>', false )
+			) );
+
+			wp_link_pages( array(
+				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfifteen' ) . '</span>',
+				'after'       => '</div>',
+				'link_before' => '<span>',
+				'link_after'  => '</span>',
+				'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'twentyfifteen' ) . ' </span>%',
+				'separator'   => '<span class="screen-reader-text">, </span>',
+			) );
+		?>
+
+		                        <ul class="tags">
+
+					<li class="ticket written"><span class="circle"></span><a href="#">Written By <?php echo get_the_author(); ?></a></li>
+
+							<?php 
+					$tags = get_tags();
+					foreach ( $tags as $tag ) {
+						$tag_link = get_tag_link( $tag->term_id );
+								
+						$html .= "<li class='ticket'><span class='circle'></span> <a href='{$tag_link}' title='{$tag->name} Tag' class='{$tag->slug}'>";
+						$html .= "{$tag->name}</a></li>";
+					}
+					echo $html;?>
+
+						</ul>
+
+	</div><!-- .entry-content -->
+
+
+	<footer class="entry-footer">
+		<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
+	</footer><!-- .entry-footer -->
+
+</article><!-- #post-## -->
