@@ -74,7 +74,9 @@
 			<?php $the_image = wp_get_attachment_image_src( $image, 'full-thumb' ); ?> 
 			<?php $the_caption = get_post_field('post_excerpt', $image); ?>
 			<div class="item">
-			<img class="owl-lazy" data-src="<?php echo $the_image[0]; ?>" <?php if($the_caption) : ?>title="<?php echo $the_caption; ?>"<?php endif; ?> />
+
+                <div class="inner-gallery">
+			<img class="owl-lazy" data-src="<?php echo $the_image[0]; ?>" <?php if($the_caption) : ?>title="<?php echo $the_caption; ?>"<?php endif; ?> /></div>
 			</div>
 			
 		<?php endforeach; ?>

@@ -123,18 +123,34 @@ twitterFetcher.fetch(configProfile);
 owl = $('.owl-carousel').owlCarousel({
     loop:false,
     nav:false,
-    animateOut: 'slideOutDown',
-    animateIn: 'flipInX',
+    animateOut: 'slideOutRight',
+    animateIn: 'slideInLeft',
     items:1,
 lazyLoad:true,
-autoHeight:true
+autoHeight:false,
+onChanged: callback
 });
+
+
+function callback(event) {
+    console.log(event.item.index);
+
+    if( event.item.index == 0) {
+      $('#prev-photo').addClass('inactive');
+    } 
+    else if( event.item.index == event.item.count- 1) {
+      $('#next-photo').addClass('inactive');
+    }
+    else {
+       $('#prev-photo').removeClass('inactive');
+       $('#next-photo').removeClass('inactive'); 
+    }
+}
 
 
 $( ".gallery-size" ).click(function() {
     
     $('body').addClass('gallery-active');
-    console.log('Shame');
     owl.trigger('refresh.owl.carousel');
 
 
