@@ -120,7 +120,8 @@ twitterFetcher.fetch(configProfile);
 
 /*** Gallery ***/
 
-owl = $('.owl-carousel').owlCarousel({
+
+var owlOptions = {
     loop:false,
     nav:false,
     animateOut: 'slideOutRight',
@@ -129,7 +130,10 @@ owl = $('.owl-carousel').owlCarousel({
 lazyLoad:true,
 autoHeight:false,
 onChanged: callback
-});
+};
+
+
+owl = $('.owl-carousel').owlCarousel(owlOptions);
 
 
 function callback(event) {
@@ -171,3 +175,84 @@ $("#prev-photo").click(function () {
 $("#next-photo").click(function () {
     owl.trigger('next.owl.carousel');
 });
+
+$('.caption-text').readmore({
+  lessLink: '<a href="#">Read less</a>'
+});
+
+
+
+$( ".expand-button" ).click(function() {
+    
+    $('.caption-view').toggleClass('caption-expand');
+        $('body').toggleClass('owl-expand');
+
+        $('.owl-carousel').toggleClass('owl-expanded');
+
+    var mainwidth =   $('.below').width(); 
+    var itemcount = $(".owl-carousel .owl-item").length;
+    var windowWidth = $(window).width();
+    var combined = mainwidth*itemcount;
+
+
+
+
+
+/*    if($('.caption-view').css('opacity') == 0) {
+        owl.trigger('refresh.owl.carousel');
+    console.log('no');
+}
+    else {
+        console.log('yes');
+         $(".owl-carousel").css({width: combined + "px"});
+        $(".owl-item").css({width: windowWidth + "px"});
+         $(".owl-stage").css({width: combined + "px", transform: "translate3d(0px, 0px, 0px)" });
+    }*/
+
+
+        if($('.caption-view').css('opacity') == 0) {
+        owl.trigger('refresh.owl.carousel');
+        console.log('no');
+        }
+    else {
+        console.log('yes');
+         var $owl = $('.owl-carousel');
+        $owl.addClass('owl-expanded');
+$owl.trigger('destroy.owl.carousel');
+$owl.html($owl.find('.owl-stage-outer').html()).removeClass('owl-loaded');
+ $owl.owlCarousel(owlOptions);
+
+
+
+    }
+
+
+
+
+     if ( $( '.expand-button i' ).hasClass( "fa-plus-square" ) ) {
+ 
+            $('.expand-button i').removeClass('fa-plus-square');
+            $('.expand-button i').addClass('fa-minus-square');
+            $(".expand-button").css({background: "#2c2935"});
+
+
+
+
+
+    } 
+
+    else {
+        $('.expand-button i').addClass('fa-plus-square');
+            $('.expand-button i').removeClass('fa-minus-square');
+        $(".expand-button").css({background: "#332f3e"});
+
+
+
+    }
+
+
+
+
+});
+
+

@@ -60,11 +60,31 @@
 
 		<div class="galleries">
 		<span class="close-button"><i class="fa fa-close" aria-hidden="true"></i></span>
+		<span class="expand-button"><i class="fa fa-plus-square" aria-hidden="true"></i></span>
+
 
 			<div class="gallery-button">
                     <div id="prev-photo"class="photo-button pull-left"><i class="fa fa-caret-left" aria-hidden="true"></i></div>
                     <div id="next-photo"class="photo-button pull-right"><i class="fa fa-caret-right" aria-hidden="true"></i></div>
                 </div>
+
+			<div class="below"><span class="pull-left"><b>Image</b> 1 of <?php echo sizeof($images); ?></span> <span class="credits pull-right">Archie for Trendio</span></div>
+
+			<div class="caption-view" <?php if(is_admin) : ?>style="margin-top: 32px;"<?php endif; ?>>
+			<span class="caption-title"><?php the_title()?></span>
+				<ul class="social-share">
+                                    <li><a href=""><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+                                    <li><a href=""><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                                    <li><a href=""><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                                    <li><a href=""><i class="fa fa-envelope" aria-hidden="true" style="background: #79a250"></i></a></li>
+
+            </ul>
+
+            			<span class="caption-text"><?php the_content(); ?></span>
+
+
+			</div>
+
 
                 
 	<div class="owl-carousel owl-theme">
@@ -76,11 +96,12 @@
 			<div class="item">
 
                 <div class="inner-gallery">
-			<img class="owl-lazy" data-src="<?php echo $the_image[0]; ?>" <?php if($the_caption) : ?>title="<?php echo $the_caption; ?>"<?php endif; ?> /></div>
+			<img class="owl-lazy" data-src="<?php echo $the_image[0]; ?>" <?php if($the_caption) : ?>title="<?php echo $the_caption; ?>"<?php endif; ?> />
+
+			</div>
 			</div>
 			
 		<?php endforeach; ?>
-
 
 		</div>
 		
