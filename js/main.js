@@ -1,4 +1,5 @@
 <<<<<<< refs/remotes/origin/wp
+<<<<<<< refs/remotes/origin/wp
 $(document).ready(function(){
 
         $('.prettySocial').prettySocial();
@@ -40,6 +41,11 @@ var instauser = $('.insta-user').attr('data-instagram');
 
 =======
 >>>>>>> Add files via upload
+=======
+//  hi there.
+
+
+>>>>>>> Added a testing hi.
 $.ajax({
     url: "http://query.yahooapis.com/v1/public/yql",
 
