@@ -18,26 +18,15 @@
     <section class="more-stories"><span>Load More Stories...</span></section>
 
 
-	<ul>
-	
-				<li><a href="#">Ariana Grande (13)</a></li>
-				<li><a href="#">Beyonce (8)</a></li>
-				<li><a href="#">The Script (2)</a></li>
-				<li><a href="#">Justin Bieber (50)</a></li>
-        <li><a href="#">3D modeling</a></li>
-        <li><a href="#">Web development</a></li>
-        <li><a href="#">Mobile development</a></li>
-        <li><a href="#">Web &amp; Print Design</a></li>
-        <li><a href="#">3D modeling</a></li>
-        <li><a href="#">Web development</a></li>
-        <li><a href="#">Mobile development</a></li>
-        <li><a href="#">Web &amp; Print Design</a></li>       <li><a href="#">3D modeling</a></li>
-        <li><a href="#">Web development</a></li>
-        <li><a href="#">Mobile development</a></li>
-	
-	</ul>
+	<?php if ( function_exists( 'wp_tag_cloud' ) ) : ?>
+
+<ul>
+<li><?php wp_tag_cloud( 'smallest=8&largest=22' ); ?></li>
+</ul>
+
+<?php endif; ?>
     
-    <div class="inner-footer"><span>(c) 2017 Trendio - All rights reserved,</span></div>
+    <div class="inner-footer"><span>&copy; <?php the_date('Y')?> <?php echo get_bloginfo( 'name' ); ?> - All rights reserved.</span></div>
 
 </footer>
 
