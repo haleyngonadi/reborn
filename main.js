@@ -11,4 +11,11 @@ $(function(){
             header.removeClass("darkHeader");
         }
     });
+
+
+$( ".close-newsletter" ).click(function() {
+  alert( "Handler for .click() called." );
+});
+
+
 });

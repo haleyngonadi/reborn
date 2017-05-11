@@ -32,7 +32,7 @@ body {
 	font-family: 'Arvo', serif !important;
 	position: relative;
 	z-index: 0;
-    color: #545454;
+    color: #444;
 }
 
 ul, ol {
@@ -42,7 +42,7 @@ padding: 0;
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .wrapper {
@@ -384,6 +384,12 @@ form.newsletter-form {
     z-index: 1;
 }
 
+.hide-news {
+height: 0 !important;
+opacity: 0 !important;
+}
+
+
 section.newsletter {
     background: #f3f3f3;
     padding: 32px 25px;
@@ -392,8 +398,16 @@ section.newsletter {
     text-align: center;
     border-left: 2px dotted #332F3E;
     z-index: 1;
-
+    position: relative;
+        -webkit-transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
+    -moz-transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
+    -o-transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
+    transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
+    height: auto;
+    opacity: 1;
 }
+
+
 
 .newsletter-text {
 	font-family: 'Montserrat', sans-serif;
@@ -422,6 +436,7 @@ input[type="submit"] {
     font-family: 'Abril Fatface', cursive;
     border: 0px solid transparent;
     position: relative;
+    outline: 0;
 }
 
 p#subscribe-submit input[type="submit"] {
@@ -471,11 +486,26 @@ button.submit:before {
 
 }
 
+
+
+span.close-newsletter {
+    position: absolute;
+    padding: 7px 8px;
+    background: #332f3e;
+    color: white;
+    top: 0;
+    right: 0;
+    text-align: center;
+    cursor: pointer;
+
+}
+
 section.newsletter input[type="email"] {
     border: 1px solid #ddd;
     padding: 8px;
      font-family: 'Old Standard TT', serif;
      width: 100%;
+     outline: 0;
 }
 
 .jetpack_subscription_widget h2.widgettitle {
@@ -647,6 +677,10 @@ display: block;
     background-size: cover;
     background-position: top center;
     position: relative;
+        -webkit-transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
+    -moz-transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
+    -o-transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
+    transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
 }
 
 .square-image {
@@ -673,7 +707,7 @@ span.square-date {
     left: 0;
     color: #fff;
     background: #332F3E;
-    padding: 5px 10px;
+    padding: 9px 10px;
 }
 
 .categorized:before {
@@ -720,6 +754,8 @@ span.square-date {
     font-family: Montserrat, sans-serif;
     font-size: 12px;
     position: relative;
+    margin-top: 0px;
+    display: table;
 }
 
 
@@ -744,7 +780,7 @@ border-left: 10px solid transparent;
 .full-body, .square-body {
     font-family: 'Frank Ruhl Libre', sans-serif;
   font-size: 16px;
-    line-height: 21px;
+    line-height: 23px;
     text-align: justify;
 }
 

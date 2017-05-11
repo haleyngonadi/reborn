@@ -23,7 +23,7 @@ $tags = get_tags('order=desc&number=10');
 $html = '<ul>';
 foreach ($tags as $tag) {
     $tag_link = get_tag_link($tag->term_id);  
-    $html .= "<li><a href='{$tag_link}' title='{$tag->name} ile ilgili yazılar' class='{$tag->slug}'>";
+    $html .= "<li><a href='{$tag_link}' title='{$tag->name}' class='{$tag->slug}'>";
     $html .= "{$tag->name}<span> ({$tag->count})</span></a></li>";
 }
 $html .= '</ul>';
@@ -42,6 +42,8 @@ echo $html;
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
 
 <?php wp_footer(); ?>
 

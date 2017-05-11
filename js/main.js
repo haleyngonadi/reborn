@@ -1,3 +1,17 @@
+var cw = $('.full-image').width();
+$('.full-image').css({'height':cw+'px'});
+
+var news = localStorage.getItem("hide-newsletter");
+
+if (news == "YES") {
+$('.newsletter').hide();
+$('.body').css("margin-top", "40px");
+}
+
+else {
+    $('.newsletter').show()
+}
+
 $.ajax({
     url: "http://query.yahooapis.com/v1/public/yql",
 
@@ -15,6 +29,8 @@ $.ajax({
 
     // Work with the response
     success: function( response ) {
+
+        console.log(response);
         
         var items = [];
     
@@ -252,7 +268,12 @@ $owl.html($owl.find('.owl-stage-outer').html()).removeClass('owl-loaded');
 
 
 
-
 });
 
 
+
+$( ".close-newsletter" ).click(function() {
+    localStorage.setItem("hide-newsletter", "YES");
+    $('.newsletter').addClass('hide-news')
+
+});

@@ -178,3 +178,43 @@ $classes[] = $post->post_type . '-' . $post->post_name;
 return $classes;
 }
 add_filter( 'body_class', 'add_slug_body_class' );
+
+
+function get_two_top_posts() {
+	$the_query = new WP_Query( array('posts_per_page' => 2 ) ); 
+
+// The Loop
+if ( $the_query->have_posts() ) {
+	$string .= '<div class="content-full">';
+	while ( $the_query->have_posts() ) {
+		$the_query->the_post();
+			$string .= '<div class="content-block">';
+			$string .= '<div class="full-image col-sm-4 col-xs-5" style="background-image: url(' . get_the_post_thumbnail_url($post_id, array( 300, 300) ) .')"><div class="categorized"><i class="fa fa-camera-retro" aria-hidden="true"></i></div></div><div class="full-content col-sm-8  col-xs-7">';
+			$string .= '<span class="full-date">'. get_the_date('M d') .'</span>';
+			$string .= '<a href="' . get_the_permalink() .'" rel="bookmark" class="full-title">'. get_the_title() .'</a>';
+			
+			$string .= '<span class="full-body">'. get_the_excerpt() .'</span>';
+			$string .='</div></div>';
+			
+			}
+	} else {
+	// no posts found
+}
+$string .= '</div>';
+
+return $string;
+
+/* Restore original Post Data */
+wp_reset_postdata();
+}
+
+function wpdocs_custom_excerpt_length( $length ) {
+    return 80;
+}
+add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
+
+
+function wpdocs_excerpt_more( $more ) {
+    return '...';
+}
+add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
