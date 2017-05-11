@@ -133,7 +133,7 @@ endif;
 
 function wpb_postsbycategory() {
 // the query
-$the_query = new WP_Query( array(/* 'category_name' => 'announcements',*/ 'posts_per_page' => 10 ) ); 
+$the_query = new WP_Query( array(/* 'category_name' => 'announcements',*/ 'posts_per_page' => 4 ) ); 
 
 // The Loop
 if ( $the_query->have_posts() ) {
@@ -142,7 +142,7 @@ if ( $the_query->have_posts() ) {
 		$the_query->the_post();
 			if ( has_post_thumbnail() ) {
 			$string .= '<div class="col-sm-3 col-xs-6 featured-block">';
-			$string .= '<a href="' . get_the_permalink() .'" rel="bookmark"><div class="specific-image" style="background-image: url(' . get_the_post_thumbnail_url($post_id, array( 50, 50) ) .')"></div>';
+			$string .= '<a href="' . get_the_permalink() .'" rel="bookmark"><div class="specific-image" style="background-image: url(' . get_the_post_thumbnail_url($post_id, array( 300, 300) ) .')"></div>';
 			$string .= '<span class="specific-text">'. get_the_title() .'</span>';
 			$string .='</a></div>';
 			} else { 
