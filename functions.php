@@ -242,3 +242,9 @@ function save_taxonomy_custom_meta( $term_id ) {
 }  
 add_action( 'edited_category', 'save_taxonomy_custom_meta', 10, 2 );  
 add_action( 'create_category', 'save_taxonomy_custom_meta', 10, 2 );
+
+
+function custom_length_excerpt($word_count_limit) {
+    $content = wp_strip_all_tags(get_the_content() , true );
+    echo wp_trim_words($content, $word_count_limit);
+}

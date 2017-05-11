@@ -86,34 +86,44 @@ $the_query = new WP_Query( array('posts_per_page' => 2 ) ); ?>
     
     <div class="content-square row">
 
+    <?php 
 
-        
-        <div class="content-block col-sm-4 col-xs-6">
-            <div class="square-image" style="background-image: url('images/05.jpg')">
+    $args = array(
+	'posts_per_page' => 3,
+	'offset' => 2
+);
+
+
+$the_query = new WP_Query( $args ); ?>
+
+<?php if ( $the_query->have_posts() ) : ?>
+
+	<!-- pagination here -->
+
+	<!-- the loop -->
+	<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+		        <div class="content-block col-sm-4 col-xs-6">
+            <div class="square-image" style="background-image: url('<?php the_post_thumbnail_url();?>')">
                 </div>
             <div class="square-content">
-                <span class="square-date">Music</span>
-                <span class="square-title">Pellentesque eget neque molestie...</span>
-                <span class="square-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut posuere arcu. Ut quis dignissim dolor. Pellentesque eget neque molestie, rhoncus dui a...</span>
+                <span class="square-date"><?php $category = get_the_category();  echo $category[0]->cat_name;?></span>
+                <span class="square-title"><a href="<?php get_the_permalink()?>"><?php the_title(); ?></a></span>
+                <span class="square-body"><?php echo wp_trim_words( get_the_content(), 40, '...' ); ?></span>
             </div></div>
         
-        <div class="content-block col-sm-4 col-xs-6">
-            <div class="square-image" style="background-image: url('images/04.jpg')">
-            </div>
-            <div class="square-content">
-                <span class="square-date">Video</span>
-                <span class="square-title">Pellentesque eget neque molestie...</span>
-                <span class="square-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut posuere arcu. Ut quis dignissim dolor. Pellentesque eget neque molestie, rhoncus dui a...</span>
-            </div></div>
-        
-        <div class="content-block col-sm-4 col-xs-6">
-            <div class="square-image" style="background-image: url('images/06.jpg')">
-            </div>
-            <div class="square-content">
-                <span class="square-date">Photos</span>
-                <span class="square-title">Pellentesque eget neque molestie...</span>
-                <span class="square-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut posuere arcu. Ut quis dignissim dolor. Pellentesque eget neque molestie, rhoncus dui a...</span>
-            </div></div>
+	<?php endwhile; ?>
+	<!-- end of the loop -->
+
+	<!-- pagination here -->
+
+	<?php wp_reset_postdata(); ?>
+
+<?php else : ?>
+	<p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+<?php endif; ?>
+
+
+
         
     </div>
 
