@@ -177,6 +177,12 @@ span.logo-text:before {
     left: -170px;
 }
 
+
+
+.logo-small a {
+    color: white;
+}
+
 .upper .logo-small {
     font-size: 44px;
     color: white;
@@ -395,6 +401,7 @@ section.newsletter {
 	text-transform: uppercase;
 	font-weight: 500;
 	color: #332F3E;
+        padding-top: 7px;
 }
 
 button.submit {
@@ -405,10 +412,30 @@ button.submit {
     font-family: 'Abril Fatface', cursive;
         border: 0px solid transparent;
         position: relative;
-/*    background:-webkit-linear-gradient(left,#dc1432,#332F3E);*/
-
 
 }
+input[type="submit"] {
+    background: #332F3E;
+    padding: 8px 10px;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Abril Fatface', cursive;
+    border: 0px solid transparent;
+    position: relative;
+}
+
+p#subscribe-submit:after {
+    content: "sd";
+    position: absolute;
+    width: 98px;
+    height: 36px;
+    border: 1px solid #332f3e;
+    top: 7px;
+    right: 21px;
+    z-index: -1;
+}
+
+
 
 button.submit:before {
     content: "";
@@ -427,12 +454,22 @@ button.submit:before {
 
 }
 
-section.newsletter input[type="text"] {
+section.newsletter input[type="email"] {
     border: 1px solid #ddd;
     padding: 8px;
      font-family: 'Old Standard TT', serif;
      width: 100%;
 }
+
+.jetpack_subscription_widget h2.widgettitle {
+    display: none;
+}
+
+.jetpack_subscription_widget div#subscribe-text {
+
+    display: none;
+}
+
 
 /*** Sidebar ***/
 
