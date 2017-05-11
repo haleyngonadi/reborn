@@ -424,8 +424,12 @@ input[type="submit"] {
     position: relative;
 }
 
+p#subscribe-submit {
+    position: relative;
+}
+
 p#subscribe-submit:after {
-    content: "sd";
+    content: "";
     position: absolute;
     width: 98px;
     height: 36px;
