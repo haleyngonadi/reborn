@@ -24,7 +24,7 @@ $html = '<ul>';
 foreach ($tags as $tag) {
     $tag_link = get_tag_link($tag->term_id);  
     $html .= "<li><a href='{$tag_link}' title='{$tag->name} ile ilgili yazılar' class='{$tag->slug}'>";
-    $html .= "{$tag->name}<span>{$tag->count}</span></a></li>";
+    $html .= "{$tag->name}<span> ({$tag->count})</span></a></li>";
 }
 $html .= '</ul>';
 echo $html;
