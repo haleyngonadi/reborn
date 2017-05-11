@@ -424,18 +424,31 @@ input[type="submit"] {
     position: relative;
 }
 
+p#subscribe-submit input[type="submit"] {
+    float: left;
+    }
+
+p#subscribe-email {
+    float: left;
+    width: 75%;
+}
+
+
+
 p#subscribe-submit {
     position: relative;
+    float: left;
+    width: 25%;
 }
 
 p#subscribe-submit:after {
-    content: "";
+        content: "";
     position: absolute;
     width: 98px;
     height: 36px;
     border: 1px solid #332f3e;
-    top: 7px;
-    right: 21px;
+    top: 11px;
+    right: 45px;
     z-index: -1;
 }
 
