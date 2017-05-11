@@ -41,10 +41,14 @@ padding: 0;
     list-style-type: none;
 }
 
+a {
+    text-decoration: none;
+}
+
 .wrapper {
     background: white;
     position: relative;
-    padding-top: 105px;
+    padding-top: 123px;
     min-height: 1000px;
 }
 

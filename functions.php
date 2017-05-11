@@ -129,3 +129,42 @@ function custom_post_nav() {
 }
  
 endif;
+
+
+function wpb_postsbycategory() {
+// the query
+$the_query = new WP_Query( array(/* 'category_name' => 'announcements',*/ 'posts_per_page' => 10 ) ); 
+
+// The Loop
+if ( $the_query->have_posts() ) {
+	$string .= '<section class="featured row">';
+	while ( $the_query->have_posts() ) {
+		$the_query->the_post();
+			if ( has_post_thumbnail() ) {
+			$string .= '<div class="col-sm-3 col-xs-6 featured-block">';
+			$string .= '<a href="' . get_the_permalink() .'" rel="bookmark"><div class="specific-image" style="background-image: url(' . get_the_post_thumbnail_url($post_id, array( 50, 50) ) .')"></div>';
+			$string .= '<span class="specific-text">'. get_the_title() .'</span>';
+			$string .='</a></div>';
+			} else { 
+			// if no featured image is found
+						$string .= '<div class="col-sm-3 col-xs-6 featured-block">';
+			$string .= '<a href="' . get_the_permalink() .'" rel="bookmark"><div class="specific-image" style="background: #dc1432"></div>';
+			$string .= '<span class="specific-text">'. get_the_title() .'</span>';
+			$string .='</a></div>';
+			}
+			}
+	} else {
+	// no posts found
+}
+$string .= '</section>';
+
+return $string;
+
+/* Restore original Post Data */
+wp_reset_postdata();
+}
+// Add a shortcode
+add_shortcode('categoryposts', 'wpb_postsbycategory');
+
+// Enable shortcodes in text widgets
+add_filter('widget_text', 'do_shortcode');
