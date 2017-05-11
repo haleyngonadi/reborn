@@ -18,13 +18,19 @@
     <section class="more-stories"><span>Load More Stories...</span></section>
 
 
-	<?php if ( function_exists( 'wp_tag_cloud' ) ) : ?>
+	<?php 
+$tags = get_tags('order=desc&number=10');
+$html = '<ul>';
+foreach ($tags as $tag) {
+    $tag_link = get_tag_link($tag->term_id);  
+    $html .= "<li><a href='{$tag_link}' title='{$tag->name} ile ilgili yazılar' class='{$tag->slug}'>";
+    $html .= "{$tag->name}<span>{$tag->count}</span></a></li>";
+}
+$html .= '</ul>';
+echo $html;
+?>
 
-<ul>
-<li><?php wp_tag_cloud( 'smallest=8&largest=22' ); ?></li>
-</ul>
 
-<?php endif; ?>
     
     <div class="inner-footer"><span>&copy; <?php the_date('Y')?> <?php echo get_bloginfo( 'name' ); ?> - All rights reserved.</span></div>
 
