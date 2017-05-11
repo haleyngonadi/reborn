@@ -673,7 +673,7 @@ display: block;
 }
 
 .full-image{
-    height: 188px;
+    height: 283.33px;
     background-size: cover;
     background-position: top center;
     position: relative;
@@ -778,9 +778,9 @@ border-left: 10px solid transparent;
 }
 
 .full-body, .square-body {
-    font-family: 'Frank Ruhl Libre', sans-serif;
+    font-family: 'Arvo', 'Frank Ruhl Libre', sans-serif;
   font-size: 16px;
-    line-height: 23px;
+    line-height: 24px;
     text-align: justify;
 }
 
@@ -1579,7 +1579,7 @@ margin: 30px 0;
 
 .single-content .full-title {
     font-family: 'Abril Fatface', cursive;
-    font-size: 32px;
+    font-size: 30px;
     display: block;
     line-height: 30px;
     margin: 10px 0;

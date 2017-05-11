@@ -1,6 +1,3 @@
-var cw = $('.full-image').width();
-$('.full-image').css({'height':cw+'px'});
-
 var news = localStorage.getItem("hide-newsletter");
 
 if (news == "YES") {

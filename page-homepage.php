@@ -31,7 +31,55 @@ get_header(); ?>
 <div class="row content">
 <div class="col-sm-9">
 
-<?php echo get_two_top_posts() ?>
+<?php 
+// the query
+$the_query = new WP_Query( array('posts_per_page' => 2 ) ); ?>
+
+<?php if ( $the_query->have_posts() ) : ?>
+
+	<!-- pagination here -->
+
+	<div class="content-full">
+
+	<!-- the loop -->
+	<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+			<div class="content-block">
+        <div class="full-image col-sm-4 col-xs-5" style="background-image: url('<?php the_post_thumbnail_url();?>')">
+
+        	<?php
+				$categories = get_categories();
+				if(!empty($categories) && is_array($categories)) :
+					
+						$t_id = $categories[0]->term_id;
+						$icon = get_option("taxonomy_$t_id");
+						?>
+		<div class="categorized">	
+		<i class="fa <?php echo !empty($icon['category_icon']) ? $icon['category_icon'] : 'none'; ?>"></i> 
+		</div>
+							
+						
+
+				<?php endif; ?>
+
+
+        </div>
+	<div class="full-content col-sm-8  col-xs-7">
+		<span class="full-date"><?php echo get_the_date('M d');?></span>
+		<span class="full-title"><a href="<?php get_the_permalink()?>"><?php the_title(); ?></a></span>
+		<span class="full-body"><?php the_excerpt(); ?></span>
+	</div></div>
+		
+	<?php endwhile; ?>
+	<!-- end of the loop -->
+</div>
+	<!-- pagination here -->
+
+	<?php wp_reset_postdata(); ?>
+
+<?php else : ?>
+	<p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+<?php endif; ?>
 
     
     <h3 class="pinline"><span>continue reading</span></h3>

@@ -180,34 +180,6 @@ return $classes;
 add_filter( 'body_class', 'add_slug_body_class' );
 
 
-function get_two_top_posts() {
-	$the_query = new WP_Query( array('posts_per_page' => 2 ) ); 
-
-// The Loop
-if ( $the_query->have_posts() ) {
-	$string .= '<div class="content-full">';
-	while ( $the_query->have_posts() ) {
-		$the_query->the_post();
-			$string .= '<div class="content-block">';
-			$string .= '<div class="full-image col-sm-4 col-xs-5" style="background-image: url(' . get_the_post_thumbnail_url($post_id, array( 300, 300) ) .')"><div class="categorized"><i class="fa fa-camera-retro" aria-hidden="true"></i></div></div><div class="full-content col-sm-8  col-xs-7">';
-			$string .= '<span class="full-date">'. get_the_date('M d') .'</span>';
-			$string .= '<a href="' . get_the_permalink() .'" rel="bookmark" class="full-title">'. get_the_title() .'</a>';
-			
-			$string .= '<span class="full-body">'. get_the_excerpt() .'</span>';
-			$string .='</div></div>';
-			
-			}
-	} else {
-	// no posts found
-}
-$string .= '</div>';
-
-return $string;
-
-/* Restore original Post Data */
-wp_reset_postdata();
-}
-
 function wpdocs_custom_excerpt_length( $length ) {
     return 80;
 }
@@ -218,3 +190,55 @@ function wpdocs_excerpt_more( $more ) {
     return '...';
 }
 add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
+
+
+function pippin_taxonomy_add_new_meta_field() {
+	// this will add the custom meta field to the add new term page
+	?>
+	<div class="form-field">
+		<label for="term_meta[category_icon]"><?php _e( 'Category Icon', 'pippin' ); ?></label>
+		<input type="text" name="term_meta[category_icon]" id="term_meta[category_icon]" value="">
+		<p class="description"><?php _e( 'Enter the font awesome value of the icon i.e. fa-home','pippin' ); ?></p>
+	</div>
+<?php
+}
+add_action( 'category_add_form_fields', 'pippin_taxonomy_add_new_meta_field', 10, 2 );
+
+
+function pippin_taxonomy_edit_meta_field($term) {
+ 
+	// put the term ID into a variable
+	$t_id = $term->term_id;
+ 
+	// retrieve the existing value(s) for this meta field. This returns an array
+	$term_meta = get_option( "taxonomy_$t_id" ); ?>
+	<tr class="form-field">
+	<th scope="row" valign="top"><label for="term_meta[category_icon]"><?php _e( 'Category Icon', 'pippin' ); ?></label></th>
+		<td>
+			<input type="text" name="term_meta[category_icon]" id="term_meta[category_icon]" value="<?php echo esc_attr( $term_meta['category_icon'] ) ? esc_attr( $term_meta['category_icon'] ) : ''; ?>">
+			<p class="description"><?php _e( 'Enter the font awesome value of the icon i.e. fa-home','pippin' ); ?></p>
+		</td>
+	</tr>
+<?php
+}
+add_action( 'category_edit_form_fields', 'pippin_taxonomy_edit_meta_field', 10, 2 );
+
+
+
+
+function save_taxonomy_custom_meta( $term_id ) {
+	if ( isset( $_POST['term_meta'] ) ) {
+		$t_id = $term_id;
+		$term_meta = get_option( "taxonomy_$t_id" );
+		$cat_keys = array_keys( $_POST['term_meta'] );
+		foreach ( $cat_keys as $key ) {
+			if ( isset ( $_POST['term_meta'][$key] ) ) {
+				$term_meta[$key] = $_POST['term_meta'][$key];
+			}
+		}
+		// Save the option array.
+		update_option( "taxonomy_$t_id", $term_meta );
+	}
+}  
+add_action( 'edited_category', 'save_taxonomy_custom_meta', 10, 2 );  
+add_action( 'create_category', 'save_taxonomy_custom_meta', 10, 2 );
