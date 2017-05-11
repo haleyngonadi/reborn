@@ -66,7 +66,7 @@ $the_query = new WP_Query( array('posts_per_page' => 2 ) ); ?>
         </div>
 	<div class="full-content col-sm-8  col-xs-7">
 		<span class="full-date"><?php echo get_the_date('M d');?></span>
-		<span class="full-title"><a href="<?php get_the_permalink()?>"><?php the_title(); ?></a></span>
+		<a class="full-title" href="<?php get_the_permalink()?>"><?php the_title(); ?></a>
 		<span class="full-body"><?php the_excerpt(); ?></span>
 	</div></div>
 		
@@ -107,8 +107,8 @@ $the_query = new WP_Query( $args ); ?>
                 </div>
             <div class="square-content">
                 <span class="square-date"><?php $category = get_the_category();  echo $category[0]->cat_name;?></span>
-                <span class="square-title"><a href="<?php get_the_permalink()?>"><?php the_title(); ?></a></span>
-                <span class="square-body"><?php echo wp_trim_words( get_the_content(), 40, '...' ); ?></span>
+                <a class="square-title" href="<?php get_the_permalink()?>"><?php the_title(); ?></a>
+                <span class="square-body"><?php echo wp_trim_words( get_the_content(), 25, '...' ); ?></span>
             </div></div>
         
 	<?php endwhile; ?>
