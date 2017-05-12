@@ -161,7 +161,7 @@ $the_query = new WP_Query( $args ); ?>
 
                     </ul>
                 </div>
-<div class="featured-block row">
+<div class="sha-block row">
   <div class="col-sm-6 col-xs-6">
                         <div class="sidetop">
                             <c><i class="fa fa-twitter-square"></i></c>

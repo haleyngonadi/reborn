@@ -1308,10 +1308,10 @@ span.gallery-size:after {
 }
 
 
-.featured-block {
+.sha-block {
     display: none;
 }
-.white-complete .featured-block {
+.white-complete .sha-block {
     display: block;
 }
 

@@ -288,6 +288,7 @@ $owl.html($owl.find('.owl-stage-outer').html()).removeClass('owl-loaded');
 
 
 $( ".close-newsletter" ).click(function() {
+    console.log('Close');
     localStorage.setItem("hide-newsletter", "YES");
     $('.newsletter').addClass('hide-news')
 
