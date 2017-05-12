@@ -19,7 +19,7 @@
 
 
 	<?php 
-$tags = get_tags('order=desc&number=10');
+$tags = get_tags('order=desc&number=18');
 $html = '<ul>';
 foreach ($tags as $tag) {
     $tag_link = get_tag_link($tag->term_id);  

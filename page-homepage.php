@@ -243,7 +243,7 @@ $the_query = new WP_Query( $args ); ?>
         <section class="content-row row">
 
         <div class="col-sm-9">
-
+ <div class="row">
 
                 <?php 
 
@@ -257,7 +257,7 @@ $the_query = new WP_Query( $args ); ?>
 
 <?php if ( $the_query->have_posts() ) : ?>
 
-    <!-- pagination here -->
+   
 
     <!-- the loop -->
     <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
@@ -272,7 +272,6 @@ $the_query = new WP_Query( $args ); ?>
         
     <?php endwhile; ?>
     <!-- end of the loop -->
-
     <!-- pagination here -->
 
     <?php wp_reset_postdata(); ?>
@@ -290,9 +289,10 @@ $the_query = new WP_Query( $args ); ?>
         <span class="full-date">Mar. 27</span>
         <span class="full-title">Solange performs at YouTube for South by South West</span>
         <span class="full-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut posuere arcu. Ut quis dignissim dolor. Pellentesque eget neque molestie, rhoncus dui a, gravida ligula. Mauris pulvinar aliquam diam, fermentum molestie eros tincidunt nec. Curabitur interdum auctor sem eget porta...</span>
-    </div></div>
+    </div>
+    </div>
 
-
+</div>
         
         </div>
         
