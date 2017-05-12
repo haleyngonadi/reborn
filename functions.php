@@ -519,3 +519,23 @@ function jetpackme_top_posts_timeframe() {
     return '30';
 }
 add_filter( 'jetpack_top_posts_days', 'jetpackme_top_posts_timeframe' );
+
+function jeherve_add_date_top_posts( $post_id ) {
+
+    $post_date = get_post_time(
+        get_option( 'date_format' ),
+        true,
+        $post_id,
+        true
+    );
+
+    printf( '<span style="margin-left:17px;color: #C7C7C7; text-transform: uppercase; font-size: 11px !important; font-weight: 200; font-family: Lato; letter-spacing: 2px; text-align: center; opacity: 1 !IMPORTANT;" class="top_posts_date">%s</span>', $post_date );
+}
+add_action( 'jetpack_widget_top_posts_after_post', 'jeherve_add_date_top_posts' );
+
+function jeherve_custom_thumb_size( $get_image_options ) {
+    $get_image_options['avatar_size'] = 300;
+
+    return $get_image_options;
+}
+add_filter( 'jetpack_top_posts_widget_image_options', 'jeherve_custom_thumb_size' );
