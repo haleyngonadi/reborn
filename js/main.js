@@ -8,6 +8,24 @@ $('.body').css("margin-top", "40px");
 else {
     $('.newsletter').show()
 }
+$('.social-block').hide();
+
+
+$( ".aotw-image" ).click(function() {
+
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+$('.random-row').addClass('row aotw-page');
+$('.complete').addClass('white-complete').addClass('pt-page-flipInBottom pt-page-delay500');
+$('.aotw-image').removeClass('aotw-image').addClass('artist-image');
+$('.aotw-photo').removeClass('col-sm-4 col-xs-12').addClass('col-sm-5');
+$('.aotw-body').addClass('inner-bio');
+$('.complete-content').removeClass('col-sm-8 col-xs-12').addClass('col-sm-7');
+$('.social-block').show();
+$('.more-stories').hide();
+$('.content').addClass("aotw-height");
+$('.bio-text').addClass('col-sm-9');
+
+$("ul.aotw-socials").appendTo(".bio-box");
 
 $.ajax({
     url: "http://query.yahooapis.com/v1/public/yql",
@@ -26,8 +44,6 @@ $.ajax({
 
     // Work with the response
     success: function( response ) {
-
-        console.log(response);
         
         var items = [];
     
@@ -49,7 +65,32 @@ $.ajax({
     }
 });
 
+$.ajax({
+    url: "http://itunes.apple.com/search?term=maggie+rogers",
+    dataType: 'JSONP'
+})
+    .done(function(data) { 
+    
+    var artistimage = data.results[0].artworkUrl100;
+    artistimage = artistimage.replace('100x100bb','1200x1200bb');
+    
+    var releasedate = data.results[0].releaseDate;
+    var seconddate = moment(releasedate).format('MMMM D, YYYY');
 
+    $('.case').prepend($('<img>',{id:'theImg',src:artistimage}))
+    $( ".release" ).append( "<strong>Purchase:</strong> <a href=\""+data.results[0].collectionViewUrl+"\" target=\"_blank\">iTunes</a><br><strong>Artist:</strong> "+data.results[0].artistName+"<br><strong>Title:</strong> "+data.results[0].collectionName+"<br><strong>Release Date:</strong> "+seconddate+"<br>" );
+    
+    $('.vinyl-record').fadeIn("slow");
+
+
+
+
+})
+    .fail(function(data) { console.log(data); })
+
+
+  return false;
+});
 
 function screenClass() {
     //    var $clone =	$('.right-menu ul.menu').children('li').first().clone();
@@ -89,29 +130,6 @@ $( ".bars" ).click(function() {
 });
 
 
-
-$.ajax({
-    url: "http://itunes.apple.com/search?term=maggie+rogers",
-    dataType: 'JSONP'
-})
-    .done(function(data) { 
-    
-    var artistimage = data.results[0].artworkUrl100;
-    artistimage = artistimage.replace('100x100bb','1200x1200bb');
-    
-    var releasedate = data.results[0].releaseDate;
-    var seconddate = moment(releasedate).format('MMMM D, YYYY');
-
-    $('.case').prepend($('<img>',{id:'theImg',src:artistimage}))
-    $( ".release" ).append( "<strong>Purchase:</strong> <a href=\""+data.results[0].collectionViewUrl+"\" target=\"_blank\">iTunes</a><br><strong>Artist:</strong> "+data.results[0].artistName+"<br><strong>Title:</strong> "+data.results[0].collectionName+"<br><strong>Release Date:</strong> "+seconddate+"<br>" );
-    
-    $('.vinyl-record').fadeIn("slow");
-
-
-
-
-})
-    .fail(function(data) { console.log(data); })
 
 
 
@@ -274,3 +292,32 @@ $( ".close-newsletter" ).click(function() {
     $('.newsletter').addClass('hide-news')
 
 });
+
+
+
+
+    var youtube = document.querySelectorAll( ".youtube" );
+    
+    for (var i = 0; i < youtube.length; i++) {
+        
+        var source = "https://img.youtube.com/vi/"+ youtube[i].dataset.embed +"/sddefault.jpg";
+        console.log(source);
+        var image = new Image();
+                image.src = source;
+                image.addEventListener( "load", function() {
+                    youtube[ i ].appendChild( image );
+                }( i ) );
+        
+                youtube[i].addEventListener( "click", function() {
+
+                    var iframe = document.createElement( "iframe" );
+
+                            iframe.setAttribute( "frameborder", "0" );
+                            iframe.setAttribute( "allowfullscreen", "" );
+                            iframe.setAttribute( "src", "https://www.youtube.com/embed/"+ this.dataset.embed +"?rel=0&showinfo=0&autoplay=1" );
+
+                            this.innerHTML = "";
+                            this.appendChild( iframe );
+                } );    
+    };
+    

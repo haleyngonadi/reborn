@@ -30,6 +30,8 @@ function register_my_menus() {
 }
 add_action( 'init', 'register_my_menus' );
 
+
+
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
 
@@ -83,6 +85,7 @@ function reborn_scripts() {
 		wp_enqueue_script( 'owl-js', get_template_directory_uri() . '/js/owl.carousel.min.js', array( 'jquery' ), '20170323', true );
 		wp_enqueue_script( 'owl-refresh', get_template_directory_uri() . '/js/owl.autorefresh.js', array( 'jquery' ), '20170323', true );
 				wp_enqueue_script( 'read-more', get_template_directory_uri() . '/js/readmore.min.js', array( 'jquery' ), '20170324', true );
+				wp_enqueue_script( 'lazy-load', get_template_directory_uri() . '/js/lazysizes.min.js', array( 'jquery' ), '20170512', true );
 
 
 
@@ -148,7 +151,7 @@ if ( $the_query->have_posts() ) {
 			} else { 
 			// if no featured image is found
 						$string .= '<div class="col-sm-3 col-xs-6 featured-block">';
-			$string .= '<a href="' . get_the_permalink() .'" rel="bookmark"><div class="specific-image" style="background: #dc1432"></div>';
+			$string .= '<a href="' . get_the_permalink() .'" rel="bookmark"><div class="specific-image" style="background: #d91342"></div>';
 			$string .= '<span class="specific-text">'. get_the_title() .'</span>';
 			$string .='</a></div>';
 			}
@@ -248,3 +251,246 @@ function custom_length_excerpt($word_count_limit) {
     $content = wp_strip_all_tags(get_the_content() , true );
     echo wp_trim_words($content, $word_count_limit);
 }
+
+
+/**
+ * Registers a widget area.
+ *
+ * @link https://developer.wordpress.org/reference/functions/register_sidebar/
+ *
+ * @since Reborn 1.0
+ */
+function reborn_widgets_init() {
+	register_sidebar( array(
+		'name'          => __( 'Sidebar', 'reborn' ),
+		'id'            => 'sidebar-1',
+		'description'   => __( 'Add widgets here to appear in your sidebar.', 'reborn' ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s side-content"><div class="side-body">',
+		'after_widget'  => '</div></div>',
+		'before_title'  => '<h2 class="widget-title side-header">',
+		'after_title'   => '</h2>',
+	) );
+
+	register_sidebar( array(
+		'name'          => __( 'Second Sidebar', 'reborn' ),
+		'id'            => 'sidebar-2',
+		'description'   => __( 'Appears at the bottom of the content on posts and pages.', 'reborn' ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s side-content"><div class="side-body">',
+		'after_widget'  => '</div></div>',
+		'before_title'  => '<h2 class="widget-title side-header">',
+		'after_title'   => '</h2>',
+	) );
+
+	register_sidebar( array(
+		'name'          => __( 'Content Bottom 2', 'reborn' ),
+		'id'            => 'sidebar-3',
+		'description'   => __( 'Appears at the bottom of the content on posts and pages.', 'reborn' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+}
+add_action( 'widgets_init', 'reborn_widgets_init' );
+
+
+/**
+ * WTI Custom Navigation Menu widget class
+ *
+ * @since 3.0.0
+ */
+
+class Wti_Custom_Nav_Menu_Widget extends WP_Widget {
+
+    function __construct() {
+        $widget_ops = array( 'description' => __('Use this widget to add your social media links.') );
+        parent::__construct( 'custom_nav_menu', __('Social Media'), $widget_ops );
+    }
+
+    function widget($args, $instance) {
+        // Get menu
+        $nav_menu = ! empty( $instance['nav_menu'] ) ? wp_get_nav_menu_object( $instance['nav_menu'] ) : false;
+
+        if ( !$nav_menu )
+            return;
+
+        $instance['title'] = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
+
+        echo $args['before_widget'];
+
+        if ( !empty($instance['title']) )
+            echo $args['before_title'] . $instance['title'] . $args['after_title'];
+
+        wp_nav_menu(
+                array(
+                    'fallback_cb' => '',
+                    'container' => '',
+                    'menu_class' => $instance['menu_class'],
+                    'menu' => 'socials',
+                    'link_before' => '<span class="hide-text">',
+                    'link_after' => '</span>'
+                )
+            );
+
+        echo $args['after_widget'];
+    }
+
+    function update( $new_instance, $old_instance ) {
+        $instance['title'] = strip_tags ( stripslashes ( $new_instance['title'] ) );
+        $instance['menu_class'] = strip_tags ( stripslashes ( trim ( $new_instance['menu_class'] ) ) );
+        $instance['nav_menu'] = (int) $new_instance['nav_menu'];
+
+        return $instance;
+    }
+
+    function form( $instance ) {
+        $title = isset( $instance['title'] ) ? $instance['title'] : '';
+        $menu_class = isset( $instance['menu_class'] ) ? $instance['menu_class'] : '';
+        $nav_menu = isset( $instance['nav_menu'] ) ? $instance['nav_menu'] : '';
+
+        // Get menus
+        $menus = get_terms( 'nav_menu', array( 'hide_empty' => false ) );
+
+        // If no menus exists, direct the user to go and create some.
+        if ( !$menus ) {
+            echo '<p>'. sprintf( __('No menus have been created yet. <a href="%s">Create some</a>.'), admin_url('nav-menus.php') ) .'</p>';
+            return;
+        }
+        ?>
+        <p>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:') ?></label>
+            <input type="text" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $title; ?>" />
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('menu_class'); ?>"><?php _e('Menu Class:') ?></label>
+            <input type="text" class="widefat" id="<?php echo $this->get_field_id('menu_class'); ?>" name="<?php echo $this->get_field_name('menu_class'); ?>" value="<?php echo $menu_class; ?>" />
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('nav_menu'); ?>"><?php _e('Select Menu:'); ?></label>
+            <select id="<?php echo $this->get_field_id('nav_menu'); ?>" name="<?php echo $this->get_field_name('nav_menu'); ?>">
+        <?php
+            foreach ( $menus as $menu ) {
+                echo '<option value="' . $menu->term_id . '"'
+                    . selected( $nav_menu, $menu->term_id, false )
+                    . '>'. $menu->name . '</option>';
+            }
+        ?>
+            </select>
+        </p>
+        <?php
+    }
+}
+
+function wti_custom_nav_menu_widget() {
+    register_widget('Wti_Custom_Nav_Menu_Widget');
+}
+
+add_action ( 'widgets_init', 'wti_custom_nav_menu_widget', 1 );
+
+
+
+class FeaturedWidget extends WP_Widget {
+
+	function __construct() {
+		// Instantiate the parent object
+		parent::__construct( false, 'Featured Video' );
+	}
+
+	function widget( $args, $instance ) {
+
+		        $instance['title'] = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
+
+        echo $args['before_widget'];
+
+        if ( !empty($instance['title']) )
+            echo $args['before_title'] . $instance['title'] . $args['after_title'];
+
+        	echo '<div class="youtube" data-embed="'.$instance['video_id'].'"> <div class="play-button"></div></div>';
+
+		echo $args['after_widget'];
+	}
+
+	function update( $new_instance, $old_instance ) {
+		$instance['title'] = strip_tags ( stripslashes ( $new_instance['title'] ) );
+		$instance['video_id'] = strip_tags ( stripslashes ( $new_instance['video_id'] ) );
+		return $instance;
+	}
+
+	function form( $instance ) {
+		$title = isset( $instance['title'] ) ? $instance['title'] : '';
+		$video_id = isset( $instance['video_id'] ) ? $instance['video_id'] : '';?>
+
+		<p>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:') ?></label>
+            <input type="text" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $title; ?>" />
+        </p>
+		 <p>
+            <label for="<?php echo $this->get_field_id('video_id'); ?>"><?php _e('Video ID:') ?></label>
+            <input type="text" class="widefat" id="<?php echo $this->get_field_id('video_id'); ?>" name="<?php echo $this->get_field_name('video_id'); ?>" value="<?php echo $video_id; ?>" />
+        </p>
+		<?php
+	}
+}
+
+function featured_register_widgets() {
+	register_widget( 'FeaturedWidget' );
+}
+
+add_action( 'widgets_init', 'featured_register_widgets' );
+
+
+
+class SpotifyWidget extends WP_Widget {
+
+	function __construct() {
+		// Instantiate the parent object
+		parent::__construct( false, 'Spotify Playlist' );
+	}
+
+	function widget( $args, $instance ) {
+
+		        $instance['title'] = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
+
+        echo $args['before_widget'];
+
+        if ( !empty($instance['title']) )
+            echo $args['before_title'] . $instance['title'] . $args['after_title'];
+
+        	echo '<iframe frameborder="0"
+	class="lazyload"
+    allowfullscreen=""
+    width="100%"
+    height="380"
+    data-src="//embed.spotify.com/?uri=spotify:user:popjustice:playlist:'.$instance['playlist_id'].'&theme=white">
+	</iframe>';
+
+		echo $args['after_widget'];
+	}
+
+	function update( $new_instance, $old_instance ) {
+		$instance['title'] = strip_tags ( stripslashes ( $new_instance['title'] ) );
+		$instance['playlist_id'] = strip_tags ( stripslashes ( $new_instance['playlist_id'] ) );
+		return $instance;
+	}
+
+	function form( $instance ) {
+		$title = isset( $instance['title'] ) ? $instance['title'] : '';
+		$playlist_id = isset( $instance['playlist_id'] ) ? $instance['playlist_id'] : '';?>
+
+		<p>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:') ?></label>
+            <input type="text" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $title; ?>" />
+        </p>
+		 <p>
+            <label for="<?php echo $this->get_field_id('playlist_id'); ?>"><?php _e('Video ID:') ?></label>
+            <input type="text" class="widefat" id="<?php echo $this->get_field_id('playlist_id'); ?>" name="<?php echo $this->get_field_name('playlist_id'); ?>" value="<?php echo $playlist_id; ?>" />
+        </p>
+		<?php
+	}
+}
+
+function spotify_register_widgets() {
+	register_widget( 'SpotifyWidget' );
+}
+
+add_action( 'widgets_init', 'spotify_register_widgets' );
