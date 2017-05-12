@@ -190,7 +190,10 @@ add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 
 
 function wpdocs_excerpt_more( $more ) {
-    return '...';
+    return sprintf( '<a href="%1$s" class="more-link">%2$s</a>',
+          esc_url( get_permalink( get_the_ID() ) ),
+          sprintf( __( '...more' ), '' )
+    );
 }
 add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
 
@@ -539,3 +542,99 @@ function jeherve_custom_thumb_size( $get_image_options ) {
     return $get_image_options;
 }
 add_filter( 'jetpack_top_posts_widget_image_options', 'jeherve_custom_thumb_size' );
+
+
+/*** Custom Post Types ***/
+
+add_action( 'init', 'create_aotw_type' );
+function create_aotw_type() {
+  register_post_type( 'aotw',
+    array(
+      'labels' => array(
+        'name' => __( 'AOTW' ),
+        'singular_name' => __( 'AOTW' ), 
+        'edit_item' => __( 'Edit AOTW' ),
+        'new_item' => __( 'New AOTW' ),
+        'not_found' => __( 'No AOTW Found' ),
+        'view_item' => __( 'View AOTW' ),
+      ),
+      'public' => true,
+      'has_archive' => true,
+      'supports'           => array( 'title', 'thumbnail' )
+    )
+  );
+}
+
+add_action( 'load-post.php', 'aotw_setup' );
+add_action( 'load-post-new.php', 'aotw_setup' );
+
+/* Meta box setup function. */
+function aotw_setup() {
+
+  /* Add meta boxes on the 'add_meta_boxes' hook. */
+  add_action( 'add_meta_boxes', 'aotw_meta_boxes' );
+  add_action( 'save_post', 'save_aotw_meta', 10, 2 );
+
+}
+
+function aotw_meta_boxes() {
+
+  add_meta_box(
+    'basic-information',      // Unique ID
+    esc_html__( 'Basic Information', 'reborn' ),    // Title
+    'smashing_aotw_meta_box',   // Callback function
+    'aotw',         // Admin page (or post type)
+    'normal',         // Context
+    'default'         // Priority
+  );
+}
+
+
+/* Display the post meta box. */
+function smashing_aotw_meta_box( $post ) { ?>
+
+  <?php wp_nonce_field( basename( __FILE__ ), 'wpcf-biography_nonce' ); ?>
+
+  <p>
+    <label for="wpcf-biography"><?php _e( "Artist Writeup", 'reborn' ); ?></label>
+    <br />
+    <textarea class="widefat" type="text" name="wpcf-biography" id="wpcf-biography" value="<?php echo esc_attr( get_post_meta( $post->ID, 'wpcf-biography', true ) ); ?>" size="30" /></textarea>
+  </p>
+<?php }
+
+
+/* Save the meta box's post metadata. */
+function save_aotw_meta( $post_id, $post ) {
+
+  /* Verify the nonce before proceeding. */
+  if ( !isset( $_POST['wpcf-biography_nonce'] ) || !wp_verify_nonce( $_POST['wpcf-biography_nonce'], basename( __FILE__ ) ) )
+    return $post_id;
+
+  /* Get the post type object. */
+  $post_type = get_post_type_object( $post->post_type );
+
+  /* Check if the current user has permission to edit the post. */
+  if ( !current_user_can( $post_type->cap->edit_post, $post_id ) )
+    return $post_id;
+
+  /* Get the posted data and sanitize it for use as an HTML class. */
+  $new_meta_value = ( isset( $_POST['wpcf-biography'] ) ? sanitize_html_class( $_POST['wpcf-biography'] ) : '' );
+
+  /* Get the meta key. */
+  $meta_key = 'wpcf-biography';
+
+  /* Get the meta value of the custom field key. */
+  $meta_value = get_post_meta( $post_id, $meta_key, true );
+
+  /* If a new meta value was added and there was no previous value, add it. */
+  if ( $new_meta_value && '' == $meta_value )
+    add_post_meta( $post_id, $meta_key, $new_meta_value, true );
+
+  /* If the new meta value does not match the old value, update it. */
+  elseif ( $new_meta_value && $new_meta_value != $meta_value )
+    update_post_meta( $post_id, $meta_key, $new_meta_value );
+
+  /* If there is no new meta value but an old value exists, delete it. */
+  elseif ( '' == $new_meta_value && $meta_value )
+    delete_post_meta( $post_id, $meta_key, $meta_value );
+}

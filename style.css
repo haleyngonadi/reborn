@@ -343,7 +343,7 @@ display: block !important;
 /*** Featured ***/
 
 .specific-image {
-	height: 150px;
+	height: 262.52px;
 	background-size: cover;
 	background-position: top center;
 	position: relative;
@@ -544,11 +544,19 @@ input[type="search"] {
 
 
 .widgets-list-layout .widgets-list-layout-blavatar {
-    float: left;
-    width: 85px;
-    height: 85px;
-    margin-right: 12px;
+    float: left !important;
+    width: 85px !important;
+    height: 85px !important;
+    margin-right: 12px !important;
+        max-width: 100% !important;
 }
+
+
+.widgets-list-layout-links {
+    float: none !important;
+    width: auto !important;
+}
+
 
 ul.widgets-list-layout.no-grav li {
     display: table;
@@ -559,17 +567,18 @@ ul.widgets-list-layout.no-grav li {
 .widgets-list-layout-links a {
     font-family: Montserrat;
     font-size: 14px;
-    letter-spacing: 0px;
     color: #332F3E;
+        font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
 span.top_posts_date {
-color: #d91342 !important;
-    margin: 4px 0 0 !important;
-    display: inline-block !important;
-    font-weight: 400 !important;
-    border-left: 1px dashed;
-    padding-left: 9px;
+    color: #d91342!important;
+    margin: 4px 0 0!important;
+    display: inline-block!important;
+    font-weight: 400!important;
+    /* border-top: 1px dashed; */
+    padding: 2px 5px;
 }
 
 .youtube {
