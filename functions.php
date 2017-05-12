@@ -495,7 +495,7 @@ function spotify_register_widgets() {
 
 add_action( 'widgets_init', 'spotify_register_widgets' );
 
-
+ /*** Jetpack Settings ***/
 
 function jetpackchange_image_size ( $thumbnail_size ) {
 	$thumbnail_size['width'] = 226;
@@ -513,3 +513,9 @@ function jptweak_remove_share() {
 }
  
 add_action( 'loop_start', 'jptweak_remove_share' );
+
+
+function jetpackme_top_posts_timeframe() {
+    return '30';
+}
+add_filter( 'jetpack_top_posts_days', 'jetpackme_top_posts_timeframe' );
