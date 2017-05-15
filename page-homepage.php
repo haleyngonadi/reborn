@@ -55,7 +55,7 @@ $the_query = new WP_Query( array('posts_per_page' => 2 ) ); ?>
 						$icon = get_option("taxonomy_$t_id");
 						?>
 		<div class="categorized">	
-		<i class="fa <?php echo !empty($icon['category_icon']) ? $icon['category_icon'] : 'none'; ?>"></i> 
+		<i class="fa <?php echo !empty($icon['category_icon']) ? $icon['category_icon'] : 'fa-music'; ?>"></i> 
 		</div>
 							
 						
@@ -267,7 +267,7 @@ $the_query = new WP_Query( $args ); ?>
             <div class="square-content">
                 <span class="square-date"><?php $category = get_the_category();  echo $category[0]->cat_name;?></span>
                 <a class="square-title" href="<?php get_the_permalink()?>"><?php the_title(); ?></a>
-                <span class="square-body"><?php echo wp_trim_words( get_the_content(), 25, '...' ); ?></span>
+                <span class="square-body"><?php echo wp_trim_words( get_the_content(), 40, '...' ); ?></span>
             </div></div>
         
     <?php endwhile; ?>
@@ -283,15 +283,6 @@ $the_query = new WP_Query( $args ); ?>
 
 
 
-    <div class="content-block col-sm-12">
-        <div class="full-image col-sm-4" style="background-image: url(images/01.jpg)"><div class="categorized"><i class="fa fa-camera-retro" aria-hidden="true"></i></div></div>
-    <div class="full-content col-sm-8">
-        <span class="full-date">Mar. 27</span>
-        <span class="full-title">Solange performs at YouTube for South by South West</span>
-        <span class="full-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut posuere arcu. Ut quis dignissim dolor. Pellentesque eget neque molestie, rhoncus dui a, gravida ligula. Mauris pulvinar aliquam diam, fermentum molestie eros tincidunt nec. Curabitur interdum auctor sem eget porta...</span>
-    </div>
-    </div>
-
 </div>
         
         </div>
@@ -302,6 +293,14 @@ $the_query = new WP_Query( $args ); ?>
 
     </section>
 
+<section class="load-stories">
+
+<div class="row" id="ajax-posts">
+
+ 
+
+    </div>
+</section>
 
 
 <?php get_footer(); ?>

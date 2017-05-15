@@ -27,7 +27,6 @@
                         <span class="details">Posted by <?php echo get_the_author_link(); ?> &bull; <?php the_date('F j, Y'); ?></span>
 
 								<ul class="social-share">
-                                    <li class="share-button" style="display:none">Share This <i class="fa fa-arrow-right" aria-hidden="true"></i></li>
                                     <li><a href=""><i class="fa fa-twitter-square" aria-hidden="true"><span class="itext">Tweet</span></i></a></li>
                                     <li><a href=""><i class="fa fa-facebook-square" aria-hidden="true"><span class="itext">Share</span></i></a></li>
                                     <li><a href=""><i class="fa fa-pinterest" aria-hidden="true"><span class="itext">Pin It</span></i></a></li>
@@ -109,23 +108,45 @@
 		<?php endif; ?>
 <?php endif; ?>
 
+
+<?php if(!has_post_format('gallery') || !has_post_format('video')) : ?>
+
+	<?php if ( has_post_thumbnail() ) : ?>
+<div class="featured-image col-md-6">
+<?php
+$get_description = get_post(get_post_thumbnail_id())->post_excerpt;
+  if(!empty($get_description)){//If description is not empty show the div
+  echo '<span class="feature-credits" data-credit="' .$get_description .'">©</span>';
+  }
+?>
+
+<?php the_post_thumbnail('single-size');?>
+</div>	<?php endif; ?>
+<?php endif; ?>
+
+
+ <div class="single-text">
+
 		<?php
 			/* translators: %s: Name of current post */
 			the_content( sprintf(
-				__( 'Continue reading %s', 'twentyfifteen' ),
+				__( 'Continue reading %s', 'reborn' ),
 				the_title( '<span class="screen-reader-text">', '</span>', false )
 			) );
 
 			wp_link_pages( array(
-				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfifteen' ) . '</span>',
+				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'reborn' ) . '</span>',
 				'after'       => '</div>',
 				'link_before' => '<span>',
 				'link_after'  => '</span>',
-				'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'twentyfifteen' ) . ' </span>%',
+				'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'reborn' ) . ' </span>%',
 				'separator'   => '<span class="screen-reader-text">, </span>',
 			) );
 		?>
 
+</div>
+
+			<?php  print_feelbox_widget();?>
 		                        <ul class="tags">
 
 					<li class="ticket written"><span class="circle"></span><a href="#">Written By <?php echo get_the_author(); ?></a></li>
@@ -144,9 +165,5 @@
 
 	</div><!-- .entry-content -->
 
-
-	<footer class="entry-footer">
-		<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
-	</footer><!-- .entry-footer -->
 
 </article><!-- #post-## -->

@@ -45,6 +45,7 @@ add_action( 'init', 'register_my_menus' );
 
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 825, 510, true );
+	add_image_size( 'single-size', 400, 400 );
 
 		/*
 	 * Enable support for Post Formats.
@@ -78,14 +79,14 @@ function reborn_scripts() {
 
 
 
-	wp_enqueue_script( 'page-transitions', get_template_directory_uri() . '/js/pagetransitions.js', array( 'jquery' ), '20170323', true );
+		wp_enqueue_script( 'page-transitions', get_template_directory_uri() . '/js/pagetransitions.js', array( 'jquery' ), '20170323', true );
 
-	wp_enqueue_script( 'moment-js', get_template_directory_uri() . '/js/moment.min.js', array( 'jquery' ), '20170323', true );
+		wp_enqueue_script( 'moment-js', get_template_directory_uri() . '/js/moment.min.js', array( 'jquery' ), '20170323', true );
 
 		wp_enqueue_script( 'owl-js', get_template_directory_uri() . '/js/owl.carousel.min.js', array( 'jquery' ), '20170323', true );
 		wp_enqueue_script( 'owl-refresh', get_template_directory_uri() . '/js/owl.autorefresh.js', array( 'jquery' ), '20170323', true );
-				wp_enqueue_script( 'read-more', get_template_directory_uri() . '/js/readmore.min.js', array( 'jquery' ), '20170324', true );
-				wp_enqueue_script( 'lazy-load', get_template_directory_uri() . '/js/lazysizes.min.js', array( 'jquery' ), '20170512', true );
+		wp_enqueue_script( 'read-more', get_template_directory_uri() . '/js/readmore.min.js', array( 'jquery' ), '20170324', true );
+		wp_enqueue_script( 'lazy-load', get_template_directory_uri() . '/js/lazysizes.min.js', array( 'jquery' ), '20170512', true );
 
 
 
@@ -102,10 +103,15 @@ function reborn_scripts() {
        true
 );
 
-
-
+wp_localize_script( 'main-js', 'ajax_posts', array(
+		'ajaxurl' => admin_url( 'admin-ajax.php' ),
+    'noposts' => __('No older posts found', 'reborn'),
+    'loadmore' => esc_html__('Load more', 'reborn')
+));
 
 }
+
+
 add_action( 'wp_enqueue_scripts', 'reborn_scripts' );
 
 if ( ! function_exists( 'custom_post_nav' ) ) :
@@ -123,8 +129,8 @@ function custom_post_nav() {
     ?>
         <div class="oldposts">
             <?php
-                previous_post_link( '<div id="prev-post">%link</div>', _x( '<span>Prev</span>', 'Previous post link', 'acrylic' ) );
-                next_post_link(     '<div id="next-post">%link</div>',     _x( '<span>Next</span>', 'Next post link',     'acrylic' ) );
+                previous_post_link( '<div id="prev-post">%link</div>', _x( '<span>Prev</span>', 'Previous post link', 'reborn' ) );
+                next_post_link(     '<div id="next-post">%link</div>',     _x( '<span>Next</span>', 'Next post link',     'reborn' ) );
             ?>
         </div>
    
@@ -638,3 +644,45 @@ function save_aotw_meta( $post_id, $post ) {
   elseif ( '' == $new_meta_value && $meta_value )
     delete_post_meta( $post_id, $meta_key, $meta_value );
 }
+
+/**** Load More Posts ****/
+
+function more_post_ajax(){
+
+    $ppp = (isset($_POST["ppp"])) ? $_POST["ppp"] : 4;
+    $page = (isset($_POST['pageNumber'])) ? $_POST['pageNumber'] : 0;
+    $offset  = (isset($_POST['offset'])) ? $_POST['offset'] : 0;
+
+    header("Content-Type: text/html");
+
+    $args = array(
+        'suppress_filters' => true,
+        'post_type' => 'post',
+        'posts_per_page' => $ppp,
+       	'offset' => $offset,
+        'paged'    => $page,
+        'cat' => '-64'
+    );
+
+    $loop = new WP_Query($args);
+
+    $out = '';
+
+    if ($loop -> have_posts()) :  while ($loop -> have_posts()) : $loop -> the_post();
+        $out .= '
+        <div class="col-sm-3">
+        <div class="small-image" style="background-image: url(' . get_the_post_thumbnail_url($post_id, array( 300, 300) ) .')"><div class="categorized">'.get_the_date('m-d').'</div></div>
+    <div class="full-content">
+        <span class="small-title">'.get_the_title().'</span>
+        <span class="full-body">'.wp_trim_words( get_the_content(), 25, '...' ).'</span>
+    </div>
+    </div>';
+
+    endwhile;
+    endif;
+    wp_reset_postdata();
+    die($out);
+}
+
+add_action('wp_ajax_nopriv_more_post_ajax', 'more_post_ajax');
+add_action('wp_ajax_more_post_ajax', 'more_post_ajax');

@@ -302,7 +302,6 @@ $( ".close-newsletter" ).click(function() {
     for (var i = 0; i < youtube.length; i++) {
         
         var source = "https://img.youtube.com/vi/"+ youtube[i].dataset.embed +"/sddefault.jpg";
-        console.log(source);
         var image = new Image();
                 image.src = source;
                 image.addEventListener( "load", function() {
@@ -322,3 +321,57 @@ $( ".close-newsletter" ).click(function() {
                 } );    
     };
     
+
+
+
+var ppp = 4; // Post per page
+var pageNumber = 1, offset = 5, $loader = $("#more_posts");
+
+var $content = $('#ajax-posts');
+
+
+function load_posts(){
+    pageNumber++;
+    var str = '&pageNumber=' + pageNumber + '&ppp=' + ppp + '&action=more_post_ajax';
+    $.ajax({
+        type: "POST",
+        dataType: "html",
+        url: ajax_posts.ajaxurl,
+        data: {
+        'ppp': ppp,
+        'offset': offset,
+        'action': 'more_post_ajax'
+        },
+
+        beforeSend : function () {
+                $loader.addClass('post_loading_loader').html('loading...');
+            },
+        
+        success: function(data){
+            var $data = $(data);
+            console.log($data.length);
+            if($data.length){
+                var $newElements = $data.css({ opacity: 0 });
+                    $content.append($newElements);
+                    $newElements.animate({ opacity: 1 });
+                    console.log($newElements);
+                $loader.removeClass('post_loading_loader').html('load more stories...');
+            } else{
+               $loader.removeClass('post_loading_loader').addClass('post_no_more_posts').html('nothing more to see here, folks!');
+            }
+        },
+        error : function(jqXHR, textStatus, errorThrown) {
+            $loader.html(jqXHR + " :: " + textStatus + " :: " + errorThrown);
+        }
+
+    });
+
+        offset += ppp;
+    return false;
+}
+
+$("#more_posts").on("click",function(){ // When btn is pressed.
+    console.log('hi');
+    $("#more_posts").attr("disabled",true); // Disable the button, temp.
+    load_posts();
+});
