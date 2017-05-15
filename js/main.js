@@ -375,3 +375,18 @@ $("#more_posts").on("click",function(){ // When btn is pressed.
     $("#more_posts").attr("disabled",true); // Disable the button, temp.
     load_posts();
 });
+
+
+var name = ".social-list";
+var menuYloc = null;
+ 
+$(document).ready(function(){
+    menuYloc = parseInt($(name).css("top").substring(0,$(name).css("top").indexOf("px")))
+    $(window).scroll(function () { 
+        var offset;
+            offset = menuYloc+$(document).scrollTop()+"px";
+            
+        $(name).animate({top:offset},{duration:500,queue:false});
+    });
+});
+

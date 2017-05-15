@@ -1975,13 +1975,13 @@ span.itext {
 
 
 .social-list {
-    position: fixed;
+        position:absolute;
+    top:350px;
     left: 1.6%;
     text-align: Center;
     margin-top: 0px;
     display: block;
-    top: 50%;
-    transform: translateY(-50%);
+
 }
 
 ul.social-list li {
@@ -2009,6 +2009,10 @@ span.details {
     color: #b9b9b9;
     border: 1px dashed;
     padding: 3px 8px;
+}
+
+.details a {
+    color: #332F3E;
 }
 
 span.feature-credits {
