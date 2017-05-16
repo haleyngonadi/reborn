@@ -48,11 +48,51 @@ get_header(); ?>
                     <h3 class="pinline"><span>Related Posts</span></h3>
 
 
-                    <?php
-if ( class_exists( 'Jetpack_RelatedPosts' ) ) {
-    echo do_shortcode( '[jetpack-related-posts]' );
+<?php
+$related_posts = array();
+$query = array();
+
+// Number of posts to show
+$query['showposts'] = 3;
+
+// Fetches related post IDs if JetPack Related Posts is active
+if ( class_exists( 'Jetpack_RelatedPosts' ) && method_exists( 'Jetpack_RelatedPosts', 'init_raw' ) ) :
+    $related = Jetpack_RelatedPosts::init_raw()
+        ->set_query_name( 'theme-custom' ) // optional, name can be anything
+        ->get_for_post_id( get_the_ID(), array( 'size' => $query['showposts'] )
+    );
+    if ( $related ) :
+        foreach ( $related as $result ) :
+            $related_posts[] = $result[ 'id' ];
+        endforeach;
+    endif;
+endif;
+
+// Sets query to related posts, falls back to recent posts
+if ( $related_posts ) {
+    $query['post__in'] = $related_posts;
+    $query['orderby'] = 'post__in';
+    $title = __( 'Related Posts', 'prefix' );
+} else {
+    $query['post__not_in'] = array( $post->ID );
+    $title = __( 'Recent Posts', 'prefix' );
 }
 ?>
+<div class="related-posts">
+    <h3><?php esc_attr_e( $title ); ?></h3>
+    <?php $related = new WP_Query( $query ); ?>
+    <?php while ( $related->have_posts() ) : $related->the_post(); ?>
+        <div class="related-post clearfix">
+            <div class="related-image">
+                <a href="<?php the_permalink();?>"><?php the_post_thumbnail( 'archive' ); ?></a>
+            </div>
+            <div class="related-content">
+                <h3><a href="<?php the_permalink();?>"><?php the_title( ); ?></a></h3>
+                <p>by <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ), get_the_author_meta( 'user_nicename' ) ); ?>"><?php the_author(); ?></a></p>
+            </div>
+        </div>
+    <?php endwhile; wp_reset_query(); ?>
+</div>
                     
                     <div class="col-sm-3 col-xs-6 featured-block">
 
