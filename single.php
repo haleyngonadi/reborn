@@ -46,6 +46,13 @@ get_header(); ?>
 
 	                <div class="related-post row" id="related-post">
                     <h3 class="pinline"><span>Related Posts</span></h3>
+
+
+                    <?php
+if ( class_exists( 'Jetpack_RelatedPosts' ) ) {
+    echo do_shortcode( '[jetpack-related-posts]' );
+}
+?>
                     
                     <div class="col-sm-3 col-xs-6 featured-block">
 

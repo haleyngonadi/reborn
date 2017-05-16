@@ -527,6 +527,26 @@ function jeherve_custom_thumb_size( $get_image_options ) {
 add_filter( 'jetpack_top_posts_widget_image_options', 'jeherve_custom_thumb_size' );
 
 
+function jetpackme_more_related_posts( $options ) {
+    $options['size'] = 4;
+    return $options;
+}
+add_filter( 'jetpack_relatedposts_filter_options', 'jetpackme_more_related_posts' );
+
+
+function jetpackme_remove_rp() {
+    if ( class_exists( 'Jetpack_RelatedPosts' ) ) {
+        $jprp = Jetpack_RelatedPosts::init();
+        $callback = array( $jprp, 'filter_add_target_to_dom' );
+        remove_filter( 'the_content', $callback, 40 );
+    }
+}
+add_filter( 'wp', 'jetpackme_remove_rp', 20 );
+
+
+
+
+
 /*** Custom Post Types ***/
 
 add_action( 'init', 'create_aotw_type' );
