@@ -1698,6 +1698,7 @@ div#feelbox-title {
         font-family: 'Abril Fatface', cursive;
     letter-spacing: -1px;
     z-index: 0;
+    line-height: 12px;
 }
 
 div#feelbox-title:before {
