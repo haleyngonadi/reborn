@@ -1,0 +1,54 @@
+.somewhere input.form-input, .somewhere textarea {
+    width: 100%;
+}
+
+.somewhere label {
+    font-weight: bold;
+    margin-bottom: 4px;
+    display: block;
+}
+
+input#meta-image, #release-image {
+    width: 60%;
+}
+
+.photo-square, .release-square {
+	display: block;
+	position: relative;
+	background-size: cover;
+	transition: 0.3s;
+	opacity: 0;
+	width: 0;
+	height: 0;
+
+    margin: 5px 0 5px !important;
+}
+.appear {
+	height: 52px;
+	width: 52px;
+
+	opacity: 1
+}
+
+
+.somewhere div {
+    margin: 1em 0;
+}
+
+.somewhere div p {
+    margin: 0.1em;
+}
+
+.releases {
+	height: 0;
+	display: block;
+	width: 0;
+	opacity: 0;
+	transition: 0.2s
+}
+
+.released {
+	height: auto;
+	width: auto;
+	opacity: 1;
+}

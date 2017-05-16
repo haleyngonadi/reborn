@@ -1,3 +1,6 @@
+var instauser = $('.insta-user').text();
+
+
 var news = localStorage.getItem("hide-newsletter");
 
 if (news == "YES") {
@@ -13,6 +16,8 @@ $('.social-block').hide();
 
 $( ".aotw-image" ).click(function() {
 
+    window.history.pushState("object or string", "Title", "/new-url");
+
   $("html, body").animate({ scrollTop: 0 }, "slow");
 $('.random-row').addClass('row aotw-page');
 $('.complete').addClass('white-complete').addClass('pt-page-flipInBottom pt-page-delay500');
@@ -25,7 +30,7 @@ $('.more-stories').hide();
 $('.content').addClass("aotw-height");
 $('.bio-text').addClass('col-sm-9');
 
-$("ul.aotw-socials").appendTo(".bio-box");
+$("ul.aotw-socials").appendTo(".bio-box")
 
 $.ajax({
     url: "http://query.yahooapis.com/v1/public/yql",
@@ -38,7 +43,7 @@ $.ajax({
 
     // Tell YQL what we want and that we want JSON
     data: {
-        q: "select items from json where url=\"https://www.instagram.com/blanca_suarez/media\"",
+        q: 'select items from json where url="https://www.instagram.com/' + instauser + '/media"',
         format: "json"
     },
 
@@ -357,7 +362,7 @@ function load_posts(){
                     console.log($newElements);
                 $loader.removeClass('post_loading_loader').html('load more stories...');
             } else{
-               $loader.removeClass('post_loading_loader').addClass('post_no_more_posts').html('nothing more to see here, folks!');
+               $loader.removeClass('post_loading_loader').addClass('post_no_more_posts').html('dassit!');
             }
         },
         error : function(jqXHR, textStatus, errorThrown) {
@@ -383,10 +388,64 @@ var menuYloc = null;
 $(document).ready(function(){
     menuYloc = parseInt($(name).css("top").substring(0,$(name).css("top").indexOf("px")))
     $(window).scroll(function () { 
+
+        var scroll = $(window).scrollTop();
         var offset;
-            offset = menuYloc+$(document).scrollTop()+"px";
             
+             var myDiv = document.getElementById('main'); //get #myDiv
+            var related = document.getElementById('related-post');
+
+            
+            if (scroll >= myDiv.clientHeight+related.clientHeight) {
+                  offset = myDiv.clientHeight+300+"px";
+              
+             }
+
+             else {
+                 offset = menuYloc+$(document).scrollTop()+"px";
+             }
+
+
         $(name).animate({top:offset},{duration:500,queue:false});
     });
 });
 
+
+
+ $(window).scroll(function() {
+            var scroll = $(window).scrollTop();
+
+            var name = ".social-list";
+
+
+            var myDiv = document.getElementById('main'); //get #myDiv
+            var related = document.getElementById('related-post');
+
+                        console.log('The DIV:', myDiv.clientHeight+related.clientHeight-240);
+                        console.log('Scroll:', scroll);
+
+
+                        var calc = myDiv.clientHeight+related.clientHeight-240;
+
+
+            
+
+            if (scroll >= myDiv.clientHeight-related.clientHeight) {
+                $('#prev-post a').addClass('slide-prev');
+                $('#next-post a').addClass('slide-next');
+            }
+        
+
+             else {
+               $('#prev-post a').removeClass('slide-prev');
+               $('#next-post a').removeClass('slide-next');
+
+            }
+
+if (scroll >= calc) {
+                console.log('Yes');
+                $('#prev-post a').removeClass('slide-prev');
+               $('#next-post a').removeClass('slide-next');
+             }
+
+        });

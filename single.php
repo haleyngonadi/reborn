@@ -44,7 +44,7 @@ get_header(); ?>
 		</main><!-- .site-main -->
 	</div><!-- .content-area -->
 
-	                <div class="related-post row">
+	                <div class="related-post row" id="related-post">
                     <h3 class="pinline"><span>Related Posts</span></h3>
                     
                     <div class="col-sm-3 col-xs-6 featured-block">

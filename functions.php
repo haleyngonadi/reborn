@@ -44,8 +44,9 @@ add_action( 'init', 'register_my_menus' );
 	add_theme_support( 'title-tag' );
 
 	add_theme_support( 'post-thumbnails' );
-	set_post_thumbnail_size( 825, 510, true );
+	set_post_thumbnail_size( 600, 600, true );
 	add_image_size( 'single-size', 400, 400 );
+		add_image_size( 'impress-size', 825, 510 );
 
 		/*
 	 * Enable support for Post Formats.
@@ -114,30 +115,6 @@ wp_localize_script( 'main-js', 'ajax_posts', array(
 
 add_action( 'wp_enqueue_scripts', 'reborn_scripts' );
 
-if ( ! function_exists( 'custom_post_nav' ) ) :
-/**
- * Display navigation to next/previous post when applicable.
- */
-function custom_post_nav() {
-    // Don't print empty markup if there's nowhere to navigate.
-    $previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
-    $next     = get_adjacent_post( false, '', false );
- 
-    if ( ! $next && ! $previous ) {
-        return;
-    }
-    ?>
-        <div class="oldposts">
-            <?php
-                previous_post_link( '<div id="prev-post">%link</div>', _x( '<span>Prev</span>', 'Previous post link', 'reborn' ) );
-                next_post_link(     '<div id="next-post">%link</div>',     _x( '<span>Next</span>', 'Next post link',     'reborn' ) );
-            ?>
-        </div>
-   
-    <?php
-}
- 
-endif;
 
 
 function wpb_postsbycategory() {
@@ -163,7 +140,7 @@ if ( $the_query->have_posts() ) {
 			}
 			}
 	} else {
-	// no posts found
+	/// no posts found
 }
 $string .= '</section>';
 
@@ -190,7 +167,7 @@ add_filter( 'body_class', 'add_slug_body_class' );
 
 
 function wpdocs_custom_excerpt_length( $length ) {
-    return 80;
+    return 60;
 }
 add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 
@@ -566,84 +543,458 @@ function create_aotw_type() {
       ),
       'public' => true,
       'has_archive' => true,
-      'supports'           => array( 'title', 'thumbnail' )
+      'supports'           => array( 'title')
     )
   );
 }
 
-add_action( 'load-post.php', 'aotw_setup' );
-add_action( 'load-post-new.php', 'aotw_setup' );
+function prfx_admin_styles(){
+    global $typenow;
+    if( $typenow == 'aotw' ) {
+        wp_enqueue_style( 'prfx_meta_box_styles', get_template_directory_uri() . '/css/meta-box-styles.css' );
+    }
+}
+add_action( 'admin_print_styles', 'prfx_admin_styles' );
 
-/* Meta box setup function. */
-function aotw_setup() {
 
-  /* Add meta boxes on the 'add_meta_boxes' hook. */
-  add_action( 'add_meta_boxes', 'aotw_meta_boxes' );
-  add_action( 'save_post', 'save_aotw_meta', 10, 2 );
+function prfx_image_enqueue() {
+    global $typenow;
+    if( $typenow == 'aotw' ) {
+        wp_enqueue_media();
+ 
+        // Registers and enqueues the required javascript.
+        wp_register_script( 'meta-box-image', get_template_directory_uri() . '/js/meta-box-image.js', array( 'jquery' ) );
+        wp_localize_script( 'meta-box-image', 'meta_image',
+            array(
+                'title' => __( 'Select Image', 'trendio' ),
+                'button' => __( 'Use this image', 'trendio' ),
+            )
+        );
+        wp_enqueue_script( 'meta-box-image' );
+    }
+}
+add_action( 'admin_enqueue_scripts', 'prfx_image_enqueue' );
+
+
+
+
+add_action( 'add_meta_boxes', 'cd_meta_box_add' );
+function cd_meta_box_add()
+{
+	add_meta_box( 'my-meta-box-id', 'Basic Information', 'cd_meta_box_cb', 'aotw', 'normal', 'high' );
+	add_meta_box( 'extra_information', 'Extra Fields', 'cd_extra', 'aotw', 'normal', 'high' );
+	add_meta_box( 'recent_release', 'Recent Release', 'cd_release', 'aotw', 'normal', 'high' );
+	add_meta_box( 'socials_id', 'Socials', 'cd_socials', 'aotw', 'normal', 'high' );
+
 
 }
 
-function aotw_meta_boxes() {
+function wpshed_get_custom_field( $value ) {
+	global $post;
 
-  add_meta_box(
-    'basic-information',      // Unique ID
-    esc_html__( 'Basic Information', 'reborn' ),    // Title
-    'smashing_aotw_meta_box',   // Callback function
-    'aotw',         // Admin page (or post type)
-    'normal',         // Context
-    'default'         // Priority
-  );
+    $custom_field = get_post_meta( $post->ID, $value, true );
+    if ( !empty( $custom_field ) )
+	    return is_array( $custom_field ) ? stripslashes_deep( $custom_field ) : stripslashes( wp_kses_decode_entities( $custom_field ) );
+
+    return false;
 }
 
 
-/* Display the post meta box. */
-function smashing_aotw_meta_box( $post ) { ?>
 
-  <?php wp_nonce_field( basename( __FILE__ ), 'wpcf-biography_nonce' ); ?>
+function cd_meta_box_cb( $post )
+{
+	$values = get_post_custom( $post->ID );
+	$photo = isset( $values['wpcf-photo'] ) ? esc_attr( $values['wpcf-photo'][0] ) : '';
+	$from = isset( $values['wpcf-from'] ) ? esc_attr( $values['wpcf-from'][0] ) : '';
+	$label = isset( $values['wpcf-label'] ) ? esc_attr( $values['wpcf-label'][0] ) : '';
+	$genre = isset( $values['wpcf-genre'] ) ? esc_attr( $values['wpcf-genre'][0] ) : '';
+	$song = isset( $values['wpcf-song-choice'] ) ? esc_attr( $values['wpcf-song-choice'][0] ) : '';
+	wp_nonce_field( 'my_meta_box_nonce', 'meta_box_nonce' );
+	?>
 
-  <p>
-    <label for="wpcf-biography"><?php _e( "Artist Writeup", 'reborn' ); ?></label>
-    <br />
-    <textarea class="widefat" type="text" name="wpcf-biography" id="wpcf-biography" value="<?php echo esc_attr( get_post_meta( $post->ID, 'wpcf-biography', true ) ); ?>" size="30" /></textarea>
-  </p>
-<?php }
+	<div class="somewhere">
+	<p>
+		<label for="wpcf-from">From</label>
+		<input type="text" name="wpcf-from" id="wpcf-from" class="form-input" value="<?php echo $from; ?>" />
+	</p>
+	
+		<p>
+		<label for="wpcf-label">Label</label>
+		<input type="text" name="wpcf-label" id="wpcf-label" class="form-input" value="<?php echo $label; ?>" />
+	</p>
+
+	<p>
+		<label for="wpcf-genre">Genre</label>
+		<input type="text" name="wpcf-genre" id="wpcf-genre" class="form-input" value="<?php echo $genre; ?>" />
+	</p>
 
 
-/* Save the meta box's post metadata. */
-function save_aotw_meta( $post_id, $post ) {
+	<p>
+		<label for="wpcf-song-choice">Song Choice</label>
+		<input type="text" name="wpcf-song-choice" id="wpcf-song-choice" class="form-input" value="<?php echo $song; ?>" />
+	</p>
+	
+	<p>
+    <label for="wpcf-photo" class="prfx-row-title"><?php _e( 'Photo', 'reborn' )?></label>
+    <input type="text" name="wpcf-photo" id="meta-image" value="<?php echo $photo; ?>" />
+    <input type="button" id="meta-image-button" class="button" value="<?php _e( 'Select Image', 'trendio' )?>" />
 
-  /* Verify the nonce before proceeding. */
-  if ( !isset( $_POST['wpcf-biography_nonce'] ) || !wp_verify_nonce( $_POST['wpcf-biography_nonce'], basename( __FILE__ ) ) )
-    return $post_id;
+    		<div class="photo-square appear" style="background-image:url('<?php echo $photo; ?>')"></div>
 
-  /* Get the post type object. */
-  $post_type = get_post_type_object( $post->post_type );
+</p>
 
-  /* Check if the current user has permission to edit the post. */
-  if ( !current_user_can( $post_type->cap->edit_post, $post_id ) )
-    return $post_id;
+	<p>
+		<label for="wpcf-biography"><?php _e( 'Artist Writeup', 'reborn' ); ?>:</label>
+		<textarea name="wpcf-biography" id="wpcf-biography" cols="60" rows="14"><?php echo wpshed_get_custom_field( 'wpcf-biography' ); ?></textarea>
 
-  /* Get the posted data and sanitize it for use as an HTML class. */
-  $new_meta_value = ( isset( $_POST['wpcf-biography'] ) ? sanitize_html_class( $_POST['wpcf-biography'] ) : '' );
+	
+		
 
-  /* Get the meta key. */
-  $meta_key = 'wpcf-biography';
 
-  /* Get the meta value of the custom field key. */
-  $meta_value = get_post_meta( $post_id, $meta_key, true );
+    </p>
+</div>
+	<?php	
 
-  /* If a new meta value was added and there was no previous value, add it. */
-  if ( $new_meta_value && '' == $meta_value )
-    add_post_meta( $post_id, $meta_key, $new_meta_value, true );
-
-  /* If the new meta value does not match the old value, update it. */
-  elseif ( $new_meta_value && $new_meta_value != $meta_value )
-    update_post_meta( $post_id, $meta_key, $new_meta_value );
-
-  /* If there is no new meta value but an old value exists, delete it. */
-  elseif ( '' == $new_meta_value && $meta_value )
-    delete_post_meta( $post_id, $meta_key, $meta_value );
 }
+
+
+function cd_socials( $post )
+{
+
+	
+
+
+	$values = get_post_custom( $post->ID );
+	$twitter = isset( $values['wpcf-twitter'] ) ? esc_attr( $values['wpcf-twitter'][0] ) : '';
+	$facebook = isset( $values['wpcf-facebook-url'] ) ? esc_attr( $values['wpcf-facebook-url'][0] ) : '';
+	$insta = isset( $values['wpcf-instagram-username'] ) ? esc_attr( $values['wpcf-instagram-username'][0] ) : '';
+	$spotify = isset( $values['wpcf-spotify'] ) ? esc_attr( $values['wpcf-spotify'][0] ) : '';
+	$youtube = isset( $values['wpcf-youtube-url'] ) ? esc_attr( $values['wpcf-youtube-url'][0] ) : '';
+	wp_nonce_field( 'my_socials_box_nonce', 'socials_box_nonce' );
+	?>
+
+	<div class="somewhere">
+
+	<p>
+		<label for="wpcf-youtube-url">YouTube URL</label>
+		<input type="url" name="wpcf-youtube-url" id="wpcf-youtube-url" class="form-input" value="<?php echo $youtube; ?>" />
+	</p>
+	
+		<p>
+		<label for="wpcf-twitter">Twitter</label>
+		<input type="text" name="wpcf-twitter" id="wpcf-twitter" class="form-input" placeholder="ex: beyonce" value="<?php echo $twitter; ?>" />
+		</p>
+
+		<div>
+		<label for="wpcf-spotify">Spotify URI</label>
+		<p>Please provide the artist's spotify id (found in the artist's spotify url).</p>
+		<input type="text" name="wpcf-spotify" id="wpcf-spotify" class="form-input" value="<?php echo $spotify; ?>" />
+		</div>
+
+				<p>
+		<label for="wpcf-facebook-url">Facebook URL</label>
+		<input type="url" name="wpcf-facebook-url" id="wpcf-facebook-url" class="form-input" value="<?php echo $facebook; ?>" />
+		</p>
+
+		<p>
+		<label for="wpcf-instagram-username">Instagram Username</label>
+		<input type="text" name="wpcf-instagram-username" id="wpcf-instagram-username" class="form-input" value="<?php echo $insta; ?>" />
+		</p>
+
+</div>
+	<?php	
+
+}
+
+function cd_extra( $post )
+{
+
+	wp_enqueue_script( 'jquery-ui-datepicker' );
+wp_enqueue_style( 'jquery-ui-style', '//ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/smoothness/jquery-ui.css', true);
+
+
+
+	$values = get_post_custom( $post->ID );
+	$from = isset( $values['wpcf-youtube-id'] ) ? esc_attr( $values['wpcf-youtube-id'][0] ) : '';
+	$label = isset( $values['wpcf-date-selected'] ) ? esc_attr( $values['wpcf-date-selected'][0] ) : '';
+	wp_nonce_field( 'my_extra_box_nonce', 'extra_box_nonce' );
+	?>
+
+	<div class="somewhere">
+
+	<p>
+		<label for="wpcf-youtube-id">YouTube ID</label>
+		<input type="text" name="wpcf-youtube-id" id="wpcf-youtube-id" class="form-input" placeholder="ex: nBmNcLBaPUE" value="<?php echo $from; ?>" />
+	</p>
+	
+		<p>
+		<label for="wpcf-date-selected">Date Selected</label>
+		<input type="text" name="wpcf-date-selected" placeholder="Click to select a date" id="wpcf-date-selected" class="cookie_date" value="<?php echo $label; ?>" />
+	</p>
+
+</div>
+
+	<?php	
+
+}
+
+
+
+
+function cd_release( $post )
+{
+
+	wp_enqueue_script( 'jquery-ui-datepicker' );
+	wp_enqueue_style( 'jquery-ui-style', '//ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/smoothness/jquery-ui.css', true);
+
+
+
+	$values = get_post_custom( $post->ID );
+	$rate = isset( $values['wpcf-rate-the-release'] ) ? esc_attr( $values['wpcf-rate-the-release'][0] ) : '';
+	$purchase = isset( $values['wpcf-purchase'] ) ? esc_attr( $values['wpcf-purchase'][0] ) : '';
+	$date = isset( $values['wpcf-release-date'] ) ? esc_attr( $values['wpcf-release-date'][0] ) : '';
+	$image = isset( $values['wpcf-release-image'] ) ? esc_attr( $values['wpcf-release-image'][0] ) : '';
+	$title = isset( $values['wpcf-release-title'] ) ? esc_attr( $values['wpcf-release-title'][0] ) : '';
+	$lyrics = isset( $values['wpcf-lyrics'] ) ? esc_attr( $values['wpcf-lyrics'][0] ) : '';
+	$type = isset( $values['wpcf-type-of-release'] ) ? esc_attr( $values['wpcf-type-of-release'][0] ) : '';
+
+	wp_nonce_field( 'my_release_nonce', 'release_nonce' );
+	?>
+
+	<div class="somewhere">
+
+	<p>
+		<label for="wpcf-type-of-release">Type of Release</label>
+		    <input type="checkbox" name="ep" id="ep" value="yes" <?php if ( isset ( $values['ep'] ) ) checked( $values['ep'][0], 'yes' ); ?> />EP<br />
+    <input type="checkbox" name="album" id="album" value="yes" <?php if ( isset ( $values['album'] ) ) checked( $values['album'][0], 'yes' ); ?> />Album<br />
+    <input type="checkbox" name="single" id="single" value="yes" <?php if ( isset ( $values['single'] ) ) checked( $values['single'][0], 'yes' ); ?> />Single<br />
+
+	</p>
+
+	<div>
+		<label for="wpcf-rate-the-release">Rate The Release</label>
+		<p>What would you rate this release? Ex: ★★★★☆</p>
+		<input type="text" name="wpcf-rate-the-release" id="wpcf-rate-the-release" class="form-input"  value="<?php echo $rate; ?>" />
+	</div>
+
+
+		<div>
+		<label for="wpcf-purchase">Purchase</label>
+		<p>Please provide the iTunes URL of this release.</p>
+		<input type="text" name="wpcf-purchase" id="wpcf-purchase" class="form-input" value="<?php echo $purchase; ?>" />
+	</div>
+
+
+	<div class="releases">
+
+	<p>
+		<label for="wpcf-release-title">Release Title</label>
+		<input type="text" name="wpcf-release-title" id="wpcf-release-title" class="form-input"  value="<?php echo $title; ?>" />
+	</p>
+
+	
+	
+	<div>
+		<label for="wpcf-release-date">Release Date</label>
+		<p>Please provide the release date of said release.</p>
+		<input type="text" name="wpcf-release-date" placeholder="Click to select a date" id="wpcf-release-date" class="cookie_date" value="<?php echo $date; ?>" />
+	</div>
+
+
+
+		<div>
+    <label for="wpcf-release-image" class="prfx-row-title"><?php _e( 'Release Image', 'reborn' )?></label>
+    <p>Please add the url of the album or single.</p>
+   <p> <input type="text" name="wpcf-release-image" id="release-image" value="<?php echo $image; ?>" />
+    <input type="button" id="release-button" class="button" value="<?php _e( 'Select Image', 'trendio' )?>" /></p>
+
+    		<div class="release-square appear" style="background-image:url('<?php echo $image; ?>')"></div>
+
+		</div>
+		</div>
+
+			<p>
+		<label for="wpcf-lyrics">Lyrics</label>
+		<input type="text" name="wpcf-lyrics" id="wpcf-lyrics" class="form-input" placeholder="Please provide the most relevant URL to the lyrics of the release." value="<?php echo $lyrics; ?>" />
+	</p>
+
+</div>
+
+	<?php	
+
+}
+
+
+
+
+add_action( 'save_post', 'cd_meta_box_save' );
+add_action( 'save_post', 'cd_extra_box_save' );
+add_action( 'save_post', 'cd_release_box_save' );
+add_action( 'save_post', 'cd_socials_save' );
+
+
+function cd_meta_box_save( $post_id )
+{
+	// Bail if we're doing an auto save
+	if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+	
+	// if our nonce isn't there, or we can't verify it, bail
+	if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'my_meta_box_nonce' ) ) return;
+	
+	// if our current user can't edit this post, bail
+	if( !current_user_can( 'edit_post' ) ) return;
+	
+	// now we can actually save the data
+	$allowed = array( 
+		'a' => array( // on allow a tags
+			'href' => array() // and those anchords can only have href attribute
+		)
+	);
+	
+	if( isset( $_POST['wpcf-biography'] ) )
+		update_post_meta( $post_id, 'wpcf-biography', esc_attr( $_POST['wpcf-biography'] ) );
+
+	if( isset( $_POST['wpcf-from'] ) )
+		update_post_meta( $post_id, 'wpcf-from', wp_kses( $_POST['wpcf-from'], $allowed ) );
+
+		if( isset( $_POST['wpcf-label'] ) )
+		update_post_meta( $post_id, 'wpcf-label', wp_kses( $_POST['wpcf-label'], $allowed ) );
+
+	if( isset( $_POST['wpcf-genre'] ) )
+		update_post_meta( $post_id, 'wpcf-genre', wp_kses( $_POST['wpcf-genre'], $allowed ) );
+
+	if( isset( $_POST['wpcf-song-choice'] ) )
+		update_post_meta( $post_id, 'wpcf-song-choice', wp_kses( $_POST['wpcf-song-choice'], $allowed ) );
+
+	if( isset( $_POST[ 'wpcf-photo' ] ) )
+    update_post_meta( $post_id, 'wpcf-photo', $_POST[ 'wpcf-photo' ] );
+
+}
+
+function cd_socials_save( $post_id )
+{
+	// Bail if we're doing an auto save
+	if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+	
+	// if our nonce isn't there, or we can't verify it, bail
+	if( !isset( $_POST['socials_box_nonce'] ) || !wp_verify_nonce( $_POST['socials_box_nonce'], 'my_socials_box_nonce' ) ) return;
+	
+	// if our current user can't edit this post, bail
+	if( !current_user_can( 'edit_post' ) ) return;
+	
+	// now we can actually save the data
+	$allowed = array( 
+		'a' => array( // on allow a tags
+			'href' => array() // and those anchords can only have href attribute
+		)
+	);
+	
+	if( isset( $_POST['wpcf-facebook-url'] ) )
+		update_post_meta( $post_id, 'wpcf-facebook-url', esc_attr( $_POST['wpcf-facebook-url'] ) );
+
+	if( isset( $_POST['wpcf-twitter'] ) )
+		update_post_meta( $post_id, 'wpcf-twitter', wp_kses( $_POST['wpcf-twitter'], $allowed ) );
+
+		if( isset( $_POST['wpcf-instagram-username'] ) )
+		update_post_meta( $post_id, 'wpcf-instagram-username', wp_kses( $_POST['wpcf-instagram-username'], $allowed ) );
+
+	if( isset( $_POST['wpcf-spotify'] ) )
+		update_post_meta( $post_id, 'wpcf-spotify', wp_kses( $_POST['wpcf-spotify'], $allowed ) );
+
+	if( isset( $_POST['wpcf-youtube-url'] ) )
+		update_post_meta( $post_id, 'wpcf-youtube-url', wp_kses( $_POST['wpcf-youtube-url'], $allowed ) );
+
+
+}
+
+
+function cd_extra_box_save( $post_id )
+{
+	// Bail if we're doing an auto save
+	if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+	
+	// if our nonce isn't there, or we can't verify it, bail
+	if( !isset( $_POST['extra_box_nonce'] ) || !wp_verify_nonce( $_POST['extra_box_nonce'], 'my_extra_box_nonce' ) ) return;
+	
+	// if our current user can't edit this post, bail
+	if( !current_user_can( 'edit_post' ) ) return;
+	
+	// now we can actually save the data
+	$allowed = array( 
+		'a' => array( // on allow a tags
+			'href' => array() // and those anchords can only have href attribute
+		)
+	);
+	
+	if( isset( $_POST['wpcf-youtube-id'] ) )
+		update_post_meta( $post_id, 'wpcf-youtube-id', wp_kses( $_POST['wpcf-youtube-id'], $allowed ) );
+
+		if( isset( $_POST['wpcf-date-selected'] ) )
+		update_post_meta( $post_id, 'wpcf-date-selected', wp_kses( $_POST['wpcf-date-selected'], $allowed ) );
+
+
+}
+
+
+function cd_release_box_save( $post_id )
+{
+	// Bail if we're doing an auto save
+	if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+	
+	// if our nonce isn't there, or we can't verify it, bail
+	if( !isset( $_POST['release_nonce'] ) || !wp_verify_nonce( $_POST['release_nonce'], 'my_release_nonce' ) ) return;
+	
+	// if our current user can't edit this post, bail
+	if( !current_user_can( 'edit_post' ) ) return;
+	
+	// now we can actually save the data
+	$allowed = array( 
+		'a' => array( // on allow a tags
+			'href' => array() // and those anchords can only have href attribute
+		)
+	);
+	
+		if( isset( $_POST['wpcf-release-title'] ) )
+		update_post_meta( $post_id, 'wpcf-release-title', wp_kses( $_POST['wpcf-release-title'], $allowed ) );
+
+		if( isset( $_POST['wpcf-rate-the-release'] ) )
+		update_post_meta( $post_id, 'wpcf-rate-the-release', wp_kses( $_POST['wpcf-rate-the-release'], $allowed ) );
+
+	if( isset( $_POST['wpcf-purchase'] ) )
+		update_post_meta( $post_id, 'wpcf-purchase', wp_kses( $_POST['wpcf-purchase'], $allowed ) );
+
+		if( isset( $_POST['wpcf-release-date'] ) )
+		update_post_meta( $post_id, 'wpcf-release-date', wp_kses( $_POST['wpcf-release-date'], $allowed ) );
+
+	if( isset( $_POST['wpcf-release-image'] ) )
+		update_post_meta( $post_id, 'wpcf-release-image', wp_kses( $_POST['wpcf-release-image'], $allowed ) );
+
+		if( isset( $_POST['wpcf-lyrics'] ) )
+		update_post_meta( $post_id, 'wpcf-lyrics', wp_kses( $_POST['wpcf-lyrics'], $allowed ) );
+
+	        if( isset( $_POST[ 'ep' ] ) ) {
+            update_post_meta( $post_id, 'ep', 'yes' );
+        } else {
+            update_post_meta( $post_id, 'ep', 'no' );
+        }
+
+        //saves bill's value
+        if( isset( $_POST[ 'single' ] ) ) {
+            update_post_meta( $post_id, 'single', 'yes' );
+        } else {
+            update_post_meta( $post_id, 'single', 'no' );
+        }
+
+        //saves steve's value
+        if( isset( $_POST[ 'album' ] ) ) {
+            update_post_meta( $post_id, 'album', 'yes' );
+        } else {
+            update_post_meta( $post_id, 'album', 'no' );
+        }
+
+
+}
+
 
 /**** Load More Posts ****/
 
@@ -670,10 +1021,10 @@ function more_post_ajax(){
 
     if ($loop -> have_posts()) :  while ($loop -> have_posts()) : $loop -> the_post();
         $out .= '
-        <div class="col-sm-3">
+        <div class="animated flipInX load-block">
         <div class="small-image" style="background-image: url(' . get_the_post_thumbnail_url($post_id, array( 300, 300) ) .')"><div class="categorized">'.get_the_date('m-d').'</div></div>
     <div class="full-content">
-        <span class="small-title">'.get_the_title().'</span>
+        <a class="small-title" href="'.get_the_permalink().'">'.get_the_title().'</a>
         <span class="full-body">'.wp_trim_words( get_the_content(), 25, '...' ).'</span>
     </div>
     </div>';

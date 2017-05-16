@@ -824,7 +824,7 @@ display: block;
 }
 
 .full-image{
-    height: 283.33px;
+    height: 282.33px;
     background-size: cover;
     background-position: top center;
     position: relative;
@@ -1035,7 +1035,6 @@ section.more-stories {
     font-family: 'Old Standard TT', serif;
     text-transform: lowercase;
     font-size: 20px;
-        display: block;
     position: relative
 }
 
@@ -1051,6 +1050,87 @@ section.more-stories {
     left: 50%;
 }
 
+.load-block {
+
+        width: 32%;
+    padding: 15px; 
+
+}
+
+#more_posts {
+    position: relative;
+}
+
+
+
+#ajax-posts {
+    flex-wrap: wrap;
+    display: flex;
+}
+
+/*Typing Loader*/
+.post_loading_loader:before{
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    -webkit-animation: typing 1s linear infinite alternate;
+       -moz-animation: Typing 1s linear infinite alternate;
+            animation: typing 1s linear infinite alternate;
+    position: absolute;
+left: -40px;
+    content: "";
+    top: 6px;
+}
+@-webkit-keyframes typing{
+    0%{
+        background-color: rgba(255,255,255, 1);
+        box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.2), 
+                    24px 0px 0px 0px rgba(255,255,255,0.2);
+      }
+    25%{ 
+        background-color: rgba(255,255,255, 0.4);
+        box-shadow: 12px 0px 0px 0px rgba(255,255,255,2), 
+                    24px 0px 0px 0px rgba(255,255,255,0.2);
+    }
+    75%{ background-color: rgba(255,255,255, 0.4);
+        box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.2), 
+                    24px 0px 0px 0px rgba(255,255,255,1);
+      }
+}
+
+@-moz-keyframes typing{
+   0%{
+        background-color: rgba(255,255,255, 1);
+        box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.2), 
+                    24px 0px 0px 0px rgba(255,255,255,0.2);
+      }
+    25%{ 
+        background-color: rgba(255,255,255, 0.4);
+        box-shadow: 12px 0px 0px 0px rgba(255,255,255,2), 
+                    24px 0px 0px 0px rgba(255,255,255,0.2);
+    }
+    75%{ background-color: rgba(255,255,255, 0.4);
+        box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.2), 
+                    24px 0px 0px 0px rgba(255,255,255,1);
+      }
+}
+
+@keyframes typing{
+   0%{
+        background-color: rgba(255,255,255, 1);
+        box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.2), 
+                    24px 0px 0px 0px rgba(255,255,255,0.2);
+      }
+    25%{ 
+        background-color: rgba(255,255,255, 0.4);
+        box-shadow: 12px 0px 0px 0px rgba(255,255,255,2), 
+                    24px 0px 0px 0px rgba(255,255,255,0.2);
+    }
+    75%{ background-color: rgba(255,255,255, 0.4);
+        box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.2), 
+                    24px 0px 0px 0px rgba(255,255,255,1);
+      }
+}
 
 /*** Gallery ***/
 
@@ -1344,6 +1424,10 @@ span.gallery-size:after {
     max-width: 100%;
 }
 
+ul.insta-images img {
+    max-height: 85px;
+}
+
 
 .white-complete .full-title {
     margin: 0px 0 10px;
@@ -1597,6 +1681,43 @@ h3.footer-text {
     margin: 0;
 }
 
+#feelbox-widget #hdr #title {
+    display: none;
+}
+
+#feelbox-widget #hdr {
+    text-align: center;
+}
+
+div#feelbox-title {
+    font-size: 34px !important;
+    text-align: center;
+    padding: 15px 15px 0;
+    display: inline-block;
+    position: relative;
+        font-family: 'Abril Fatface', cursive;
+    letter-spacing: -1px;
+    z-index: 0;
+}
+
+div#feelbox-title:before {
+    width: 100%;
+    height: 6px;
+    content: "";
+    background: #d91342;
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -7px;
+}
+
+.oldposts {
+          -webkit-transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
+    -moz-transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
+    -o-transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
+    transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
+}
 
 .oldposts a {
 
@@ -1612,12 +1733,12 @@ h3.footer-text {
 }
 
 div#prev-post a {
-    left: 0;
+    left: -100px;
 
 }
 
 div#next-post a {
-    right: 0;
+    right: -100px;
 
 }
 
@@ -1677,6 +1798,15 @@ div#next-post a:after {
 
 }
 
+
+
+.slide-prev {
+    left: 0 !important;
+}
+
+.slide-next {
+    right: 0 !important;
+}
 
 
 

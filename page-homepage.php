@@ -32,7 +32,7 @@ get_header(); ?>
 <div class="col-sm-9">
 
 <?php 
-// the query
+/// the query
 $the_query = new WP_Query( array('posts_per_page' => 2 ) ); ?>
 
 <?php if ( $the_query->have_posts() ) : ?>
@@ -58,7 +58,6 @@ $the_query = new WP_Query( array('posts_per_page' => 2 ) ); ?>
 		<i class="fa <?php echo !empty($icon['category_icon']) ? $icon['category_icon'] : 'fa-music'; ?>"></i> 
 		</div>
 							
-						
 
 				<?php endif; ?>
 
@@ -66,7 +65,7 @@ $the_query = new WP_Query( array('posts_per_page' => 2 ) ); ?>
         </div>
 	<div class="full-content col-sm-8  col-xs-7">
 		<span class="full-date"><?php echo get_the_date('M d');?></span>
-		<a class="full-title" href="<?php get_the_permalink()?>"><?php the_title(); ?></a>
+		<a class="full-title" href="<?php the_permalink()?>"><?php the_title(); ?></a>
 		<span class="full-body"><?php the_excerpt(); ?></span>
 	</div></div>
 		
@@ -107,7 +106,7 @@ $the_query = new WP_Query( $args ); ?>
                 </div>
             <div class="square-content">
                 <span class="square-date"><?php $category = get_the_category();  echo $category[0]->cat_name;?></span>
-                <a class="square-title" href="<?php get_the_permalink()?>"><?php the_title(); ?></a>
+                <a class="square-title" href="<?php the_permalink()?>"><?php the_title(); ?></a>
                 <span class="square-body"><?php echo wp_trim_words( get_the_content(), 25, '...' ); ?></span>
             </div></div>
         
@@ -134,17 +133,32 @@ $the_query = new WP_Query( $args ); ?>
     
     <section class="complete">
 
+
+                <?php 
+
+    $args = array(
+    'posts_per_page' => 1,
+    'post_type' => 'aotw'
+);
+
+
+$the_query = new WP_Query( $args ); ?>
+
+<?php if ( $the_query->have_posts() ) : ?>
+
+  <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+ 
     <div class="random-row">
         <div class="aotw-block">
             <div class="aotw-photo col-sm-4 col-xs-12">
-                <div class="aotw-image" style="background-image: url(https://i1.wp.com/hypebeast.com/image/2017/01/maggie-rogers-new-single-on-and-off-1.jpg?quality=95&w=1024)"></div></div>
+                <div class="aotw-image" style="background-image: url('<?php echo esc_url( get_post_meta( $post->ID, 'wpcf-release-image', true ) ); ?>')"></div></div>
             <div class="complete-content col-sm-8 col-xs-12">
-                <span class="full-date">Spotlight</span>
-                <div class="full-title"><span class="pre-aotw">Artist Of The Week: </span>Maggie Rogers</div>
+                <span class="full-date"><?php _e( 'Spotlight', 'reborn' )?></span>
+                <div class="full-title"><span class="pre-aotw"><?php _e( 'Artist of the Week:', 'reborn' )?> </span><?php the_title();?></div>
                 <div class="aotw-body">
 
                 <div class="col-sm-3 bio-box">
-                                <span class="bio-title">bio</span>
+                                <span class="bio-title"><?php _e( 'bio', 'reborn' )?></span>
 
                                
                             </div>
@@ -153,10 +167,21 @@ $the_query = new WP_Query( $args ); ?>
 
 
                 <ul class="aotw-socials">
-                    <li><a href=""><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
-                    <li><a href=""><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
-                    <li><a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                    <li><a href=""><i class="fa fa-spotify" aria-hidden="true"></i></a></li>
+<?php if ( get_post_meta( $post->ID, 'wpcf-twitter', true ) ) : ?> 
+	<li><a href="https://twitter.com/<?php echo ( get_post_meta( $post->ID, 'wpcf-twitter', true ) ); ?>" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+<?php endif; ?>
+
+<?php if ( get_post_meta( $post->ID, 'wpcf-facebook-url', true ) ) : ?>
+	<li><a href="<?php echo esc_url( get_post_meta( $post->ID, 'wpcf-facebook-url', true ) ); ?>" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+<?php endif; ?>
+
+<?php if ( get_post_meta( $post->ID, 'wpcf-instagram-username', true ) ) : ?>
+	<li><a href="https://instagram.com/<?php echo ( get_post_meta( $post->ID, 'wpcf-instagram-username', true ) ); ?>" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+<?php endif; ?>
+
+<?php if ( get_post_meta($post->ID, 'wpcf-youtube-url', true ) ) : ?>
+	<li><a href="<?php echo esc_url( get_post_meta( $post->ID, 'wpcf-youtube-url', true ) ); ?>" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+<?php endif; ?>
 
 
                     </ul>
@@ -165,7 +190,7 @@ $the_query = new WP_Query( $args ); ?>
   <div class="col-sm-6 col-xs-6">
                         <div class="sidetop">
                             <c><i class="fa fa-twitter-square"></i></c>
-                            <div class="text"> latest tweets</div></div>
+                            <div class="text"><?php _e( 'latest tweets', 'reborn' )?></div></div>
                         
                         <div id="example1"></div>
                         
@@ -174,7 +199,7 @@ $the_query = new WP_Query( $args ); ?>
                     <div class="col-sm-6 col-xs-6">
                         <div class="sidetop">
                             <c><i class="fa fa-spotify"></i></c>
-                            <div class="text">featured music</div></div>
+                            <div class="text"><?php _e( 'featured music', 'reborn' )?></div></div>
                         
                         <div class="landing-page">
                             <div class="vinyl-container">
@@ -200,16 +225,16 @@ $the_query = new WP_Query( $args ); ?>
                         <div class="twitter-block col-sm-4 col-xs-4">
                             <div class="sidetop">
                                 <c><i class="fa fa-instagram"></i></c>
-                                <div class="text"> Instagram</div></div>
-
+                                <div class="text"> <?php _e( 'Instagram', 'reborn' )?></div></div>
+                                	<span class="insta-user" style="display: none"><?php echo ( get_post_meta( $post->ID, 'wpcf-instagram-username', true ) ); ?></span>
                             <div class="insta-feed"> </div>
 
 
                             <div class="sidetop">
                                 <c><i class="fa fa-youtube"></i></c>
-                                <div class="text"> featured video</div></div>
+                                <div class="text"> <?php _e( 'featured video', 'reborn' )?></div></div>
 
-                            <iframe width="100%" height="195" src="https://www.youtube.com/embed/OxxggwHFj7M" frameborder="0" allowfullscreen></iframe>
+                            <iframe width="100%" height="195" src="https://www.youtube.com/embed/<?php echo ( get_post_meta( $post->ID, 'wpcf-youtube-id', true ) ); ?>" frameborder="0" allowfullscreen></iframe>
 
 
                         </div>
@@ -217,7 +242,7 @@ $the_query = new WP_Query( $args ); ?>
                         <div class="spotify-block col-sm-4 col-xs-4">
                             <div class="sidetop">
                                 <c><i class="fa fa-spotify"></i></c>
-                                <div class="text"> spotify</div></div>
+                                <div class="text"> <?php _e( 'spotify', 'reborn' )?></div></div>
 
                             <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images2/spotify.png" width="100%">
 
@@ -227,7 +252,7 @@ $the_query = new WP_Query( $args ); ?>
                         <div class="facebook-block col-sm-4 col-xs-4">
                             <div class="sidetop">
                                 <c><i class="fa fa-facebook"></i></c>
-                                <div class="text"> facebook</div></div>
+                                <div class="text"> <?php _e( 'facebook', 'reborn' )?></div></div>
 
 
 
@@ -236,7 +261,20 @@ $the_query = new WP_Query( $args ); ?>
                     </div>
                 </div>
 
-            </div></div>
+            </div>
+
+                <?php endwhile; ?>
+    <!-- end of the loop -->
+    <!-- pagination here -->
+
+    <?php wp_reset_postdata(); ?>
+
+<?php else : ?>
+    <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+<?php endif; ?>
+
+
+            </div>
     </section>
 
 
@@ -266,7 +304,7 @@ $the_query = new WP_Query( $args ); ?>
                 </div>
             <div class="square-content">
                 <span class="square-date"><?php $category = get_the_category();  echo $category[0]->cat_name;?></span>
-                <a class="square-title" href="<?php get_the_permalink()?>"><?php the_title(); ?></a>
+                <a class="square-title" href="<?php the_permalink()?>"><?php the_title(); ?></a>
                 <span class="square-body"><?php echo wp_trim_words( get_the_content(), 40, '...' ); ?></span>
             </div></div>
         

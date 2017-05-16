@@ -152,7 +152,7 @@ $get_description = get_post(get_post_thumbnail_id())->post_excerpt;
 					<li class="ticket written"><span class="circle"></span><a href="#">Written By <?php echo get_the_author(); ?></a></li>
 
 							<?php 
-					$tags = the_tags();
+					$tags = get_the_tags();
 					foreach ( $tags as $tag ) {
 						$tag_link = get_tag_link( $tag->term_id );
 								
