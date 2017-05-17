@@ -79,7 +79,7 @@ if ( $related_posts ) {
 }
 ?>
 <div class="related-posts">
-    <h3><?php esc_attr_e( $title ); ?></h3>
+
     <?php $related = new WP_Query( $query ); ?>
     <?php while ( $related->have_posts() ) : $related->the_post(); ?>
 

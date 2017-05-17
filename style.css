@@ -1910,6 +1910,43 @@ margin: 30px 0;
         0 1px 0 rgba(255,255,255,0.3);
 }
 
+#mdr-e1 {
+    background-image: url(http://trendio.us/images/2.png) !important; }
+
+#mdr-e1   span.percent {
+    color: #DE0F92 !important
+}
+
+#mdr-e2 {
+    background-image: url(http://trendio.us/images/3.png) !important; }
+
+#mdr-e2   span.percent {
+    color: #0FA4CF!important
+}
+
+
+#mdr-e3 {
+    background-image: url(http://trendio.us/images/1.png)!important; }
+
+#mdr-e3   span.percent {
+    color: #CE0F0F !important
+}
+
+#mdr-e4 {
+    background-image: url(http://trendio.us/images/4.png)!important; }
+
+#mdr-e4   span.percent {
+    color: #11C2B8 !important
+}
+
+#mdr-e5 {
+    background-image: url(http://trendio.us/images/5.png) !important; }
+
+#mdr-e5   span.percent {
+    color: #5EB30B !important
+}
+
+
 .single-content {
     max-width: 780px;
     margin: 30px auto;
@@ -2010,7 +2047,7 @@ span.smtxt {
 
 
 .related-post .related-image {
-    height: 255px;
+    height: 262.5px;
     background-size: cover;
     background-position: top center;
     position: relative;
