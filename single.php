@@ -86,10 +86,7 @@ if ( $related_posts ) {
 
         <div class="col-sm-3 col-xs-6 featured-block">
 
-           <div class="related-image" style="background-image: url('<?php the_post_thumbnail_url();?>')">
-
-                      
-                        </div>
+          <a href="<?php the_permalink();?>"> <div class="related-image" style="background-image: url('<?php the_post_thumbnail_url();?>')"></div></a>
                     </div>
 
     <?php endwhile; wp_reset_query(); ?>
