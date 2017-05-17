@@ -1946,6 +1946,14 @@ margin: 30px 0;
     color: #5EB30B !important
 }
 
+.feelbox-widget ul li {
+
+
+    background-size: 100px !important;
+    background-repeat: no-repeat !important;
+    background-position: 8px 17px !important;
+
+    }
 
 .single-content {
     max-width: 780px;
