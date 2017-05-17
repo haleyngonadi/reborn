@@ -53,7 +53,7 @@ $related_posts = array();
 $query = array();
 
 // Number of posts to show
-$query['showposts'] = 3;
+$query['showposts'] = 4;
 
 // Fetches related post IDs if JetPack Related Posts is active
 if ( class_exists( 'Jetpack_RelatedPosts' ) && method_exists( 'Jetpack_RelatedPosts', 'init_raw' ) ) :
@@ -82,23 +82,18 @@ if ( $related_posts ) {
     <h3><?php esc_attr_e( $title ); ?></h3>
     <?php $related = new WP_Query( $query ); ?>
     <?php while ( $related->have_posts() ) : $related->the_post(); ?>
-        <div class="related-post clearfix">
-            <div class="related-image">
-                <a href="<?php the_permalink();?>"><?php the_post_thumbnail( 'archive' ); ?></a>
-            </div>
-            <div class="related-content">
-                <h3><a href="<?php the_permalink();?>"><?php the_title( ); ?></a></h3>
-                <p>by <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ), get_the_author_meta( 'user_nicename' ) ); ?>"><?php the_author(); ?></a></p>
-            </div>
-        </div>
+
+
+        <div class="col-sm-3 col-xs-6 featured-block">
+
+                        <div class="related-image" style="background-image: url(<?php the_post_thumbnail(); ?>)">
+                        </div>
+                    </div>
+
     <?php endwhile; wp_reset_query(); ?>
 </div>
                     
-                    <div class="col-sm-3 col-xs-6 featured-block">
-
-                        <div class="related-image" style="background-image: url()">
-                        </div>
-                    </div>
+                    
 
                     
                     </div>
