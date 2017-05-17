@@ -86,7 +86,7 @@ if ( $related_posts ) {
 
         <div class="col-sm-3 col-xs-6 featured-block">
 
-            <div class="related-image" style="background-image: url('<?php echo wp_get_attachment_image_src( );?>')">
+           <div class="related-image" style="background-image: url('<?php the_post_thumbnail_url();?>')">
 
                       
                         </div>
