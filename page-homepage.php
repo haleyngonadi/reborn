@@ -66,7 +66,7 @@ $the_query = new WP_Query( array('posts_per_page' => 2 ) ); ?>
 	<div class="full-content col-sm-8  col-xs-7">
 		<span class="full-date"><?php echo get_the_date('M d');?></span>
 		<a class="full-title" href="<?php the_permalink()?>"><?php the_title(); ?></a>
-		<span class="full-body"><?php the_excerpt(); ?></span>
+		<span class="full-body"><?php wpe_excerpt('wpe_excerptlimit', 'wpe_excerptmore'); ?></span>
 	</div></div>
 		
 	<?php endwhile; ?>
@@ -163,7 +163,7 @@ $the_query = new WP_Query( $args ); ?>
                                
                             </div>
 
-              <div class="bio-text">  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut posuere arcu. Ut quis dignissim dolor. Pellentesque eget neque molestie, rhoncus dui a, gravida ligula. Mauris pulvinar aliquam diam, fermentum molestie eros tincidunt nec. Curabitur interdum auctor sem eget porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut posuere arcu. Ut quis dignissim dolor. Pellentesque eget neque molestie, rhoncus dui a, gravida ligula. Mauris pulvinar aliquam diam, fermentum molestie eros tincidunt nec. Curabitur interdum auctor sem eget porta...</div>
+              <div class="bio-text">  <?php echo ( get_post_meta( $post->ID, 'wpcf-biography', true ) ); ?></div>
 
 
                 <ul class="aotw-socials">

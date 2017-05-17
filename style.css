@@ -819,9 +819,22 @@ display: block;
     color: #332F3E;
 }
 
+.cat-title {
+    font-family: 'Abril Fatface', cursive;
+    font-size: 30px;
+    display: block;
+    line-height: 35px;
+    margin: 5px 0 0;
+    color: #332F3E;
+    text-transform: uppercase;
+}
+
+
 .full-category {
 	color: #f3f3f3
 }
+
+
 
 .full-image{
     height: 282.33px;
@@ -1666,6 +1679,12 @@ h3.footer-text {
 
 /*** Inner Pages ***/
 
+.single-content .entry-content {
+    float: left;
+    margin: 22px 0 25px;
+}
+
+
 #feelbox-widget ul li #feelbox-cell {
     margin: 5px 2px;
     height: auto !important;
@@ -1946,6 +1965,11 @@ margin: 30px 0;
     color: #5EB30B !important
 }
 
+li#mdr-e6 {
+    display: none !important;
+}
+
+
 #feelbox-widget ul li {
 
 
@@ -1969,7 +1993,14 @@ margin: 30px 0;
 .single-text {
  font-size: 14.5px;
     line-height: 24px;
-    margin: 25px 0;
+    margin: 5px 0;
+    text-align: justify
+}
+
+.cat-text {
+ font-size: 14.5px;
+    line-height: 24px;
+    margin: 0;
     text-align: justify
 }
 
@@ -2224,6 +2255,10 @@ span.feature-credits:hover:before {
     display: inline-block;
 }
 
+.inner-feed {
+    margin-bottom: 26px;
+    float: left;
+}
 
 
 .featured-image {
@@ -2233,7 +2268,17 @@ span.feature-credits:hover:before {
     padding-left: 0;
 }
 
-.featured-image img {
+.cat-image {
+    max-width: 300px;
+    margin: 5px 0 2px;
+    position: relative;
+    padding-left: 0;
+}
+
+.aside-image {
+    margin-bottom: 20px;
+}
+.featured-image img, .cat-image img {
     max-width: 100%;
 }
 

@@ -15,7 +15,16 @@
 
 	<div class="single-header">
 
-	<span class="full-date"><?php $category = get_the_category(); echo $category[0]->cat_name; ?></span>
+	<?php $category = get_the_category(); 
+	 $name = $category[0]->cat_name;
+     $cat_id = get_cat_ID( $name );
+     $link = get_category_link( $cat_id );
+
+	?>
+
+	<a class="full-date" href="<?php echo $link; ?>"><?php echo $name; ?></a>
+									
+
 									<?php
 			if ( is_single() ) :
 				the_title( '<span class="full-title">', '</span>' );
@@ -109,7 +118,7 @@
 <?php endif; ?>
 
 
-<?php if(!has_post_format('gallery') || !has_post_format('video')) : ?>
+<?php if(!has_post_format('gallery') && !has_post_format('video') && !has_post_format('aside')) : ?>
 
 	<?php if ( has_post_thumbnail() ) : ?>
 <div class="featured-image col-md-6">
@@ -120,9 +129,35 @@ $get_description = get_post(get_post_thumbnail_id())->post_excerpt;
   }
 ?>
 
-<?php the_post_thumbnail('single-size');?>
+<?php 
+$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-size' ); ?>
+    <img src="<?php echo $image[0]; ?>" alt="" />
+
+
 </div>	<?php endif; ?>
 <?php endif; ?>
+
+
+		<?php if(has_post_format('aside')) : ?>
+
+				<?php if ( has_post_thumbnail() ) : ?>
+<div class="aside-image">
+<?php
+$get_description = get_post(get_post_thumbnail_id())->post_excerpt;
+  if(!empty($get_description)){//If description is not empty show the div
+  echo '<span class="feature-credits" data-credit="' .$get_description .'">©</span>';
+  }
+?>
+
+<?php 
+$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'impress-size' ); ?>
+    <img src="<?php echo $image[0]; ?>" alt="" />
+
+
+</div>	<?php endif; ?>
+
+
+			<?php endif; ?>
 
 
  <div class="single-text">
@@ -146,8 +181,14 @@ $get_description = get_post(get_post_thumbnail_id())->post_excerpt;
 
 </div>
 
-			<?php  print_feelbox_widget();?>
-		                        <ul class="tags">
+			
+		                       
+
+	</div><!-- .entry-content -->
+
+<?php  print_feelbox_widget();?>
+
+<ul class="tags">
 
 					<li class="ticket written"><span class="circle"></span><a href="#">Written By <?php echo get_the_author(); ?></a></li>
 
@@ -162,8 +203,6 @@ $get_description = get_post(get_post_thumbnail_id())->post_excerpt;
 					echo $html;?>
 
 						</ul>
-
-	</div><!-- .entry-content -->
 
 
 </article><!-- #post-## -->

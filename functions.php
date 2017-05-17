@@ -45,7 +45,7 @@ add_action( 'init', 'register_my_menus' );
 
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 600, 600, true );
-	add_image_size( 'single-size', 400, 400 );
+	add_image_size( 'single-size', 500, 500, array( 'top', 'center' ) );
 		add_image_size( 'impress-size', 825, 510 );
 
 		/*
@@ -54,7 +54,7 @@ add_action( 'init', 'register_my_menus' );
 	 * See: https://codex.wordpress.org/Post_Formats
 	 */
 	add_theme_support( 'post-formats', array(
-		'aside', 'image', 'video', 'link', 'gallery', 'audio'
+		'aside',  'video', 'link', 'gallery', 'audio', 'quote'
 	) );
 
 	/**
@@ -166,7 +166,7 @@ return $classes;
 add_filter( 'body_class', 'add_slug_body_class' );
 
 
-function wpdocs_custom_excerpt_length( $length ) {
+/*function wpdocs_custom_excerpt_length( $length ) {
     return 60;
 }
 add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
@@ -179,7 +179,40 @@ function wpdocs_excerpt_more( $more ) {
     );
 }
 add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
+*/
 
+
+
+
+function wpe_excerptlength_teaser( $length ) {
+    
+    return 100;
+}
+function wpe_excerptlimit( $length ) {
+    
+    return 66;
+}
+function wpe_excerptmore( $more ) {
+     return sprintf( '<a href="%1$s" class="more-link">%2$s</a>',
+          esc_url( get_permalink( get_the_ID() ) ),
+          sprintf( __( '...more' ), '' )
+    );
+}
+
+function wpe_excerpt( $length_callback = '', $more_callback = '' ) {
+    
+    if ( function_exists( $length_callback ) )
+        add_filter( 'excerpt_length', $length_callback );
+    
+    if ( function_exists( $more_callback ) )
+        add_filter( 'excerpt_more', $more_callback );
+    
+    $output = get_the_excerpt();
+    $output = apply_filters( 'wptexturize', $output );
+    $output = apply_filters( 'convert_chars', $output );
+    $output = '<p>' . $output . '</p>'; // maybe wpautop( $foo, $br )
+    echo $output;
+}
 
 function pippin_taxonomy_add_new_meta_field() {
 	// this will add the custom meta field to the add new term page
@@ -276,6 +309,15 @@ function reborn_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+
+	register_sidebar(array(
+			'name' => 'Everything',
+			'id' => 'sidebar',
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+		));
 }
 add_action( 'widgets_init', 'reborn_widgets_init' );
 
