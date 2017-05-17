@@ -96,25 +96,10 @@ if ( $related_posts ) {
                     
                     <div class="col-sm-3 col-xs-6 featured-block">
 
-                        <div class="related-image" style="background-image: url(images/01.jpg)">
+                        <div class="related-image" style="background-image: url()">
                         </div>
                     </div>
 
-                    <div class="col-sm-3 col-xs-6 featured-block">
-
-                        <div class="related-image" style="background-image: url(images/04.jpg)"></div>
-                    </div>
-
-                    <div class="col-sm-3 col-xs-6 featured-block">
-
-                        <div class="related-image" style="background-image: url(images/02.jpg)"></div>
-                    </div>
-
-                    <div class="col-sm-3 col-xs-6 featured-block">
-
-                        <div class="related-image" style="background-image: url(images/03.jpg)"></div>
-                    </div>
-                    
                     
                     </div>
 
