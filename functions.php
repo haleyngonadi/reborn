@@ -46,7 +46,7 @@ add_action( 'init', 'register_my_menus' );
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 600, 600, true );
 	add_image_size( 'single-size', 500, 500, array( 'top', 'center' ) );
-		add_image_size( 'impress-size', 825, 510 );
+		add_image_size( 'impress-size', 825, 510, array( 'top', 'center' ) );
 
 		/*
 	 * Enable support for Post Formats.
@@ -88,6 +88,8 @@ function reborn_scripts() {
 		wp_enqueue_script( 'owl-refresh', get_template_directory_uri() . '/js/owl.autorefresh.js', array( 'jquery' ), '20170323', true );
 		wp_enqueue_script( 'read-more', get_template_directory_uri() . '/js/readmore.min.js', array( 'jquery' ), '20170324', true );
 		wp_enqueue_script( 'lazy-load', get_template_directory_uri() . '/js/lazysizes.min.js', array( 'jquery' ), '20170512', true );
+		wp_enqueue_script( 'tiny-nav', get_template_directory_uri() . '/js/tinynav.min.js', array( 'jquery' ), '20170512', true );
+
 
 
 
@@ -190,7 +192,7 @@ function wpe_excerptlength_teaser( $length ) {
 }
 function wpe_excerptlimit( $length ) {
     
-    return 66;
+    return 72;
 }
 function wpe_excerptmore( $more ) {
      return sprintf( '<a href="%1$s" class="more-link">%2$s</a>',

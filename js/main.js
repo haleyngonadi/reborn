@@ -1,3 +1,12 @@
+$(document).ready(function(){
+
+ $("#nav").tinyNav(
+
+    {
+          active: 'selected', // String: Set the "active" class
+  header: 'Select A Tag', // String: Specify text for "header" and show header instead of the active item
+    });
+
 var instauser = $('.insta-user').text();
 
 
@@ -105,7 +114,7 @@ function screenClass() {
     } else {
         $('body').removeClass('mobile-active');
 
-        var header = $("header");
+        var header = $(".show-desktop");
         $(window).scroll(function() {
             var scroll = $(window).scrollTop();
 
@@ -129,7 +138,7 @@ $(window).bind('resize',function(){
 
 
 $( ".bars" ).click(function() {
-    $('.right-menu ul.menu').toggleClass('mobile-menu');
+    $('.left-menu ul.menu').toggleClass('mobile-menu');
     console.log('Clicked');
 
 });
@@ -251,7 +260,6 @@ $( ".expand-button" ).click(function() {
         console.log('no');
         }
     else {
-        console.log('yes');
          var $owl = $('.owl-carousel');
         $owl.addClass('owl-expanded');
 $owl.trigger('destroy.owl.carousel');
@@ -376,7 +384,6 @@ function load_posts(){
 }
 
 $("#more_posts").on("click",function(){ // When btn is pressed.
-    console.log('hi');
     $("#more_posts").attr("disabled",true); // Disable the button, temp.
     load_posts();
 });
@@ -385,7 +392,7 @@ $("#more_posts").on("click",function(){ // When btn is pressed.
 var name = ".social-list";
 var menuYloc = null;
  
-$(document).ready(function(){
+
     menuYloc = parseInt($(name).css("top").substring(0,$(name).css("top").indexOf("px")))
     $(window).scroll(function () { 
 
@@ -394,6 +401,8 @@ $(document).ready(function(){
             
              var myDiv = document.getElementById('main'); //get #myDiv
             var related = document.getElementById('related-post');
+
+            if (related) {
 
             
             if (scroll >= myDiv.clientHeight+related.clientHeight) {
@@ -405,10 +414,11 @@ $(document).ready(function(){
                  offset = menuYloc+$(document).scrollTop()+"px";
              }
 
+         }
+
 
         $(name).animate({top:offset},{duration:500,queue:false});
     });
-});
 
 
 
@@ -421,16 +431,16 @@ $(document).ready(function(){
             var myDiv = document.getElementById('main'); //get #myDiv
             var related = document.getElementById('related-post');
 
-                        console.log('The DIV:', myDiv.clientHeight+related.clientHeight-240);
-                        console.log('Scroll:', scroll);
+            if (related) {
 
+                
 
                         var calc = myDiv.clientHeight+related.clientHeight-240;
 
 
             
 
-            if (scroll >= myDiv.clientHeight-related.clientHeight) {
+            if (scroll >= myDiv.clientHeight-related.clientHeight-240) {
                 $('#prev-post a').addClass('slide-prev');
                 $('#next-post a').addClass('slide-next');
             }
@@ -442,10 +452,13 @@ $(document).ready(function(){
 
             }
 
-if (scroll >= calc) {
-                console.log('Yes');
+        if (scroll >= calc) {
                 $('#prev-post a').removeClass('slide-prev');
                $('#next-post a').removeClass('slide-next');
              }
 
+         }
+
         });
+
+ });

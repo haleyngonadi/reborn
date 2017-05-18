@@ -9,33 +9,23 @@
  */
 
 get_header(); ?>
-
-<div class="row">
-
-	<div id="primary" class="content-area col-sm-9">
-
+	<div id="primary" class="content-area page-area">
+		<main id="main" class="site-main" role="main">
 
 
 <?php if ( have_posts() ) : ?>
 
-	<h3 class="pinline"><span><?php single_term_title('Currently browsing: '); ?></span></h3>
-
+	
 	<!-- pagination here -->
 
 	<!-- the loop -->
 	<?php while ( have_posts() ) : the_post(); ?>
-		<article id="post-<?php the_ID(); ?>" <?php post_class('inner-feed row'); ?>>
+		<article id="post-<?php the_ID(); ?>" <?php post_class('page-content'); ?>>
 
 
 	<div class="entry-header col-md-12">
-		<span class="full-date"><?php echo get_the_date('M d');?></span>
-		<?php
-			if ( is_single() ) :
-				the_title( '<h2 class="cat-title">', '</h2>' );
-			else :
-				the_title( sprintf( '<a class="cat-title" href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a>' );
-			endif;
-		?>
+	
+		<span class="cat-title"><?php the_title()?></span>
 	</div><!-- .entry-header -->
 
 	<div class="entry-content col-md-12">
@@ -62,16 +52,9 @@ if ($image) : ?>
 
 		<?php
 			/* translators: %s: Name of current post */
-			wpe_excerpt('wpe_excerptlength_teaser', 'wpe_excerptmore');
+			the_content();
 
-			wp_link_pages( array(
-				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfifteen' ) . '</span>',
-				'after'       => '</div>',
-				'link_before' => '<span>',
-				'link_after'  => '</span>',
-				'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'twentyfifteen' ) . ' </span>%',
-				'separator'   => '<span class="screen-reader-text">, </span>',
-			) );
+
 		?>
 </div>	</div><!-- .entry-content -->
 
@@ -90,9 +73,18 @@ if ($image) : ?>
 	</div><!-- .content-area -->
 
 
-<?php get_sidebar('sidebar'); ?> 
+</main></div>
 
-</div>
+ <ul class="social-list">
+                    <li><a href="https://www.instagram.com/trendio.us/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.bloglovin.com/blog/2322714" target="_blank"><i class="fa fa-heart" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.facebook.com/wearetrendio" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="https://twitter.com/wearetrendio" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="mailto:contact@trendio.us" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.spotify.com/user/trendio/" target="_blank"><i class="fa fa-spotify" aria-hidden="true"></i></a></li>
+
+                </ul>
+
 
 
 <?php get_footer(); ?>

@@ -85,7 +85,7 @@ if ( $related_posts ) {
     <?php while ( $related->have_posts() ) : $related->the_post(); ?>
 
 
-        <div class="col-sm-3 col-xs-6 featured-block">
+        <div class="col-lg-3 col-sm-6 col-md-6 col-xs-12 featured-block">
 
           <a href="<?php the_permalink();?>"> <div class="related-image" style="background-image: url('<?php the_post_thumbnail_url();?>')"></div></a>
                     </div>

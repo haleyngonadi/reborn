@@ -150,7 +150,7 @@ $get_description = get_post(get_post_thumbnail_id())->post_excerpt;
 ?>
 
 <?php 
-$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'impress-size' ); ?>
+$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), '' ); ?>
     <img src="<?php echo $image[0]; ?>" alt="" />
 
 
@@ -158,6 +158,13 @@ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'impre
 
 
 			<?php endif; ?>
+
+
+			<?php if(has_post_format('video')) : ?>
+
+				<div class="youtube" data-embed="<?php echo get_post_meta( $post->ID, '_format_video_embed', true ); ?>"> <div class="play-button"></div></div>
+
+					<?php endif; ?>
 
 
  <div class="single-text">
