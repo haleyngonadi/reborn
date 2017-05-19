@@ -199,8 +199,11 @@ span.logo-text:before {
     visibility: hidden;
     width: 0;
     opacity: 0;
-    transition: 0.4s;
+    transition: 0.3s;
     left: -170px;
+        font-size: 44px;
+    color: white;
+    font-family: Electro, serif;
 }
 
 
@@ -210,9 +213,6 @@ span.logo-text:before {
 }
 
 .upper .logo-small {
-    font-size: 44px;
-    color: white;
-    font-family: Electro, serif;
     background: #d91342;
     padding: 3px 25px;
     position: absolute;
@@ -1084,6 +1084,10 @@ footer.default > ul > li{
     font-size: 12px;
 }
 
+footer.default ul {
+    padding: 35px;
+}
+
 
 footer ul{
 	list-style: none;
@@ -1103,12 +1107,17 @@ section.more-stories {
     padding: 20px;
     color: white;
     text-align: center;
-    position: fixed;
     bottom: 282px;
     width: 100%;
     z-index: -1;
-    cursor: pointer;
     
+    
+}
+
+
+.page-homepage section.more-stories{
+    position: fixed;
+    cursor: pointer;
 }
 
 .more-stories span {
@@ -1117,6 +1126,16 @@ section.more-stories {
     font-size: 20px;
     position: relative
 }
+
+.more-stories button {
+      background: transparent;
+    font-family: 'Old Standard TT', serif;
+    text-transform: lowercase;
+    font-size: 20px;
+    position: relative;
+    border: 0 !important;
+}
+
 
 .more-stories:before {
     position: absolute;
@@ -1210,6 +1229,27 @@ left: -40px;
         box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.2), 
                     24px 0px 0px 0px rgba(255,255,255,1);
       }
+}
+
+
+/*** Forms ***/
+
+.contact-form label {
+    font-family: Montserrat;
+    color: #332f3e;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+
+.contact-form input[type=email], .contact-form input[type=text] {
+    padding: 7px;
+    border: 1px solid #332f3e;
+}
+
+.contact-form textarea {
+border: 1px solid #332f3e;
 }
 
 /*** Gallery ***/
@@ -2144,7 +2184,6 @@ body.page-template-default.container {
 
 footer.default {
             min-height: 50px;
-                padding-top: 1px;
                 z-index: 0;
         }
 

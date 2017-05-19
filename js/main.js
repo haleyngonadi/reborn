@@ -369,8 +369,10 @@ function load_posts(){
                     $newElements.animate({ opacity: 1 });
                     console.log($newElements);
                 $loader.removeClass('post_loading_loader').html('load more stories...');
+                $("#more_posts").attr("disabled",false);
             } else{
                $loader.removeClass('post_loading_loader').addClass('post_no_more_posts').html('dassit!');
+               $("#more_posts").attr("disabled",true);
             }
         },
         error : function(jqXHR, textStatus, errorThrown) {
@@ -384,7 +386,6 @@ function load_posts(){
 }
 
 $("#more_posts").on("click",function(){ // When btn is pressed.
-    $("#more_posts").attr("disabled",true); // Disable the button, temp.
     load_posts();
 });
 
@@ -398,6 +399,8 @@ var menuYloc = null;
 
         var scroll = $(window).scrollTop();
         var offset;
+
+        console.log(scroll);
             
              var myDiv = document.getElementById('main'); //get #myDiv
             var related = document.getElementById('related-post');

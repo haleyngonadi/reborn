@@ -15,12 +15,11 @@
 
 <footer class="default">
 
-<?php
-if ( is_page( 'homepage' ) ) { ?>
 
-    <section class="more-stories"><span id="more_posts">Load More Stories...</span></section>
 
-     <?php } ?>
+    <section class="more-stories">
+<span id="artists">browse Artists...</span>
+     </section>
 
 	<?php 
 $tags = get_tags('order=desc&number=28');
