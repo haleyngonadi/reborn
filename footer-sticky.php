@@ -13,7 +13,7 @@
 
 </div></div>
 
-<footer class="default">
+<footer class="stick">
 
 <?php
 if ( is_page( 'homepage' ) ) { ?>

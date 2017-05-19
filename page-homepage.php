@@ -341,4 +341,4 @@ $the_query = new WP_Query( $args ); ?>
 </section>
 
 
-<?php get_footer(); ?>
+<?php get_footer('sticky'); ?>

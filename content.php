@@ -138,34 +138,6 @@ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'singl
 <?php endif; ?>
 
 
-		<?php if(has_post_format('aside')) : ?>
-
-				<?php if ( has_post_thumbnail() ) : ?>
-<div class="aside-image">
-<?php
-$get_description = get_post(get_post_thumbnail_id())->post_excerpt;
-  if(!empty($get_description)){//If description is not empty show the div
-  echo '<span class="feature-credits" data-credit="' .$get_description .'">©</span>';
-  }
-?>
-
-<?php 
-$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), '' ); ?>
-    <img src="<?php echo $image[0]; ?>" alt="" />
-
-
-</div>	<?php endif; ?>
-
-
-			<?php endif; ?>
-
-
-			<?php if(has_post_format('video')) : ?>
-
-				<div class="youtube" data-embed="<?php echo get_post_meta( $post->ID, '_format_video_embed', true ); ?>"> <div class="play-button"></div></div>
-
-					<?php endif; ?>
-
 
  <div class="single-text">
 

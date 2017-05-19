@@ -51,7 +51,7 @@ if ($image) : ?>
 <div class="cat-text <?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-size' ); if ($image) : ?>col-md-8<?php endif; ?> ">
 
 		<?php
-			/* translators: %s: Name of current post */
+			/*  translators: %s: Name of current post */
 			the_content();
 
 

@@ -61,10 +61,13 @@ a:hover {
 
 .container {
 	overflow: hidden;
-    height: 100%
+
+
 }
 
-
+.page-template-default div#primary {
+    height: 100%;
+}
 
 /*** Header Goes Here ***/
 
@@ -1007,33 +1010,42 @@ border-left: 10px solid transparent;
 
 /*** Footer ***/
 
-footer{
-    min-height: 350px;
-	color:#ccc;
-	font-size:12px;
-	position:relative;
-	z-index:-2;
-    background-color:#332F3E;
-
+footer {
+        background-color:#332F3E;
+        text-align: center;
 }
 
 footer .inner-footer {
- width: 100%;   
-    position:fixed;
-    bottom:0;
+
     background: rgba(255,255,255,0.03);
     text-align: center;
     font-family: Montserrat;
-padding: 10px;
+    padding: 10px;
     text-transform: uppercase;
     color: white;
     letter-spacing: 4px;
-    z-index: -1;
     font-size: 10px;
+
+    }
+
+footer.stick{
+    min-height: 350px;
+	color:#fff;
+	font-size:12px;
+	position:relative;
+	z-index:-2;
 
 }
 
-footer > ul{
+footer.stick .inner-footer {
+ width: 100%;   
+    position:fixed;
+    bottom:0;
+    z-index: -1;
+
+}
+
+footer.stick > ul{
     width: 90%;
     position: fixed;
     left: 50%;
@@ -1045,7 +1057,7 @@ footer > ul{
 
 /* The four columns of links */
 
-footer > ul > li{
+footer.stick > ul > li{
     font-family: Montserrat;
     float: left;
     border-bottom: 1px dashed white;
@@ -1057,6 +1069,21 @@ footer > ul > li{
     font-weight: 300;
     letter-spacing: 1px;
 }
+
+footer.default > ul > li{
+    font-family: Montserrat;
+    border-bottom: 1px dashed white;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+    padding:7px 9px;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 1px;
+    display: inline-block;
+    font-size: 12px;
+}
+
 
 footer ul{
 	list-style: none;
@@ -1800,8 +1827,7 @@ div#feelbox-title:before {
     text-transform: uppercase;
     color: white;
     letter-spacing: 2px;
-    top: 49%;
-    transform: translateY(-49%);
+    top: 20%;
     transition: all 600ms;
 }
 
@@ -2116,13 +2142,13 @@ body.page-template-default.container {
     font-size: 38px;
 }
 
-        .page-template-default footer {
+footer.default {
             min-height: 50px;
                 padding-top: 1px;
                 z-index: 0;
         }
 
-        .page-template-default footer > ul {
+.footer.default > ul {
                     width: auto;
     position: relative;
     display: inline-block;
@@ -2134,8 +2160,7 @@ body.page-template-default.container {
         }
 
 
-
-.page-template-default footer .inner-footer {
+footer.default .inner-footer {
     position: relative !important;
 }
 
