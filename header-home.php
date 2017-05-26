@@ -39,7 +39,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class('inner-page'); ?>>
+<body <?php body_class(); ?>>
 
 <header class="show-desktop">
 	<div class="lines line-one"></div>

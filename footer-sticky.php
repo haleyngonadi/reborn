@@ -22,8 +22,31 @@ if ( is_page( 'homepage' ) ) { ?>
 
      <?php } ?>
 
+<?php
+
+echo '<div class="tag-slide">';
+
+$allposts = get_tags('order=asc');
+$taggroup = array_chunk($allposts, 2);
+
+foreach ($taggroup as $tags) { 
+	$html = '<ul class="sub item">';
+foreach ($tags as $tag) {
+	 $tag_link = get_tag_link($tag->term_id);  
+    $html .= "<li><a href='{$tag_link}' title='{$tag->name}' class='{$tag->slug}'>";
+    $html .= "{$tag->name}<span> ({$tag->count})</span></a></li>";
+}
+
+$html .= '</ul>';
+echo $html;
+} 
+
+echo '</div>';
+
+?>
+
 	<?php 
-$tags = get_tags('order=desc&number=28');
+$tags = get_tags('order=asc&number=28');
 $html = '<ul id="nav">';
 foreach ($tags as $tag) {
     $tag_link = get_tag_link($tag->term_id);  
@@ -34,7 +57,10 @@ $html .= '</ul>';
 echo $html;
 ?>
 
-
+<div class="tag-nav">
+<div id="tag-prev" class="sametag"><i class="fa fa-caret-left"></i></div>
+<div id="tag-next" class="sametag"><i class="fa fa-caret-right"></i></div>
+</div>
     
     <div class="inner-footer"><span>&copy; <?php the_date('Y')?> <?php echo get_bloginfo( 'name' ); ?> - All rights reserved.</span></div>
 

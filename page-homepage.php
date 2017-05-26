@@ -8,7 +8,7 @@
  * @since Reborn 1.0
  */
 
-get_header(); ?>
+get_header('home'); ?>
 
 <?php echo wpb_postsbycategory() ?>
 

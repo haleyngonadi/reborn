@@ -389,6 +389,7 @@ $("#more_posts").on("click",function(){ // When btn is pressed.
     load_posts();
 });
 
+if ($(".inner-page")[0]){
 
 var name = ".social-list";
 var menuYloc = null;
@@ -463,5 +464,29 @@ var menuYloc = null;
          }
 
         });
+
+}
+
+
+var tagOptions = {
+    loop:true,
+    nav:false,
+    items: 1,
+    animateOut: 'bounceOutLeft',
+    animateIn: 'bounceInLeft'
+};
+
+
+issatag = $('.tag-slide').owlCarousel(tagOptions);
+
+
+
+$("#tag-prev").click(function () {
+    issatag.trigger('prev.owl.carousel');
+});
+
+$("#tag-next").click(function () {
+    issatag.trigger('next.owl.carousel');
+});
 
  });

@@ -10,6 +10,6 @@
 
 get_header(); ?>
 
- <h1>404</h1>
+ <h1 class="404-title">404</h1>
   <h2>There isn't anything here</h2>
 <?php get_footer(); ?>
