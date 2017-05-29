@@ -63,7 +63,7 @@
 			<div class="gallery-main" style="background-image: url('<?php $the_feature = wp_get_attachment_image_src( $images[0], 'full-thumb' );
 			echo $the_feature[0]; ?>')">
 			<div id="gallery-count"><span class="gallery-size"><?php echo sizeof($images); ?> Photos</span> </div>
-			</div>
+		
 
 
 		<div class="galleries">
@@ -76,7 +76,7 @@
                     <div id="next-photo"class="photo-button pull-right"><i class="fa fa-caret-right" aria-hidden="true"></i></div>
                 </div>
 
-			<div class="below"><span class="pull-left"><b>Image</b> 1 of <?php echo sizeof($images); ?></span> <span class="credits pull-right"><?php the_author()?> for Trendio</span></div>
+			<div class="below"><span class="image-count pull-left"><b>Image</b> 1 of <?php echo sizeof($images); ?></span> <span class="credits pull-right"><?php the_author()?> for Trendio</span></div>
 
 			<div class="caption-view" <?php if(is_admin) : ?>style="margin-top: 32px;"<?php endif; ?>>
 			<span class="caption-title"><?php the_title()?></span>
@@ -88,23 +88,32 @@
 
             </ul>
 
-            			<span class="caption-text"><?php the_content(); ?></span>
+	<div class="owl-carousel owl-theme">
+
+		<?php foreach($images as $image) : ?>
+			
+			<?php $the_caption = get_post_field('post_excerpt', $image); ?>
+		<span class="caption-text item"> <?php if($the_caption) : ?><?php echo $the_caption; ?><?php endif; ?></span>
+			
+		<?php endforeach; ?>
+
+		</div>
 
 
 			</div>
 
 
                 
-	<div class="owl-carousel owl-theme">
+	<div class="owl-carousel owl-theme owl-main">
 
 		<?php foreach($images as $image) : ?>
 			
 			<?php $the_image = wp_get_attachment_image_src( $image, 'full-thumb' ); ?> 
-			<?php $the_caption = get_post_field('post_excerpt', $image); ?>
-			<div class="item">
+			<?php $the_caption = get_post_meta( $image, '_wp_attachment_image_alt', true); ?>
+			<div class="item item-image">
 
                 <div class="inner-gallery">
-			<img class="owl-lazy" data-src="<?php echo $the_image[0]; ?>" <?php if($the_caption) : ?>title="<?php echo $the_caption; ?>"<?php endif; ?> />
+			<img class="owl-lazy" data-src="<?php echo $the_image[0]; ?>" <?php if($the_caption) : ?>alt="<?php echo $the_caption; ?>"<?php endif; ?> />
 
 			</div>
 			</div>
@@ -113,7 +122,8 @@
 
 		</div>
 		
-		</div>
+		</div></div>
+
 		<?php endif; ?>
 <?php endif; ?>
 

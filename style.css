@@ -1357,7 +1357,12 @@ float: left;
 
 
 }
-
+.owl-stage {
+display: -webkit-box;
+display: -moz-box;
+display: -ms-box;
+display: box;
+}
 
 
 .owl-carousel .item img{
@@ -1365,6 +1370,8 @@ float: left;
   width: auto;
   height: auto;
   max-height: 100%;
+
+    max-width: 100%;
 }
 
 .gallery-button .inactive {
@@ -1434,10 +1441,13 @@ div#next-photo {
 }
 
 .caption-view.caption-expand {
-    height: 0;
+height: 0;
     opacity: 0;
     width: 0;
     visibility: hidden;
+    margin: 0;
+    max-width: 0;
+    padding: 0;
 }
 
 

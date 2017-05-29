@@ -167,17 +167,34 @@ twitterFetcher.fetch(configProfile);
 
 var owlOptions = {
     loop:false,
-    nav:false,
-    animateOut: 'slideInRight',
-    animateIn: 'slideOutRight',
+    nav:true,
+    autoWeight: true,
     items:1,
 lazyLoad:true,
-autoHeight:false,
-onChanged: callback
+autoHeight:true,
+onChanged: callback,
+    animateOut: 'fadeInRight',
+    animateIn: 'fadeOutLeft',
+    onInitialized: function(){
+        var t = this,
+            currSlide = t._current + 1,
+            length = t._items.length;
+         $('.image-count').html('<b>Image </b>' + currSlide + ' of ' + length );
+           sessionStorage.setItem("current_index", currSlide);
+
+    },
+    onTranslate: function(){
+        var t = this,
+            currSlide = t._current + 1,
+            length = t._items.length;
+        $('.image-count').html('<b>Image </b>' + currSlide + ' of ' + length);
+        sessionStorage.setItem("current_index", currSlide);
+    }
 };
 
 
 owl = $('.owl-carousel').owlCarousel(owlOptions);
+
 
 
 function callback(event) {
@@ -198,7 +215,17 @@ function callback(event) {
 $( ".gallery-size" ).click(function() {
     
     $('body').addClass('gallery-active');
-    owl.trigger('refresh.owl.carousel');
+     $('.owl-carousel').trigger('refresh.owl.carousel');
+
+    var getgallery = $('.item-image').width();
+        var getstage = $('.owl-main .owl-stage').css('width');
+
+    console.log(getstage);
+
+
+  sessionStorage.setItem("intial_width", getgallery);
+  sessionStorage.setItem("intial_stage", getstage);
+
 
 
 });
@@ -206,17 +233,34 @@ $( ".gallery-size" ).click(function() {
 $( ".close-button" ).click(function() {
     
     $('body').removeClass('gallery-active');
+    $('.owl-carousel').trigger('refresh.owl.carousel');
+
 
 });
+
+
+
+$('#prev-photo').on('click',function(){
+    owl.trigger('prev.owl.carousel');
+
+     var getIndex = sessionStorage.getItem("current_index")-1;
+        var letsee = $(".owl-main .owl-item").width()*getIndex;
+
+             $(".owl-main .owl-stage").css({transform: "translate3d(-" + letsee + "px, 0px, 0px)" }); 
+
+});
+
+$('#next-photo').on('click',function(){
+    owl.trigger('next.owl.carousel');
 
     
+ var getIndex = sessionStorage.getItem("current_index")-1;
+        var letsee = $(".owl-main .owl-item").width()*getIndex;
+          
+         $(".owl-main .owl-stage").css({transform: "translate3d(-" + letsee + "px, 0px, 0px)" }); 
 
-$("#prev-photo").click(function () {
-    owl.trigger('prev.owl.carousel');
-});
 
-$("#next-photo").click(function () {
-    owl.trigger('next.owl.carousel');
+
 });
 
 $('.caption-text').readmore({
@@ -225,7 +269,8 @@ $('.caption-text').readmore({
 
 
 
-$( ".expand-button" ).click(function() {
+
+$('.expand-button').on('click',function(){
     
     $('.caption-view').toggleClass('caption-expand');
         $('body').toggleClass('owl-expand');
@@ -233,42 +278,31 @@ $( ".expand-button" ).click(function() {
         $('.owl-carousel').toggleClass('owl-expanded');
 
     var mainwidth =   $('.below').width(); 
-    var itemcount = $(".owl-carousel .owl-item").length;
+    var itemcount = $(".owl-main .owl-item").length;
     var windowWidth = $(window).width();
-    var combined = mainwidth*itemcount;
+    var combined = windowWidth*itemcount;
 
 
-
-
-
-/*    if($('.caption-view').css('opacity') == 0) {
-        owl.trigger('refresh.owl.carousel');
+   if($('.caption-view').css('opacity') == 0) {
     console.log('no');
+     var thevalue = sessionStorage.getItem("intial_width");
+    $(".owl-main .owl-item").css({width: thevalue});
+     $(".owl-main .owl-stage").css({width: sessionStorage.getItem("intial_stage")});
 }
     else {
         console.log('yes');
-         $(".owl-carousel").css({width: combined + "px"});
-        $(".owl-item").css({width: windowWidth + "px"});
-         $(".owl-stage").css({width: combined + "px", transform: "translate3d(0px, 0px, 0px)" });
-    }*/
+       $(".owl-main .owl-item").css({width: windowWidth + "px"});
+
+        var getIndex = sessionStorage.getItem("current_index")-1;
+        var letsee = $(".owl-main .owl-item").width()*getIndex;
+        console.log(getIndex);
+
+          
+         $(".owl-main .owl-stage").css({width: combined + "px", transform: "translate3d(-" + letsee + "px, 0px, 0px)" }); 
 
 
-        if($('.caption-view').css('opacity') == 0) {
-        owl.trigger('refresh.owl.carousel');
-
-        }
-    else {
-         var $owl = $('.owl-carousel');
-        $owl.addClass('owl-expanded');
-$owl.trigger('destroy.owl.carousel');
-$owl.html($owl.find('.owl-stage-outer').html()).removeClass('owl-loaded');
- $owl.owlCarousel(owlOptions);
-
-
-
-    }
-
-
+     }
+    
 
 
      if ( $( '.expand-button i' ).hasClass( "fa-plus-square" ) ) {
