@@ -1089,7 +1089,7 @@ footer.default ul li {
     overflow: hidden;
 }
 
-footer.default ul {
+footer.default .active ul {
     padding: 35px;
 }
 
@@ -1124,6 +1124,19 @@ footer a {
 
     }
 
+ .inner-page   .more-stories:before {
+    position: absolute;
+    width: 10px;
+    border-top: 15.92px solid rgb(217, 19, 66);
+    border-right: 21px solid transparent;
+    border-left: 21px solid transparent;
+    content: "";
+    top: 67px;
+    transform: translateX(-50%);
+    left: 50%;
+}
+
+
 .sametag {
     padding: 11px 15px;
     background: #393644;
@@ -1136,7 +1149,7 @@ footer a {
 .inner-page .sametag {
     position: absolute;
     top: 50%;
-    transform: translateX(-50%);
+    transform: translateY(-50%);
     color: white;
 }
 
