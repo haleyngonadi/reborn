@@ -27,7 +27,7 @@ if ( is_page( 'homepage' ) ) { ?>
 echo '<div class="tag-slide">';
 
 $allposts = get_tags('order=asc');
-$taggroup = array_chunk($allposts, 2);
+$taggroup = array_chunk($allposts, 28);
 
 foreach ($taggroup as $tags) { 
 	$html = '<ul class="sub item">';
