@@ -76,7 +76,7 @@
                     <div id="next-photo"class="photo-button pull-right"><i class="fa fa-caret-right" aria-hidden="true"></i></div>
                 </div>
 
-			<div class="below"><span class="pull-left"><b>Image</b> 1 of <?php echo sizeof($images); ?></span> <span class="credits pull-right">Archie for Trendio</span></div>
+			<div class="below"><span class="pull-left"><b>Image</b> 1 of <?php echo sizeof($images); ?></span> <span class="credits pull-right"><?php the_author()?> for Trendio</span></div>
 
 			<div class="caption-view" <?php if(is_admin) : ?>style="margin-top: 32px;"<?php endif; ?>>
 			<span class="caption-title"><?php the_title()?></span>

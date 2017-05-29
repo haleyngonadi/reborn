@@ -1331,8 +1331,8 @@ border: 1px solid #332f3e;
     -moz-transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
     -o-transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
     transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
-display: inline-block;
-width: 0;
+float: left;
+
 
 }
 
@@ -1536,9 +1536,9 @@ span.expand-button {
 
 
 .gallery-main {
-    min-height: 450px;
+    min-height: 500px;
     background-size: cover;
-    margin: 30px 0 0px;
+    margin: 20px 0px;
     display: flex;
     align-items: center;
     position: relative;
