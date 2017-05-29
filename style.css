@@ -1314,7 +1314,7 @@ border: 1px solid #332f3e;
 
 /*** Gallery ***/
 
-.format-gallery .entry-content {
+article.format-gallery .entry-content {
     float: none;
     margin: 22px 0 25px;
     overflow: hidden;
