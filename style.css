@@ -1113,6 +1113,7 @@ footer a {
   /* position relative and z-index fix webkit rendering fonts issue */
   position: relative;
   z-index: 1;
+  padding: 30px;
 }
 
 .inner-page .tag-slide .owl-item {
