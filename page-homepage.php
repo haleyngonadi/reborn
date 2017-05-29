@@ -45,7 +45,7 @@ $the_query = new WP_Query( array('posts_per_page' => 2 ) ); ?>
 	<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 
 			<div class="content-block">
-        <div class="full-image col-sm-4 col-xs-5" style="background-image: url('<?php the_post_thumbnail_url();?>')">
+        <div class="full-image col-sm-4 col-xs-12" style="background-image: url('<?php the_post_thumbnail_url();?>')">
 
         	<?php
 				$categories = get_categories();
@@ -63,7 +63,7 @@ $the_query = new WP_Query( array('posts_per_page' => 2 ) ); ?>
 
 
         </div>
-	<div class="full-content col-sm-8  col-xs-7">
+	<div class="full-content col-sm-8  col-xs-12">
 		<span class="full-date"><?php echo get_the_date('M d');?></span>
 		<a class="full-title" href="<?php the_permalink()?>"><?php the_title(); ?></a>
 		<span class="full-body"><?php wpe_excerpt('wpe_excerptlimit', 'wpe_excerptmore'); ?></span>

@@ -62,8 +62,7 @@ echo $html;
 <div id="tag-next" class="sametag"><i class="fa fa-caret-right"></i></div>
 </div>
     
-    <div class="inner-footer"><span>&copy; <?php the_date('Y')?> <?php echo get_bloginfo( 'name' ); ?> - All rights reserved.</span></div>
-
+    <div class="inner-footer"><span><?php echo comicpress_copyright(); ?> <b><?php echo get_bloginfo( 'name' ); ?></b> - All rights reserved.</span></div>
 </footer>
 
 

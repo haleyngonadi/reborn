@@ -46,36 +46,53 @@
 	<div class="lines line-two"></div>
 	<div class="container">
 	<div class="row menu-items">
-        
-        <div class="logo-small"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></div>
+		
+		<div class="logo-small"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></div>
 		<div class="col-sm-4 left-menu hidden-xs">
-		<ul class="pull-right menu">
-            <li><a id="iterateEffects"><i class="fa fa-home" aria-hidden="true"></i> HOME<span>start here</span></a></li>
-            <li><a href=""><i class="fa fa-music" aria-hidden="true"></i>MUSIC<span>jam sess.?</span></a></li>
-            <li><a href=""><i class="fa fa-video-camera" aria-hidden="true"></i> VIDEOS<span>enjoy watching</span></a></li>
-		</ul>
+<?php if ( has_nav_menu( 'left-menu' ) ) : ?>
+								<?php
+									wp_nav_menu( array(
+										'menu' => 'left-menu',
+										'menu_class'     => 'pull-right menu',
+										 'walker'  => new Walker_Quickstart_Menu() //use our custom walker
+
+									 ) );
+								?>
+
+								<?php endif; ?>
+
+				
 		</div>
 
 		<div class="col-sm-4 logo col-xs-12">
-            <span class="logo-text col-xs-10 col-sm-12 col-lg-sm">TRENDIO</span>
-       
-            <div class="col-xs-2 hidden-lg hidden-sm bars-right">
-            	<div class="bars pull-right"><span id="lines"></span>
-            	<span id="lines"></span>
-            	<span id="lines"></span></div>
+			<span class="logo-text col-xs-10 col-sm-12 col-lg-sm">TRENDIO</span>
+	   
+			<div class="col-xs-2 hidden-lg hidden-sm bars-right">
+				<div class="bars pull-right"><span id="lines"></span>
+				<span id="lines"></span>
+				<span id="lines"></span></div>
 
-            </div>
+			</div>
 		</div>
 		
 		<div class="col-sm-4 col-xs-12 right-menu">
-		<ul class="pull-left menu">
-            <li><a href=""><i class="fa fa-camera-retro" aria-hidden="true"></i> GIGS<span>get browsin'</span></a></li>
-            <li><a href=""><i class="fa fa-coffee" aria-hidden="true"></i> AOTW<span>they slay</span></a></li>
-            <li><a href=""><i class="fa fa-envelope" aria-hidden="true"></i>  CONTACT<span>drop a line</span></a></li>
-		</ul>
+
+		<?php if ( has_nav_menu( 'right-menu' ) ) : ?>
+		<?php
+									wp_nav_menu( array(
+										'menu' => 'right-menu',
+										'menu_class'     => 'pull-left menu',
+										 'walker'  => new Walker_Quickstart_Menu() //use our custom walker
+
+									 ) );
+								?>
+
+								<?php endif; ?>
+
 		</div>
 	</div></div>
 </header>
+
 
 
 <header class="show-mobile">
@@ -83,28 +100,37 @@
 	<div class="lines line-two"></div>
 	<div class="container">
 	<div class="row menu-items">
-        
+		
 
 		<div class="col-sm-4 logo col-xs-12">
-            <span class="logo-text col-xs-10 col-sm-12 col-lg-sm"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span>
-       
-            <div class="col-xs-2 hidden-lg hidden-sm bars-right">
-            	<div class="bars pull-right"><span id="lines"></span>
-            	<span id="lines"></span>
-            	<span id="lines"></span></div>
+			<span class="logo-text col-xs-10 col-sm-12 col-lg-sm"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span>
+	   
+			<div class="col-xs-2 hidden-lg hidden-sm bars-right">
+				<div class="bars pull-right"><span id="lines"></span>
+				<span id="lines"></span>
+				<span id="lines"></span></div>
 
-            </div>
+			</div>
 		</div>
 
 				<div class="col-sm-4 left-menu hidden-lg">
-		<ul class="pull-right menu">
-            <li><a id="iterateEffects"><i class="fa fa-home" aria-hidden="true"></i> HOME<span>start here</span></a></li>
-            <li><a href=""><i class="fa fa-music" aria-hidden="true"></i>MUSIC<span>jam sess.?</span></a></li>
-            <li><a href=""><i class="fa fa-video-camera" aria-hidden="true"></i> VIDEOS<span>enjoy watching</span></a></li>
-            <li><a href=""><i class="fa fa-camera-retro" aria-hidden="true"></i> GIGS<span>get browsin'</span></a></li>
-            <li><a href=""><i class="fa fa-coffee" aria-hidden="true"></i> AOTW<span>they slay</span></a></li>
-            <li><a href=""><i class="fa fa-envelope" aria-hidden="true"></i>  CONTACT<span>drop a line</span></a></li>
-		</ul>
+		<?php
+
+$menu = wp_nav_menu( array(
+	'theme_location'=> 'right-menu',
+	'fallback_cb'   => false,
+	'container'     => '',
+	'items_wrap' => '%3$s',
+	'echo' => false
+) );
+// Display menu-2 with all the list items from menu-1 included.
+wp_nav_menu( array(
+	'theme_location' => 'left-menu',
+	'items_wrap' => '<ul id="%1$s" class="pull-right %2$s">%3$s ' . $menu . '</ul>',
+) );
+
+?>
+
 		</div>
 
 	</div></div>
@@ -114,4 +140,4 @@
 
 
 
-    <div class="container">
+	<div class="container">
