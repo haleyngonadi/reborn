@@ -1060,7 +1060,7 @@ footer.stick  ul{
 
 footer.stick ul li{
     font-family: Montserrat;
-    float: left;
+    display: inline-block;
     border-bottom: 1px dashed white;
     margin-right: 15px;
     margin-bottom: 15px;
@@ -1069,6 +1069,8 @@ footer.stick ul li{
     text-transform: uppercase;
     font-weight: 300;
     letter-spacing: 1px;
+        max-height: 264px;
+    overflow: hidden;
 }
 
 footer.default ul li {
@@ -1083,6 +1085,8 @@ footer.default ul li {
     letter-spacing: 1px;
     display: inline-block;
     font-size: 12px;
+        max-height: 264px;
+    overflow: hidden;
 }
 
 footer.default ul {
