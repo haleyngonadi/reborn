@@ -168,8 +168,8 @@ twitterFetcher.fetch(configProfile);
 var owlOptions = {
     loop:false,
     nav:false,
-    animateOut: 'slideOutRight',
-    animateIn: 'slideInLeft',
+    animateOut: 'slideInRight',
+    animateIn: 'slideOutRight',
     items:1,
 lazyLoad:true,
 autoHeight:false,

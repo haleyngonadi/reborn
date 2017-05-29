@@ -1346,7 +1346,7 @@ float: left;
 
 .owl-carousel .item img{
   display: block;
-  width: 100%;
+  width: auto;
   height: auto;
   max-height: 100%;
 }
@@ -1362,6 +1362,9 @@ float: left;
     transition: opacity 0.3s;
 }
 
+div#next-photo {
+    margin-right: -3px;
+}
 
 .gallery-button {
     top: 50%;
@@ -1392,6 +1395,8 @@ float: left;
     width: 75%;
     padding: 8px 12px;
     font-family: Montserrat;
+     z-index: 99999;
+
 }
 
 
