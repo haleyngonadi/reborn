@@ -40,7 +40,7 @@
 </head>
 
 
-<body <?php if ( !is_404() ) { body_class( 'change-footer' ); } else { body_class(); } ?>>
+<body <?php if ( !is_404() ) { body_class( 'change-footer inner-page' ); } else { body_class('inner-page'); } ?>>
 
 <header class="show-desktop">
 	<div class="lines line-one"></div>
