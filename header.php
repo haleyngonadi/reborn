@@ -49,14 +49,13 @@
         
         <div class="logo-small"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></div>
 		<div class="col-sm-4 left-menu hidden-xs">
-				<?php if ( has_nav_menu( 'right-menu' ) ) : ?>
+				<?php if ( has_nav_menu( 'left-menu' ) ) : ?>
 		<?php
-									wp_nav_menu( array(
+	wp_nav_menu( array(
 	'menu' => 'left-menu',
 	'menu_class'     => 'pull-right menu',
-										 'walker'  => new Walker_Quickstart_Menu() //use our custom walker
-
-									 ) );
+	'walker'  => new Walker_Quickstart_Menu() //use our custom walker
+	) );
 								?>
 
 								<?php endif; ?>
