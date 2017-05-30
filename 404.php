@@ -7,7 +7,7 @@
  * @since Reborn 1.0
  */
 
-get_header('404'); ?>
+get_header(); ?>
 
 <div class="error_header">
  <h1 class="error_title animated flash"><span>404</span></h1>

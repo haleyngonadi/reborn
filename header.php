@@ -39,7 +39,8 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class('inner-page change-footer'); ?>>
+
+<body <?php if ( !is_404() ) { body_class( 'change-footer' ); } else { body_class(); } ?>>
 
 <header class="show-desktop">
 	<div class="lines line-one"></div>

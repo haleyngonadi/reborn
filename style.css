@@ -3043,7 +3043,7 @@ ul.social-list {
 }
 
 .wrapper {
-     padding: 63px 0 0;
+     padding: 34px 0 0;
 
 }
 
@@ -3190,6 +3190,11 @@ display: none;
 
     /* Extra Small Devices, Phones */ 
     @media only screen and (max-width : 480px) {
+
+        .wrapper {
+     padding: 63px 0 0;
+
+}
 
         .error_title span {
     font-size: 100px;
