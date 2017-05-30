@@ -70,13 +70,18 @@
 
 			<div class="gallery-main" style="background-image: url('<?php $the_feature = wp_get_attachment_image_src( $images[0], 'full-thumb' );
 			echo $the_feature[0]; ?>')">
-			<div id="gallery-count"><span class="gallery-size"><?php echo sizeof($images); ?> Photos</span> </div>
+			<div id="gallery-count"><span class="gallery-size"><?php echo sizeof($images); ?> Photos</span> </div></div>
 		
 
 
 		<div class="galleries">
 		<span class="close-button" <?php if(is_user_logged_in() ) : ?>style="top: 30px;"<?php endif; ?>><i class="fa fa-close" aria-hidden="true"></i></span>
 		<span class="expand-button" <?php if(is_user_logged_in() ) : ?>style="top: 30px;"<?php endif; ?>><i class="fa fa-plus-square" aria-hidden="true"></i></span>
+
+							<div class="gallery-button">
+                    <div id="prev-photo"class="photo-button pull-left"><i class="fa fa-caret-left" aria-hidden="true"></i></div>
+                    <div id="next-photo"class="photo-button pull-right"><i class="fa fa-caret-right" aria-hidden="true"></i></div>
+                </div>
 
 
 
@@ -132,12 +137,9 @@
 		</div>
 
 
-					<div class="gallery-button">
-                    <div id="prev-photo"class="photo-button pull-left"><i class="fa fa-caret-left" aria-hidden="true"></i></div>
-                    <div id="next-photo"class="photo-button pull-right"><i class="fa fa-caret-right" aria-hidden="true"></i></div>
-                </div>
+
 		
-		</div></div>
+		</div>
 
 		<?php endif; ?>
 <?php endif; ?>

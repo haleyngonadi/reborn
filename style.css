@@ -1536,6 +1536,7 @@ height: 0;
     margin: 0;
     max-width: 0;
     padding: 0;
+    border-left-width: 0;
 }
 
 
@@ -1671,6 +1672,20 @@ span.expand-button {
     display: flex;
     align-items: center;
     position: relative;
+}
+
+.gallery-main:before {
+    width: 100%;
+    height: 100%;
+    background: rgba(51, 47, 62, 0.3);
+    content: "";
+    position: absolute;
+    transition: 0.3s;
+}
+
+.gallery-main:hover:before {
+    background: rgba(51, 47, 62, 0);
+
 }
 
 div#gallery-count {

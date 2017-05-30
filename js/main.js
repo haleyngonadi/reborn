@@ -171,10 +171,10 @@ twitterFetcher.fetch(configProfile);
 var owlOptions = {
     loop:false,
     nav:true,
-    autoWeight: true,
+    autoWeight: false,
     items:1,
 lazyLoad:true,
-autoHeight:true,
+autoHeight:false,
 onChanged: callback,
     animateOut: 'fadeOut',
     animateIn: 'fadeIn',
@@ -258,6 +258,9 @@ $('.caption-text').readmore({
 
 
 $('.expand-button').on('click',function(){
+
+            $(".owl-main .owl-stage").css({transform: "translate3d(-" + $(".owl-main .owl-item").width()*getIndex + "px, 0px, 0px)" }); 
+
     
     $('.caption-view').toggleClass('caption-expand');
         $('body').toggleClass('owl-expand');
@@ -304,6 +307,8 @@ $('.expand-button').on('click',function(){
             $('.expand-button i').removeClass('fa-plus-square');
             $('.expand-button i').addClass('fa-minus-square');
             $(".expand-button").css({background: "#2c2935"});
+                    $(".owl-main .owl-stage").css({transform: "translate3d(-" + $(".owl-main .owl-item").width()*getIndex + "px, 0px, 0px)" }); 
+
 
 
 
@@ -315,10 +320,13 @@ $('.expand-button').on('click',function(){
         $('.expand-button i').addClass('fa-plus-square');
             $('.expand-button i').removeClass('fa-minus-square');
         $(".expand-button").css({background: "#332f3e"});
+                $(".owl-main .owl-stage").css({transform: "translate3d(-" + $(".owl-main .owl-item").width()*getIndex + "px, 0px, 0px)" }); 
+
 
 
 
     }
+
 
 
 
