@@ -32,7 +32,7 @@ get_header('home'); ?>
 <div class="col-sm-9">
 
 <?php 
-/// the query
+
 $the_query = new WP_Query( array('posts_per_page' => 2 ) ); ?>
 
 <?php if ( $the_query->have_posts() ) : ?>

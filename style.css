@@ -1523,7 +1523,15 @@ height: 0;
     display: none;
 }
 
-
+a.pinit {
+    margin: 6px 0 0;
+    color: white;
+    background: #C92228;
+    text-transform: uppercase;
+    padding: 11px 11px;
+    z-index: 2;
+    display: inline-block;
+}
 
 /*.gallery-active .galleries img {
    max-height: 100%;
@@ -1547,8 +1555,6 @@ height: 0;
 
 
 
-
-
 span.close-button {
     background: #d91342;
     position: absolute;
@@ -1556,7 +1562,6 @@ span.close-button {
     color: white;
     z-index: 999999;
     padding: 10px 12px;
-    top: 30px;
     cursor: pointer;
 }
 
@@ -1567,15 +1572,14 @@ span.expand-button {
     color: white;
     z-index: 999999;
     padding: 10px 12px;
-    top: 30px;
     cursor: pointer;
 }
 
 
 .gallery-main {
-    min-height: 500px;
+    min-height: 435px;
     background-size: cover;
-    margin: 20px 0px;
+    margin: 0px 0px 20px;
     display: flex;
     align-items: center;
     position: relative;
@@ -1587,7 +1591,7 @@ div#gallery-count {
     background: #332f3e;
     color: white;
    text-align: center;
-       font-family: Montserrat;
+       font-family: Montserrat, sans-serif;
     text-transform: uppercase;
 }
 
@@ -2758,6 +2762,10 @@ overflow-x: hidden;
     background: #332F3E;
 }
 
+.social-share i.fa.fa-google-plus {
+background: #d34836;
+
+}
 
 i.fa.fa-pinterest {
     background: #cb2027;
@@ -2794,6 +2802,22 @@ i.fa.fa-pinterest {
     @media only screen and (max-width : 768px) {
         .left-menu {padding: 0}
 
+.gallery-button {
+    max-width: 100%;
+}
+
+.below {
+    width: 100%;
+}
+
+.caption-view {
+    display: none;
+}
+
+.owl-carousel {
+    width: 100%;
+
+    }
 
 .square-image {
     height: 350px;
@@ -2921,7 +2945,7 @@ ul.social-list {
 }
 
 .wrapper {
-     padding: 49px 0 0;
+     padding: 63px 0 0;
 
 }
 
@@ -3080,6 +3104,14 @@ display: none;
 
 }
 
+.gallery-main {
+    min-height: 244px;
+    }
+
+    .social-share li {
+    margin-bottom: 3px;
+}
+
 
     }
 
@@ -3229,4 +3261,81 @@ display: none;
   .tag-slide.owl-rtl {
     direction: rtl; }
   .tag-slide.owl-rtl .owl-item {
+    float: right; }
+
+    .owl-caption {
+  display: none;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+  /* position relative and z-index fix webkit rendering fonts issue */
+  position: relative;
+  z-index: 1; }
+  .owl-caption .owl-stage {
+    position: relative;
+    -ms-touch-action: pan-Y;
+    -moz-backface-visibility: hidden;
+    /* fix firefox animation glitch */ }
+  .owl-caption .owl-stage:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0; }
+  .owl-caption .owl-stage-outer {
+    position: relative;
+    overflow: hidden;
+    /* fix for flashing background */
+    -webkit-transform: translate3d(0px, 0px, 0px); }
+  .owl-caption .owl-wrapper,
+  .owl-caption .owl-item {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0); }
+  .owl-caption .owl-item {
+    position: relative;
+    min-height: 1px;
+    float: left;
+    -webkit-backface-visibility: hidden;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none; }
+  .owl-caption .owl-item img {
+    display: block;
+    width: 100%; }
+  .owl-caption .owl-nav.disabled,
+  .owl-caption .owl-dots.disabled {
+    display: none; }
+  .owl-caption .owl-nav .owl-prev,
+  .owl-caption .owl-nav .owl-next,
+  .owl-caption .owl-dot {
+    cursor: pointer;
+    cursor: hand;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
+  .owl-caption.owl-loaded {
+    display: block; }
+  .owl-caption.owl-loading {
+    opacity: 0;
+    display: block; }
+  .owl-caption.owl-hidden {
+    opacity: 0; }
+  .owl-caption.owl-refresh .owl-item {
+    visibility: hidden; }
+  .owl-caption.owl-drag .owl-item {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
+  .owl-caption.owl-grab {
+    cursor: move;
+    cursor: grab; }
+  .owl-caption.owl-rtl {
+    direction: rtl; }
+  .owl-caption.owl-rtl .owl-item {
     float: right; }

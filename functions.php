@@ -89,6 +89,7 @@ function reborn_scripts() {
 		wp_enqueue_script( 'read-more', get_template_directory_uri() . '/js/readmore.min.js', array( 'jquery' ), '20170324', true );
 		wp_enqueue_script( 'lazy-load', get_template_directory_uri() . '/js/lazysizes.min.js', array( 'jquery' ), '20170512', true );
 		wp_enqueue_script( 'tiny-nav', get_template_directory_uri() . '/js/tinynav.min.js', array( 'jquery' ), '20170512', true );
+		wp_enqueue_script( 'pretty-social', get_template_directory_uri() . '/js/jquery.prettySocial.min.js', array( 'jquery' ), '20170512', true );
 
 
 

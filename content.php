@@ -36,12 +36,20 @@
                         <span class="details">Posted by <?php echo get_the_author_link(); ?> &bull; <?php the_date('F j, Y'); ?></span>
 
 								<ul class="social-share">
-                                    <li><a href=""><i class="fa fa-twitter-square" aria-hidden="true"><span class="itext">Tweet</span></i></a></li>
-                                    <li><a href=""><i class="fa fa-facebook-square" aria-hidden="true"><span class="itext">Share</span></i></a></li>
-                                    <li><a href=""><i class="fa fa-pinterest" aria-hidden="true"><span class="itext">Pin It</span></i></a></li>
-                                    <li><a href=""><i class="fa fa-envelope" aria-hidden="true"><span class="itext">Email</span></i></a></li>
+<li><a href="#" class="prettySocial" data-type="twitter" data-url="<?php the_permalink();?>" data-description="<?php the_title();?>" data-via="wearetrendio"><i class="fa fa-twitter-square" aria-hidden="true"><span class="itext">Tweet</span></i></a></li>
+
+<li><a href="#" class="prettySocial" data-type="facebook" data-url="<?php the_permalink();?>" data-title="<?php the_title();?>" data-description="<?php the_excerpt();?>" data-media="<?php the_post_thumbnail_url();?>"><i class="fa fa-facebook-square" aria-hidden="true"><span class="itext">Share</span></i></a></li>
+
+
+<li><a href="#" class="prettySocial" data-type="pinterest" data-url="<?php the_permalink();?>" data-description="<?php the_title();?>" data-media="<?php the_post_thumbnail_url();?>"><i class="fa fa-pinterest" aria-hidden="true"><span class="itext">Pin It</span></i></a></li>
+
+		<li><a href="#" data-type="googleplus" data-url="<?php the_permalink();?>" data-description="<?php the_title();?>" class="prettySocial"><i class="fa fa-google-plus" aria-hidden="true"><span class="itext">Share</span></i></a></li>
+
+<li><a href="mailto:?subject=Check%20out%20this%20article%20on%20Trendio.us&amp;body=<?php the_title(); ?>:%0A%0A<?php the_permalink(); ?>"><i class="fa fa-envelope" aria-hidden="true"><span class="itext">Email</span></i></a></li>
 
             </ul>
+
+
 
 
 		
@@ -67,28 +75,29 @@
 
 
 		<div class="galleries">
-		<span class="close-button"><i class="fa fa-close" aria-hidden="true"></i></span>
-		<span class="expand-button"><i class="fa fa-plus-square" aria-hidden="true"></i></span>
+		<span class="close-button" <?php if(is_user_logged_in() ) : ?>style="top: 30px;"<?php endif; ?>><i class="fa fa-close" aria-hidden="true"></i></span>
+		<span class="expand-button" <?php if(is_user_logged_in() ) : ?>style="top: 30px;"<?php endif; ?>><i class="fa fa-plus-square" aria-hidden="true"></i></span>
 
 
-			<div class="gallery-button">
-                    <div id="prev-photo"class="photo-button pull-left"><i class="fa fa-caret-left" aria-hidden="true"></i></div>
-                    <div id="next-photo"class="photo-button pull-right"><i class="fa fa-caret-right" aria-hidden="true"></i></div>
-                </div>
+
 
 			<div class="below"><span class="image-count pull-left"><b>Image</b> 1 of <?php echo sizeof($images); ?></span> <span class="credits pull-right"><?php the_author()?> for Trendio</span></div>
 
-			<div class="caption-view" <?php if(is_admin) : ?>style="margin-top: 32px;"<?php endif; ?>>
+			<div class="caption-view" <?php if(is_user_logged_in() ) : ?>style="margin-top: 32px;"<?php endif; ?>>
 			<span class="caption-title"><?php the_title()?></span>
-				<ul class="social-share">
+
+			<a href="#" class="prettySocial pinit" data-type="pinterest" data-url="<?php the_permalink();?>" data-description="<?php the_title();?>" data-media="<?php echo $images[0]; ?>"><i class="fa fa-pinterest" aria-hidden="true"><span class="itext">Pin This</span></i></a>
+
+
+				<!--ul class="social-share">
                                     <li><a href=""><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
                                     <li><a href=""><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
                                     <li><a href=""><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
                                     <li><a href=""><i class="fa fa-envelope" aria-hidden="true" style="background: #79a250"></i></a></li>
 
-            </ul>
+            </ul-->
 
-	<div class="owl-carousel owl-theme">
+	<div class="owl-caption">
 
 		<?php foreach($images as $image) : ?>
 			
@@ -111,9 +120,9 @@
 			<?php $the_image = wp_get_attachment_image_src( $image, 'full-thumb' ); ?> 
 			<?php $the_caption = get_post_meta( $image, '_wp_attachment_image_alt', true); ?>
 			<div class="item item-image">
-
                 <div class="inner-gallery">
-			<img class="owl-lazy" data-src="<?php echo $the_image[0]; ?>" <?php if($the_caption) : ?>alt="<?php echo $the_caption; ?>"<?php endif; ?> />
+			<img class="owl-lazy" data-src="<?php echo $the_image[0]; ?>" <?php if($the_caption) : ?>alt="<?php echo $the_caption; ?>"<?php endif; ?>>
+			
 
 			</div>
 			</div>
@@ -121,6 +130,12 @@
 		<?php endforeach; ?>
 
 		</div>
+
+
+					<div class="gallery-button">
+                    <div id="prev-photo"class="photo-button pull-left"><i class="fa fa-caret-left" aria-hidden="true"></i></div>
+                    <div id="next-photo"class="photo-button pull-right"><i class="fa fa-caret-right" aria-hidden="true"></i></div>
+                </div>
 		
 		</div></div>
 
