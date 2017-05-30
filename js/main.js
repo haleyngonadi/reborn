@@ -6,7 +6,7 @@ $(document).ready(function(){
  $("#nav").tinyNav(
 
     {
-          active: 'selected', // String: Set the "active" class
+          active: 'selected', 
   header: 'Select A Tag', // String: Specify text for "header" and show header instead of the active item
     });
 
@@ -415,7 +415,7 @@ $("#more_posts").on("click",function(){ // When btn is pressed.
     load_posts();
 });
 
-if ($(".inner-page")[0]){
+if ($(".change-footer")[0]){
 
 var name = ".social-list";
 var menuYloc = null;

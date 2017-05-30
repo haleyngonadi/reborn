@@ -53,6 +53,10 @@ a {
     padding: 0
 }
 
+.five-padding {
+    padding-right: 2px;
+}
+
 a:hover {
     color: #d91342
 }
@@ -392,12 +396,7 @@ display: block !important;
     top: 9px;
     transition: 0.3s;
     z-index: 2
-/*
-    -moz-border-image: -moz-linear-gradient(top, #3acfd5 0%, #3a4ed5 100%);
-    -webkit-border-image: -webkit-linear-gradient(top, #3acfd5 0%, #3a4ed5 100%);
-    border-image: linear-gradient(to right, #db1342 0%, #342f3e 100%);
-    border-image-slice: 1;
-*/
+
 
 }
 
@@ -412,6 +411,95 @@ display: block !important;
 	font-size: 15px;
 	color: #332F3E;
     
+}
+
+/*** 404 ***/
+
+.error404 .wrapper  {
+margin-bottom: 50px
+}
+
+.error404 form.search-form.row {
+    max-width: 1000px;
+    margin: 26px auto 10px;
+}
+
+       .error404 form i {
+    display: none;
+}
+
+.error_header {
+    text-align: center;
+}
+
+.error_header h2 {
+margin-bottom: 20px;
+    }
+
+h1.error_title {
+    margin-bottom: -45px;
+}
+.error_title span{
+
+    letter-spacing: -13px;
+    font-weight: 400;
+    font-size: 262px;
+    transition: 0.3s;
+    position: relative;
+    padding-top: 5px;
+    font-family: 'Arvo', sans-serif;
+    color: #332f3e;
+    z-index: 5;
+    padding: 5px 22px 5px 17px;
+
+}
+
+.error_title span:before {
+    content: "";
+    width: 100%;
+    height: 39px;
+    background: #d91342;
+    position: absolute;
+    bottom: 70px;
+    z-index: -1;
+
+}
+.error_header h2 span {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 11px;
+    margin: 0;
+    position: relative;
+}
+
+.error404  input[type="search"] {
+    padding: 11px;
+    border: 1px solid #c7c7c7;
+
+    }
+
+    .grad a {
+    font-family: 'Montserrat', sans-serif;
+    margin: 3px 5px;
+    display: inline-block;
+    color: #332f3e;
+    transition: 0.2s;
+}
+
+ .grad a:hover {
+color: #dc1342;
+    }
+
+.error_input {
+    width: 89%;
+    float: left;
+    margin-right: 1%;
+}
+
+.error_button {
+    width: 10%;
+    float: left;
 }
 
 /*** Newsletter ***/
@@ -459,7 +547,7 @@ section.newsletter {
 
 button.submit {
     background: #332F3E;
-    padding: 10px;
+    padding: 12px;
     color: white;
     text-transform: uppercase;
     font-family: 'Abril Fatface', cursive;
@@ -2800,6 +2888,16 @@ i.fa.fa-pinterest {
 
     /* Small Devices, Tablets */
     @media only screen and (max-width : 768px) {
+
+       .error404 span.screen-reader-text {
+    display: none;
+}
+
+       .error404 form i {
+    display: block;
+}
+
+
         .left-menu {padding: 0}
 
 .gallery-button {
@@ -3092,6 +3190,25 @@ display: none;
 
     /* Extra Small Devices, Phones */ 
     @media only screen and (max-width : 480px) {
+
+        .error_title span {
+    font-size: 100px;
+    margin-bottom: 20px;
+    display: inline-block;
+        padding: 5px 22px 5px 0;
+}
+
+.error_title span:before {
+    content: "";
+    width: 100%;
+    height: 17px;
+    background: #d91342;
+    position: absolute;
+    bottom: 20px;
+    z-index: -1;
+}
+
+
 
         .featured-block, .content-block {
             width: 100%;
