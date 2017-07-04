@@ -28,7 +28,8 @@ $('.social-block').hide();
 
 $( ".aotw-image" ).click(function() {
 
-    window.history.pushState("object or string", "Title", "/new-url");
+    var theurl = $(this).attr('data-url');
+    window.history.pushState("object or string", "Artist of the Week", theurl);
 
   $("html, body").animate({ scrollTop: 0 }, "slow");
 $('.random-row').addClass('row aotw-page');
