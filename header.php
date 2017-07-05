@@ -79,7 +79,7 @@
 									wp_nav_menu( array(
 										'menu' => 'right-menu',
 										'menu_class'     => 'pull-left menu',
-										 'walker'  => new Walker_Quickstart_Menu() //use our custom walker
+										 'walker'  => new Right_Menu() //use our custom walker
 
 									 ) );
 								?>

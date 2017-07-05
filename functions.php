@@ -1134,6 +1134,37 @@ class Walker_Quickstart_Menu extends Walker {
 
 }
 
+
+class Right_Menu extends Walker {
+
+    var $db_fields = array(
+        'parent' => 'menu_item_parent', 
+        'id'     => 'db_id' 
+    );
+
+    /**
+     * At the start of each element, output a <li> and <a> tag structure.
+     * 
+     * Note: Menu objects include url and title properties, so we will use those.
+     */
+    function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+    	$class = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $item->classes ), $item) ) );
+
+
+
+
+        $output .= sprintf( "\n<li class='%s'><a href='%s'%s><i class='fa %s' aria-hidden='true'></i> %s<span>%s</span></a></li>\n",
+            $class,
+            $item->url,
+            ( $item->object_id === get_the_ID() ) ? ' class="current"' : '',
+             $class,
+            $item->title,
+            $item->description
+        );
+    }
+
+}
+
 function comicpress_copyright() {
 global $wpdb;
 $copyright_dates = $wpdb->get_results("

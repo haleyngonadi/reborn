@@ -200,13 +200,19 @@ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'singl
 
 							<?php 
 					$tags = get_the_tags();
+
+					if (!empty($tags)) {
 					foreach ( $tags as $tag ) {
 						$tag_link = get_tag_link( $tag->term_id );
 								
 						$html .= "<li class='ticket'><span class='circle'></span> <a href='{$tag_link}' title='{$tag->name} Tag' class='{$tag->slug}'>";
 						$html .= "{$tag->name}</a></li>";
 					}
-					echo $html;?>
+					echo $html;
+
+					}
+					
+					?>
 
 						</ul>
 
