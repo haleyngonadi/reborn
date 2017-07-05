@@ -52,7 +52,7 @@
 <?php if ( has_nav_menu( 'left-menu' ) ) : ?>
 								<?php
 									wp_nav_menu( array(
-										'menu' => 'left-menu',
+										'theme_location' => 'left-menu',
 										'menu_class'     => 'pull-right menu',
 										 'walker'  => new Walker_Quickstart_Menu() //use our custom walker
 
@@ -80,7 +80,7 @@
 		<?php if ( has_nav_menu( 'right-menu' ) ) : ?>
 		<?php
 									wp_nav_menu( array(
-										'menu' => 'right-menu',
+										'theme_location' => 'right-menu',
 										'menu_class'     => 'pull-left menu',
 										 'walker'  => new Walker_Quickstart_Menu() //use our custom walker
 
