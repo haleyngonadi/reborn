@@ -122,7 +122,7 @@ add_action( 'wp_enqueue_scripts', 'reborn_scripts' );
 
 function wpb_postsbycategory() {
 // the query
-$the_query = new WP_Query( array(/* 'category_name' => 'announcements',*/ 'posts_per_page' => 4 ) ); 
+$the_query = new WP_Query( array( 'category_name' => 'featured', 'posts_per_page' => 4 ) ); 
 
 // The Loop
 if ( $the_query->have_posts() ) {
