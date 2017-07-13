@@ -104,8 +104,59 @@ dateFormat : 'M d, yy'
     });
 
 
-$( "#wpcf-purchase" ).change(function() {
-  alert( "Handler for .change() called." );
+$( "#wpcf-song-choice" ).change(function() {
+  $('.pre-release').show();
+
+  var theURL = $("#wpcf-song-choice").val();
+  theURL = theURL.replace(' ', '+');
+
+  var artistName = $("#title").val();
+  artistName = artistName.replace(' ', '+');
+
+
+  var combinedURL = 'https://itunes.apple.com/search?term='+theURL+"+"+artistName;
+  console.log(combinedURL);
+
+
+  $.ajax({
+    url: combinedURL,
+    dataType: 'JSONP'
+})
+    .done(function(data) { 
+        $('.pre-release').hide();
+
+        $('.releases').show();
+
+    
+    var artistimage = data.results[0].artworkUrl100;
+    artistimage = artistimage.replace('100x100bb','1200x1200bb');
+    
+    var releasedate = data.results[0].releaseDate;
+    var seconddate = moment(releasedate).format('MMMM D, YYYY');
+
+
+
+    $('#wpcf-release-title').val(data.results[0].collectionName);
+    $('#wpcf-release-date').val(seconddate);
+    $('#release-image').val(artistimage);
+    $('#wpcf-purchase').val(data.results[0].collectionViewUrl);
+
+    $('#wpcf-lyrics').val('https://genius.com/search?q='+theURL+"+"+artistName);
+
+
+
+
+
+})
+    .fail(function(data) { 
+        $('.releases').html('Sorry, no results were found for that release. Try another one?');
+
+        console.log(data); })
+
+
+  return false;
+
+
 });
 
 });

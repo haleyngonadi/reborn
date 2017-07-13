@@ -1146,10 +1146,21 @@ span.square-date {
     border-left: 1px solid #fff;
 }
 
+.single-aotw .white-complete {
+    position: relative;
+    top: 0;
+}
 
+
+.single-aotw .white-complete .aotw-page {
+    margin: 0px auto !important;
+
+
+}
 .white-complete .aotw-body {
     font-size: 14px;
     line-height: 22px;
+    width: 100%;
 }
 
 .full-date {

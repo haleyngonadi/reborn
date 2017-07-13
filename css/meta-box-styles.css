@@ -40,11 +40,7 @@ input#meta-image, #release-image {
 }
 
 .releases {
-	height: 0;
-	display: block;
-	width: 0;
-	opacity: 0;
-	transition: 0.2s
+	display: none;
 }
 
 .released {

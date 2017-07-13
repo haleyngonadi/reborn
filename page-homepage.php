@@ -234,7 +234,7 @@ $the_query = new WP_Query( $args ); ?>
                                 <c><i class="fa fa-youtube"></i></c>
                                 <div class="text"> <?php _e( 'featured video', 'reborn' )?></div></div>
 
-                            <iframe width="100%" height="195" src="https://www.youtube.com/embed/<?php echo ( get_post_meta( $post->ID, 'wpcf-youtube-id', true ) ); ?>" frameborder="0" allowfullscreen></iframe>
+                            <div class="youtube" data-embed="<?php echo ( get_post_meta( $post->ID, 'wpcf-youtube-id', true ) ); ?>"> <div class="play-button"></div></div>
 
 
                         </div>

@@ -617,6 +617,8 @@ function prfx_admin_styles(){
     global $typenow;
     if( $typenow == 'aotw' ) {
         wp_enqueue_style( 'prfx_meta_box_styles', get_template_directory_uri() . '/css/meta-box-styles.css' );
+        wp_enqueue_style( 'admin-css', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
+
     }
 }
 add_action( 'admin_print_styles', 'prfx_admin_styles' );
@@ -629,6 +631,8 @@ function prfx_image_enqueue() {
  
         // Registers and enqueues the required javascript.
         wp_register_script( 'meta-box-image', get_template_directory_uri() . '/js/meta-box-image.js', array( 'jquery' ) );
+		wp_register_script( 'moment-js', get_template_directory_uri() . '/js/moment.min.js', array( 'jquery' ), '20170403', true );
+
         wp_localize_script( 'meta-box-image', 'meta_image',
             array(
                 'title' => __( 'Select Image', 'trendio' ),
@@ -636,6 +640,8 @@ function prfx_image_enqueue() {
             )
         );
         wp_enqueue_script( 'meta-box-image' );
+        wp_enqueue_script( 'moment-js' );
+
     }
 }
 add_action( 'admin_enqueue_scripts', 'prfx_image_enqueue' );
@@ -673,7 +679,6 @@ function cd_meta_box_cb( $post )
 	$from = isset( $values['wpcf-from'] ) ? esc_attr( $values['wpcf-from'][0] ) : '';
 	$label = isset( $values['wpcf-label'] ) ? esc_attr( $values['wpcf-label'][0] ) : '';
 	$genre = isset( $values['wpcf-genre'] ) ? esc_attr( $values['wpcf-genre'][0] ) : '';
-	$song = isset( $values['wpcf-song-choice'] ) ? esc_attr( $values['wpcf-song-choice'][0] ) : '';
 	wp_nonce_field( 'my_meta_box_nonce', 'meta_box_nonce' );
 	?>
 
@@ -694,10 +699,10 @@ function cd_meta_box_cb( $post )
 	</p>
 
 
-	<p>
+	<!--p>
 		<label for="wpcf-song-choice">Song Choice</label>
 		<input type="text" name="wpcf-song-choice" id="wpcf-song-choice" class="form-input" value="<?php echo $song; ?>" />
-	</p>
+	</p-->
 	
 	<p>
     <label for="wpcf-photo" class="prfx-row-title"><?php _e( 'Photo', 'reborn' )?></label>
@@ -822,68 +827,79 @@ function cd_release( $post )
 	$title = isset( $values['wpcf-release-title'] ) ? esc_attr( $values['wpcf-release-title'][0] ) : '';
 	$lyrics = isset( $values['wpcf-lyrics'] ) ? esc_attr( $values['wpcf-lyrics'][0] ) : '';
 	$type = isset( $values['wpcf-type-of-release'] ) ? esc_attr( $values['wpcf-type-of-release'][0] ) : '';
+	$song = isset( $values['wpcf-song-choice'] ) ? esc_attr( $values['wpcf-song-choice'][0] ) : '';
+
 
 	wp_nonce_field( 'my_release_nonce', 'release_nonce' );
 	?>
 
 	<div class="somewhere">
 
-	<p>
+	<!--p>
 		<label for="wpcf-type-of-release">Type of Release</label>
-		    <input type="checkbox" name="ep" id="ep" value="yes" <?php if ( isset ( $values['ep'] ) ) checked( $values['ep'][0], 'yes' ); ?> />EP<br />
+
     <input type="checkbox" name="album" id="album" value="yes" <?php if ( isset ( $values['album'] ) ) checked( $values['album'][0], 'yes' ); ?> />Album<br />
-    <input type="checkbox" name="single" id="single" value="yes" <?php if ( isset ( $values['single'] ) ) checked( $values['single'][0], 'yes' ); ?> />Single<br />
+    <input type="checkbox" name="song" id="song" value="yes" <?php if ( isset ( $values['song'] ) ) checked( $values['song'][0], 'yes' ); ?> />Single<br />
 
-	</p>
+	</p-->
 
-	<div>
-		<label for="wpcf-rate-the-release">Rate The Release</label>
-		<p>What would you rate this release? Ex: ★★★★☆</p>
-		<input type="text" name="wpcf-rate-the-release" id="wpcf-rate-the-release" class="form-input"  value="<?php echo $rate; ?>" />
-	</div>
 
 
 		<div>
-		<label for="wpcf-purchase">Purchase</label>
-		<p>Please provide the iTunes URL of this release.</p>
-		<input type="text" name="wpcf-purchase" id="wpcf-purchase" class="form-input" value="<?php echo $purchase; ?>" />
+		<label for="wpcf-song-choice">Release of Choice</label>
+		<p>Please provide the title of this artist's favorite song or album of yours.</p>
+		<input type="text" name="wpcf-song-choice" id="wpcf-song-choice" class="form-input" value="<?php echo $song; ?>" />
 	</div>
 
+	<div class="pre-release" style="display: none;">
+	
+	<p> <i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Please wait for this information to be populated.</p>
 
-	<div class="releases">
+	</div>
 
-	<p>
-		<label for="wpcf-release-title">Release Title</label>
-		<input type="text" name="wpcf-release-title" id="wpcf-release-title" class="form-input"  value="<?php echo $title; ?>" />
-	</p>
+	<div class="releases" <?php if($date) : ?>style="display: block"<?php endif; ?>>
+
 
 	
 	
 	<div>
 		<label for="wpcf-release-date">Release Date</label>
-		<p>Please provide the release date of said release.</p>
-		<input type="text" name="wpcf-release-date" placeholder="Click to select a date" id="wpcf-release-date" class="cookie_date" value="<?php echo $date; ?>" />
+		<input type="text" name="wpcf-release-date" id="wpcf-release-date" value="<?php echo $date; ?>" />
 	</div>
 
 
 
 		<div>
     <label for="wpcf-release-image" class="prfx-row-title"><?php _e( 'Release Image', 'reborn' )?></label>
-    <p>Please add the url of the album or single.</p>
-   <p> <input type="text" name="wpcf-release-image" id="release-image" value="<?php echo $image; ?>" />
-    <input type="button" id="release-button" class="button" value="<?php _e( 'Select Image', 'trendio' )?>" /></p>
+   <p> <input type="text" name="wpcf-release-image" id="release-image" value="<?php echo $image; ?>" /></p>
 
-    		<div class="release-square appear" style="background-image:url('<?php echo $image; ?>')"></div>
+    		
 
 		</div>
+
+
+		<div>
+
+				<p>
+		<label for="wpcf-purchase">Purchase URL</label>
+		<input type="text" name="wpcf-purchase" id="wpcf-purchase" class="form-input"  value="<?php echo $purchase; ?>" />
+	</p>
+</div>
+
 		</div>
 
 			<p>
 		<label for="wpcf-lyrics">Lyrics</label>
-		<input type="text" name="wpcf-lyrics" id="wpcf-lyrics" class="form-input" placeholder="Please provide the most relevant URL to the lyrics of the release." value="<?php echo $lyrics; ?>" />
+		<input type="text" name="wpcf-lyrics" id="wpcf-lyrics" class="form-input" value="<?php echo $lyrics; ?>" />
 	</p>
 
 </div>
+
+			<div>
+		<label for="wpcf-rate-the-release">Rate The Release</label>
+		<p>What would you rate this release? Ex: ★★★★☆</p>
+		<input type="text" name="wpcf-rate-the-release" id="wpcf-rate-the-release" class="form-input"  value="<?php echo $rate; ?>" />
+	</div>
 
 	<?php	
 
@@ -928,8 +944,7 @@ function cd_meta_box_save( $post_id )
 	if( isset( $_POST['wpcf-genre'] ) )
 		update_post_meta( $post_id, 'wpcf-genre', wp_kses( $_POST['wpcf-genre'], $allowed ) );
 
-	if( isset( $_POST['wpcf-song-choice'] ) )
-		update_post_meta( $post_id, 'wpcf-song-choice', wp_kses( $_POST['wpcf-song-choice'], $allowed ) );
+
 
 	if( isset( $_POST[ 'wpcf-photo' ] ) )
     update_post_meta( $post_id, 'wpcf-photo', $_POST[ 'wpcf-photo' ] );
@@ -1022,6 +1037,9 @@ function cd_release_box_save( $post_id )
 		if( isset( $_POST['wpcf-release-title'] ) )
 		update_post_meta( $post_id, 'wpcf-release-title', wp_kses( $_POST['wpcf-release-title'], $allowed ) );
 
+		if( isset( $_POST['wpcf-song-choice'] ) )
+		update_post_meta( $post_id, 'wpcf-song-choice', wp_kses( $_POST['wpcf-song-choice'], $allowed ) );
+
 		if( isset( $_POST['wpcf-rate-the-release'] ) )
 		update_post_meta( $post_id, 'wpcf-rate-the-release', wp_kses( $_POST['wpcf-rate-the-release'], $allowed ) );
 
@@ -1044,10 +1062,10 @@ function cd_release_box_save( $post_id )
         }
 
         //saves bill's value
-        if( isset( $_POST[ 'single' ] ) ) {
-            update_post_meta( $post_id, 'single', 'yes' );
+        if( isset( $_POST[ 'song' ] ) ) {
+            update_post_meta( $post_id, 'song', 'yes' );
         } else {
-            update_post_meta( $post_id, 'single', 'no' );
+            update_post_meta( $post_id, 'song', 'no' );
         }
 
         //saves steve's value

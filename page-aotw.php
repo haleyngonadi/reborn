@@ -87,7 +87,7 @@ $the_query = new WP_Query( array( 'post_type' => 'aotw', 'year' => 2017, 'posts_
 		<div class="col-sm-3">
 		<a href="<?php the_permalink()?>">
 		<div class="aotw-picture" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
-		<span class="aotw-added"><?php echo get_the_date('Y'); ?></span>
+		<span class="aotw-added"><?php echo get_the_date('F d'); ?></span>
 
 		<span class="aotw-called">
 		<?php
