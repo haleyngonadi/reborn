@@ -88,7 +88,33 @@ a:hover {
     background-repeat: no-repeat;
     background-position: center center;
         margin-bottom: 35px;
+        transition: 0.3s;
+         transform: scale3d(1, 1, 1);
+
 }
+
+.aotw-picture:hover {
+
+          animation-duration: 1s;
+   animation-name: pulse;
+
+   }
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+
 
 span.aotw-added {
     position: absolute;
@@ -3547,3 +3573,65 @@ display: none;
     direction: rtl; }
   .owl-caption.owl-rtl .owl-item {
     float: right; }
+
+
+
+
+
+    /**** Tabs ****/
+
+/**
+ * Tabs
+ */
+.tabs {
+    display: flex;
+    flex-wrap: wrap; 
+    float: left;
+    width: 100%;
+}
+.tabs label {
+    order: 1; // Put the labels first
+    display: block;
+    padding: 1rem 2rem;
+    margin-right: 0.2rem;
+    cursor: pointer;
+  background: #332f3e;
+  font-weight: bold;
+  transition: background ease 0.2s;
+    font-family: 'Montserrat', serif;
+    color: white;
+
+}
+.tabs .tab {
+  order: 99; // Put the tabs last
+  flex-grow: 1;
+    width: 100%;
+    display: none;
+  padding: 1rem 0;
+  background: #fff;
+}
+.tabs input[type="radio"] {
+    display: none;
+}
+.tabs input[type="radio"]:checked + label {
+    background: #dc1342;
+}
+.tabs input[type="radio"]:checked + label + .tab {
+    display: block;
+      animation-name: bounce;
+  transform-origin: center bottom;
+      animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@media (max-width: 45em) {
+  .tabs .tab,
+  .tabs label {
+    order: initial;
+  }
+  .tabs label {
+    width: 100%;
+    margin-right: 0;
+    margin-top: 0.2rem;
+  }
+}
