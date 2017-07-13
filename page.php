@@ -77,7 +77,6 @@ if ($image) : ?>
 
  <ul class="social-list">
                     <li><a href="https://www.instagram.com/trendio.us/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                    <li><a href="https://www.bloglovin.com/blog/2322714" target="_blank"><i class="fa fa-heart" aria-hidden="true"></i></a></li>
                     <li><a href="https://www.facebook.com/wearetrendio" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                     <li><a href="https://twitter.com/wearetrendio" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                     <li><a href="mailto:contact@trendio.us" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>

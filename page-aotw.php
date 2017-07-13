@@ -201,6 +201,13 @@ $the_query = new WP_Query( array( 'post_type' => 'aotw', 'year' => 2017, 'posts_
 </main></div>
 
 
+ <ul class="social-list">
+                    <li><a href="https://www.instagram.com/trendio.us/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.facebook.com/wearetrendio" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="https://twitter.com/wearetrendio" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="mailto:contact@trendio.us" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.spotify.com/user/trendio/" target="_blank"><i class="fa fa-spotify" aria-hidden="true"></i></a></li>
 
+                </ul>
 
 <?php get_footer(); ?>
