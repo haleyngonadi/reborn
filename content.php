@@ -165,6 +165,13 @@ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'singl
 <?php endif; ?>
 
 
+<?php if(has_post_format('video')) : ?>
+
+	<div class="youtube" data-embed="<?php echo get_post_meta( $post->ID, '_format_video_embed', true );?>"> <div class="play-button"></div></div>
+
+<?php endif; ?>
+
+
 
  <div class="single-text">
 
