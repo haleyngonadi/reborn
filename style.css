@@ -87,6 +87,7 @@ a:hover {
     position: relative;
     background-repeat: no-repeat;
     background-position: center center;
+        margin-bottom: 35px;
 }
 
 span.aotw-added {
@@ -117,7 +118,7 @@ span.aotw-called {
 }
 
 .page-aotw .entry-header {
-    text-align: center;
+
     margin: 10px 0 30px;
    
 }
@@ -125,8 +126,23 @@ span.aotw-called {
 .page-aotw .cat-title {
     font-family: 'Abril Fatface', cursive;
     font-size: 36px;
+    position: relative;
+    padding-left: 60px;
 
     }
+
+
+.page-aotw   span.cat-title:before {
+
+    height: 1px;
+    width: 50px;
+    position: absolute;
+    background: #332f3e;
+    content: "";
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+}
 
 /*** Header Goes Here ***/
 

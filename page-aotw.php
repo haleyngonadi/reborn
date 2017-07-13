@@ -12,15 +12,14 @@ get_header(); ?>
 	<div id="primary" class="content-area page-area">
 		<main id="main" class="site-main" role="main">
 
-
-<div class="entry-header">
+		<div class="entry-header">
 	
-		<span class="cat-title"><?php _e( 'Hall of Fame', 'reborn' )?></span>
+		<span class="cat-title"><?php _e( 'The Present', 'reborn' )?></span>
 	</div>
 
 		<?php 
 // the query
-$the_query = new WP_Query( array( 'post_type' => 'aotw' ) ); ?>
+$the_query = new WP_Query( array( 'post_type' => 'aotw', 'year' => 2017 ) ); ?> 
 
 <?php if ( $the_query->have_posts() ) : ?>
 
@@ -31,7 +30,46 @@ $the_query = new WP_Query( array( 'post_type' => 'aotw' ) ); ?>
 		<div class="col-sm-3">
 
 		<div class="aotw-picture" style="background-image: url(<?php echo esc_url( get_post_meta( $post->ID, 'wpcf-photo', true ) ); ?>)">
-		<span class="aotw-added"><?php the_date('F d, Y'); ?></span>
+		<span class="aotw-added"><?php echo get_the_date('F d, Y'); ?></span>
+
+		<span class="aotw-called"><?php the_title(); ?></span>
+
+		</div>
+			
+		</div>
+	<?php endwhile; ?>
+	</div><!-- end of the loop -->
+
+	<!-- pagination here -->
+
+	<?php wp_reset_postdata(); ?>
+
+<?php else : ?>
+	<p><?php _e( 'Sorry, there are no artists to view at this time.' ); ?></p>
+<?php endif; ?>
+
+
+
+
+<div class="entry-header">
+	
+		<span class="cat-title"><?php _e( 'The Past', 'reborn' )?></span>
+	</div>
+
+		<?php 
+// the query
+$the_query = new WP_Query( array( 'post_type' => 'posts', 'orderby' => 'rand', 'category_name' => 'artist-of-the-week', 'posts_per_page' => -1 ) ); ?>
+
+<?php if ( $the_query->have_posts() ) : ?>
+
+	<!-- pagination here -->
+
+	<div class="row"><!-- the loop -->
+	<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+		<div class="col-sm-3">
+
+		<div class="aotw-picture" style="background-image: url(<?php echo esc_url( get_post_meta( $post->ID, 'wpcf-photo', true ) ); ?>)">
+		<span class="aotw-added"><?php echo get_the_date('Y'); ?></span>
 
 		<span class="aotw-called"><?php the_title(); ?></span>
 
