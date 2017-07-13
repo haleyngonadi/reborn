@@ -151,7 +151,7 @@ $the_query = new WP_Query( $args ); ?>
     <div class="random-row">
         <div class="aotw-block">
             <div class="aotw-photo col-sm-4 col-xs-12">
-                <div class="aotw-image" style="background-image: url('<?php echo esc_url( get_post_meta( $post->ID, 'wpcf-release-image', true ) ); ?>')" data-url="<?php the_permalink();?>"></div></div>
+                <div class="aotw-image" style="background-image: url('<?php echo esc_url( get_post_meta( $post->ID, 'wpcf-photo', true ) ); ?>')" data-url="<?php the_permalink();?>"></div></div>
             <div class="complete-content col-sm-8 col-xs-12">
                 <span class="full-date"><?php _e( 'Spotlight', 'reborn' )?></span>
                 <div class="full-title"><span class="pre-aotw"><?php _e( 'Artist of the Week:', 'reborn' )?> </span><?php the_title();?></div>

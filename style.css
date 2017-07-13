@@ -77,6 +77,57 @@ a:hover {
     height: 100%;
 }
 
+
+/*** Aotw Page ***/
+
+
+.aotw-picture {
+    background-size: cover;
+    height: 266px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+span.aotw-added {
+    position: absolute;
+    text-transform: uppercase;
+    color: white;
+    background: #332f3e;
+    padding: 6px 14px;
+    font-family: 'Montserrat', serif;
+    font-size: 12px;
+    left: 10px;
+    top: 10px;
+}
+
+
+span.aotw-called {
+    position: absolute;
+    text-transform: uppercase;
+    color: white;
+    background: #dc1342;
+    padding:6px 14px;
+    font-family: 'Montserrat', serif;
+    font-size: 14px;
+    right: 10px;
+    bottom: 10px;
+    font-weight: 600;
+
+}
+
+.page-aotw .entry-header {
+    text-align: center;
+    margin: 10px 0 30px;
+   
+}
+
+.page-aotw .cat-title {
+    font-family: 'Abril Fatface', cursive;
+    font-size: 36px;
+
+    }
+
 /*** Header Goes Here ***/
 
 header {
