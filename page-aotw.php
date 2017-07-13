@@ -12,6 +12,18 @@ get_header(); ?>
 	<div id="primary" class="content-area page-area">
 		<main id="main" class="site-main" role="main">
 
+			<div class="aotw-header">
+
+			<span> ☆ Hall of Fame ☆ </span>
+
+		<p>Here is a collections of artists we have discovered and featured here on Trendio. Each artist was chosen for a specific week as showcased below.To find out more, click on the artist's photo. If you would like to suggest an 'artist of the week,' please email <b style="background: -webkit-linear-gradient(left,#dc1342,#332F3E); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">contact@trendio.us</b>! 
+
+		</p>
+
+		</div>
+
+
+
 		<div class="entry-header">
 	
 		<span class="cat-title"><?php _e( 'The Present', 'reborn' )?></span>

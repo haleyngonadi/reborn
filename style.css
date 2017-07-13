@@ -3576,7 +3576,23 @@ display: none;
 
 
 
+.aotw-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
+.aotw-header span {
+    font-family: 'Abril Fatface', cursive;
+    font-size: 36px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: inline-block;
+}
+
+.aotw-header p {
+    max-width: 900px;
+    margin: 0 auto 20px;
+}
 
     /**** Tabs ****/
 
