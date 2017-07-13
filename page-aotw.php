@@ -58,7 +58,7 @@ $the_query = new WP_Query( array( 'post_type' => 'aotw', 'year' => 2017, 'posts_
 
 		<?php 
 // the query
-$the_query = new WP_Query( array( 'post_type' => 'posts', 'category__in' => 6, 'posts_per_page' => -1 ) ); ?>
+$the_query = new WP_Query( array( 'category__in' => 6, 'posts_per_page' => -1 ) ); ?>
 
 <?php if ( $the_query->have_posts() ) : ?>
 
