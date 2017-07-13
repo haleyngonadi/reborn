@@ -607,7 +607,7 @@ function create_aotw_type() {
         'view_item' => __( 'View AOTW' ),
       ),
       'public' => true,
-      'has_archive' => true,
+      'has_archive' => false,
       'supports'           => array( 'title')
     )
   );
