@@ -66,16 +66,30 @@ $the_query = new WP_Query( array( 'category__in' => 6, 'posts_per_page' => -1 ) 
 
 	<div class="row"><!-- the loop -->
 	<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+
+
+		<?php 
+		$a = get_the_title();
+		if (strpos($a, 'Featured:') !== false) :?>
 		<div class="col-sm-3">
 
-		<div class="aotw-picture" style="background-image: url(<?php echo esc_url( get_post_meta( $post->ID, 'wpcf-photo', true ) ); ?>)">
+		<div class="aotw-picture" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
 		<span class="aotw-added"><?php echo get_the_date('Y'); ?></span>
 
-		<span class="aotw-called"><?php the_title(); ?></span>
+		<span class="aotw-called">
+		<?php
+			$title = get_the_title();
+			$bodytag = str_replace("Featured: ", "", $title);
+			echo $bodytag;
+		 //the_title(); ?>
+			
+		</span>
 
 		</div>
 			
 		</div>
+		<?php endif; ?>
 	<?php endwhile; ?>
 	</div><!-- end of the loop -->
 
