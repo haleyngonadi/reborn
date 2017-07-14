@@ -677,8 +677,7 @@ function cd_meta_box_cb( $post )
 	$values = get_post_custom( $post->ID );
 	$photo = isset( $values['wpcf-photo'] ) ? esc_attr( $values['wpcf-photo'][0] ) : '';
 	$from = isset( $values['wpcf-from'] ) ? esc_attr( $values['wpcf-from'][0] ) : '';
-	$label = isset( $values['wpcf-label'] ) ? esc_attr( $values['wpcf-label'][0] ) : '';
-	$genre = isset( $values['wpcf-genre'] ) ? esc_attr( $values['wpcf-genre'][0] ) : '';
+	
 	wp_nonce_field( 'my_meta_box_nonce', 'meta_box_nonce' );
 	?>
 
@@ -688,15 +687,6 @@ function cd_meta_box_cb( $post )
 		<input type="text" name="wpcf-from" id="wpcf-from" class="form-input" value="<?php echo $from; ?>" />
 	</p>
 	
-		<p>
-		<label for="wpcf-label">Label</label>
-		<input type="text" name="wpcf-label" id="wpcf-label" class="form-input" value="<?php echo $label; ?>" />
-	</p>
-
-	<p>
-		<label for="wpcf-genre">Genre</label>
-		<input type="text" name="wpcf-genre" id="wpcf-genre" class="form-input" value="<?php echo $genre; ?>" />
-	</p>
 
 
 	<!--p>
@@ -740,10 +730,19 @@ function cd_socials( $post )
 	$insta = isset( $values['wpcf-instagram-username'] ) ? esc_attr( $values['wpcf-instagram-username'][0] ) : '';
 	$spotify = isset( $values['wpcf-spotify'] ) ? esc_attr( $values['wpcf-spotify'][0] ) : '';
 	$youtube = isset( $values['wpcf-youtube-url'] ) ? esc_attr( $values['wpcf-youtube-url'][0] ) : '';
+	$youtubeid = isset( $values['wpcf-youtube-id'] ) ? esc_attr( $values['wpcf-youtube-id'][0] ) : '';
+
 	wp_nonce_field( 'my_socials_box_nonce', 'socials_box_nonce' );
 	?>
 
 	<div class="somewhere">
+
+		<p>
+		<label for="wpcf-youtube-id">YouTube ID</label>
+		<p>Enter the YouTube ID of this artist's favorite video of yours. 
+		<input type="text" name="wpcf-youtube-id" id="wpcf-youtube-id" class="form-input" placeholder="ex: nBmNcLBaPUE" value="<?php echo $youtubeid; ?>" />
+	</p>
+	
 
 	<p>
 		<label for="wpcf-youtube-url">YouTube URL</label>
@@ -776,38 +775,6 @@ function cd_socials( $post )
 
 }
 
-function cd_extra( $post )
-{
-
-	wp_enqueue_script( 'jquery-ui-datepicker' );
-wp_enqueue_style( 'jquery-ui-style', '//ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/smoothness/jquery-ui.css', true);
-
-
-
-	$values = get_post_custom( $post->ID );
-	$from = isset( $values['wpcf-youtube-id'] ) ? esc_attr( $values['wpcf-youtube-id'][0] ) : '';
-	$label = isset( $values['wpcf-date-selected'] ) ? esc_attr( $values['wpcf-date-selected'][0] ) : '';
-	wp_nonce_field( 'my_extra_box_nonce', 'extra_box_nonce' );
-	?>
-
-	<div class="somewhere">
-
-	<p>
-		<label for="wpcf-youtube-id">YouTube ID</label>
-		<input type="text" name="wpcf-youtube-id" id="wpcf-youtube-id" class="form-input" placeholder="ex: nBmNcLBaPUE" value="<?php echo $from; ?>" />
-	</p>
-	
-		<p>
-		<label for="wpcf-date-selected">Date Selected</label>
-		<input type="text" name="wpcf-date-selected" placeholder="Click to select a date" id="wpcf-date-selected" class="cookie_date" value="<?php echo $label; ?>" />
-	</p>
-
-</div>
-
-	<?php	
-
-}
-
 
 
 
@@ -828,6 +795,8 @@ function cd_release( $post )
 	$lyrics = isset( $values['wpcf-lyrics'] ) ? esc_attr( $values['wpcf-lyrics'][0] ) : '';
 	$type = isset( $values['wpcf-type-of-release'] ) ? esc_attr( $values['wpcf-type-of-release'][0] ) : '';
 	$song = isset( $values['wpcf-song-choice'] ) ? esc_attr( $values['wpcf-song-choice'][0] ) : '';
+	$label = isset( $values['wpcf-label'] ) ? esc_attr( $values['wpcf-label'][0] ) : '';
+	$genre = isset( $values['wpcf-genre'] ) ? esc_attr( $values['wpcf-genre'][0] ) : '';
 
 
 	wp_nonce_field( 'my_release_nonce', 'release_nonce' );
@@ -843,8 +812,11 @@ function cd_release( $post )
 
 	</p-->
 
-
-
+<div>
+			<p>
+		<label for="wpcf-label">Label</label>
+		<input type="text" name="wpcf-label" id="wpcf-label" class="form-input" value="<?php echo $label; ?>" />
+	</p></div>
 		<div>
 		<label for="wpcf-song-choice">Release of Choice</label>
 		<p>Please provide the title of this artist's favorite song or album of yours.</p>
@@ -858,6 +830,14 @@ function cd_release( $post )
 	</div>
 
 	<div class="releases" <?php if($date) : ?>style="display: block"<?php endif; ?>>
+
+
+
+	<p>
+		<label for="wpcf-genre">Genre</label>
+		<input type="text" name="wpcf-genre" id="wpcf-genre" class="form-input" value="<?php echo $genre; ?>" />
+	</p>
+
 
 
 	
@@ -938,11 +918,7 @@ function cd_meta_box_save( $post_id )
 	if( isset( $_POST['wpcf-from'] ) )
 		update_post_meta( $post_id, 'wpcf-from', wp_kses( $_POST['wpcf-from'], $allowed ) );
 
-		if( isset( $_POST['wpcf-label'] ) )
-		update_post_meta( $post_id, 'wpcf-label', wp_kses( $_POST['wpcf-label'], $allowed ) );
 
-	if( isset( $_POST['wpcf-genre'] ) )
-		update_post_meta( $post_id, 'wpcf-genre', wp_kses( $_POST['wpcf-genre'], $allowed ) );
 
 
 
@@ -984,36 +960,13 @@ function cd_socials_save( $post_id )
 	if( isset( $_POST['wpcf-youtube-url'] ) )
 		update_post_meta( $post_id, 'wpcf-youtube-url', wp_kses( $_POST['wpcf-youtube-url'], $allowed ) );
 
-
-}
-
-
-function cd_extra_box_save( $post_id )
-{
-	// Bail if we're doing an auto save
-	if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
-	
-	// if our nonce isn't there, or we can't verify it, bail
-	if( !isset( $_POST['extra_box_nonce'] ) || !wp_verify_nonce( $_POST['extra_box_nonce'], 'my_extra_box_nonce' ) ) return;
-	
-	// if our current user can't edit this post, bail
-	if( !current_user_can( 'edit_post' ) ) return;
-	
-	// now we can actually save the data
-	$allowed = array( 
-		'a' => array( // on allow a tags
-			'href' => array() // and those anchords can only have href attribute
-		)
-	);
-	
-	if( isset( $_POST['wpcf-youtube-id'] ) )
+		if( isset( $_POST['wpcf-youtube-id'] ) )
 		update_post_meta( $post_id, 'wpcf-youtube-id', wp_kses( $_POST['wpcf-youtube-id'], $allowed ) );
 
-		if( isset( $_POST['wpcf-date-selected'] ) )
-		update_post_meta( $post_id, 'wpcf-date-selected', wp_kses( $_POST['wpcf-date-selected'], $allowed ) );
-
 
 }
+
+
 
 
 function cd_release_box_save( $post_id )
@@ -1074,6 +1027,12 @@ function cd_release_box_save( $post_id )
         } else {
             update_post_meta( $post_id, 'album', 'no' );
         }
+
+	if( isset( $_POST['wpcf-label'] ) )
+		update_post_meta( $post_id, 'wpcf-label', wp_kses( $_POST['wpcf-label'], $allowed ) );
+
+	if( isset( $_POST['wpcf-genre'] ) )
+		update_post_meta( $post_id, 'wpcf-genre', wp_kses( $_POST['wpcf-genre'], $allowed ) );
 
 
 }

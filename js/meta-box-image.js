@@ -140,6 +140,7 @@ $( "#wpcf-song-choice" ).change(function() {
     $('#wpcf-release-date').val(seconddate);
     $('#release-image').val(artistimage);
     $('#wpcf-purchase').val(data.results[0].collectionViewUrl);
+    $('#wpcf-genre').val(data.results[0].primaryGenreName);
 
     $('#wpcf-lyrics').val('https://genius.com/search?q='+theURL+"+"+artistName);
 
