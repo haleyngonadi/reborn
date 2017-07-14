@@ -143,13 +143,13 @@ $( "#wpcf-song-choice" ).change(function() {
 
     $('#wpcf-release-title').val(data.results[0].trackName);
     $('#wpcf-release-date').val(seconddate);
-    $('#release-image').val(artistimage);
+   // $('#release-image').val(artistimage);
     $('#wpcf-purchase').val(data.results[0].collectionViewUrl);
     $('#wpcf-genre').val(data.results[0].primaryGenreName);
 
     $('#wpcf-lyrics').val('https://genius.com/search?q='+theURL+"+"+artistName);
 
-       if($('#release-image').val()) {
+       if(artistimage) {
 
         var nonce = $('#release-image').attr("data-nonce");
         post_id = $('#release-image').attr("data-post_id")
