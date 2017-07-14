@@ -653,7 +653,6 @@ add_action( 'add_meta_boxes', 'cd_meta_box_add' );
 function cd_meta_box_add()
 {
 	add_meta_box( 'my-meta-box-id', 'Basic Information', 'cd_meta_box_cb', 'aotw', 'normal', 'high' );
-	add_meta_box( 'extra_information', 'Extra Fields', 'cd_extra', 'aotw', 'normal', 'high' );
 	add_meta_box( 'recent_release', 'Recent Release', 'cd_release', 'aotw', 'normal', 'high' );
 	add_meta_box( 'socials_id', 'Socials', 'cd_socials', 'aotw', 'normal', 'high' );
 
