@@ -41,7 +41,7 @@ $the_query = new WP_Query( array( 'post_type' => 'aotw', 'year' => 2017, 'posts_
 	<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 		<div class="col-sm-3">
 			<a href="<?php the_permalink()?>">
-		<div class="aotw-picture" style="background-image: url(<?php echo esc_url( get_post_meta( $post->ID, 'wpcf-photo', true ) ); ?>)">
+		<div class="aotw-picture" style="background-image: url(<?php echo the_post_thumbnail_url(); ?>)">
 		<span class="aotw-added"><?php echo get_the_date('F d, Y'); ?></span>
 
 		<span class="aotw-called"><?php the_title(); ?></span>

@@ -608,7 +608,7 @@ function create_aotw_type() {
       ),
       'public' => true,
       'has_archive' => false,
-      'supports'           => array( 'title')
+      'supports'           => array( 'title', 'sharing', 'editor', 'thumbnail')
     )
   );
 }
@@ -652,9 +652,11 @@ add_action( 'admin_enqueue_scripts', 'prfx_image_enqueue' );
 add_action( 'add_meta_boxes', 'cd_meta_box_add' );
 function cd_meta_box_add()
 {
-	add_meta_box( 'my-meta-box-id', 'Basic Information', 'cd_meta_box_cb', 'aotw', 'normal', 'high' );
 	add_meta_box( 'recent_release', 'Recent Release', 'cd_release', 'aotw', 'normal', 'high' );
 	add_meta_box( 'socials_id', 'Socials', 'cd_socials', 'aotw', 'normal', 'high' );
+	add_meta_box( 'from_id', 'From', 'cd_from', 'aotw', 'side' );
+
+
 
 
 }
@@ -669,52 +671,28 @@ function wpshed_get_custom_field( $value ) {
     return false;
 }
 
-
-
-function cd_meta_box_cb( $post )
+function cd_from( $post )
 {
-	$values = get_post_custom( $post->ID );
-	$photo = isset( $values['wpcf-photo'] ) ? esc_attr( $values['wpcf-photo'][0] ) : '';
-	$from = isset( $values['wpcf-from'] ) ? esc_attr( $values['wpcf-from'][0] ) : '';
-	
-	wp_nonce_field( 'my_meta_box_nonce', 'meta_box_nonce' );
-	?>
 
-	<div class="somewhere">
-	<p>
-		<label for="wpcf-from">From</label>
+	
+
+
+	$values = get_post_custom( $post->ID );
+	$from = isset( $values['wpcf-from'] ) ? esc_attr( $values['wpcf-from'][0] ) : '';
+	wp_nonce_field( 'my_from_box_nonce', 'from_box_nonce' ); ?>
+
+		<p>
+		Where is this artist(s) from?
 		<input type="text" name="wpcf-from" id="wpcf-from" class="form-input" value="<?php echo $from; ?>" />
 	</p>
-	
 
-
-	<!--p>
-		<label for="wpcf-song-choice">Song Choice</label>
-		<input type="text" name="wpcf-song-choice" id="wpcf-song-choice" class="form-input" value="<?php echo $song; ?>" />
-	</p-->
-	
-	<p>
-    <label for="wpcf-photo" class="prfx-row-title"><?php _e( 'Photo', 'reborn' )?></label>
-    <input type="text" name="wpcf-photo" id="meta-image" value="<?php echo $photo; ?>" />
-    <input type="button" id="meta-image-button" class="button" value="<?php _e( 'Select Image', 'trendio' )?>" />
-
-    		<div class="photo-square appear" style="background-image:url('<?php echo $photo; ?>')"></div>
-
-</p>
-
-	<p>
-		<label for="wpcf-biography"><?php _e( 'Artist Writeup', 'reborn' ); ?>:</label>
-		<textarea name="wpcf-biography" id="wpcf-biography" cols="60" rows="14"><?php echo wpshed_get_custom_field( 'wpcf-biography' ); ?></textarea>
-
-	
-		
-
-
-    </p>
-</div>
-	<?php	
+		<?php	
 
 }
+
+
+
+
 
 
 function cd_socials( $post )
@@ -796,6 +774,8 @@ function cd_release( $post )
 	$song = isset( $values['wpcf-song-choice'] ) ? esc_attr( $values['wpcf-song-choice'][0] ) : '';
 	$label = isset( $values['wpcf-label'] ) ? esc_attr( $values['wpcf-label'][0] ) : '';
 	$genre = isset( $values['wpcf-genre'] ) ? esc_attr( $values['wpcf-genre'][0] ) : '';
+	$stream = isset( $values['wpcf-stream'] ) ? esc_attr( $values['wpcf-stream'][0] ) : '';
+
 
 
 	wp_nonce_field( 'my_release_nonce', 'release_nonce' );
@@ -803,13 +783,6 @@ function cd_release( $post )
 
 	<div class="somewhere">
 
-	<!--p>
-		<label for="wpcf-type-of-release">Type of Release</label>
-
-    <input type="checkbox" name="album" id="album" value="yes" <?php if ( isset ( $values['album'] ) ) checked( $values['album'][0], 'yes' ); ?> />Album<br />
-    <input type="checkbox" name="song" id="song" value="yes" <?php if ( isset ( $values['song'] ) ) checked( $values['song'][0], 'yes' ); ?> />Single<br />
-
-	</p-->
 
 <div>
 			<p>
@@ -830,6 +803,10 @@ function cd_release( $post )
 
 	<div class="releases" <?php if($date) : ?>style="display: block"<?php endif; ?>>
 
+	<p style="display: none">
+		<label for="wpcf-release-title">Release Title</label>
+		<input type="text" name="wpcf-release-title" id="wpcf-release-title" class="form-input" value="<?php echo $title; ?>" />
+	</p>
 
 
 	<p>
@@ -880,6 +857,13 @@ function cd_release( $post )
 		<input type="text" name="wpcf-rate-the-release" id="wpcf-rate-the-release" class="form-input"  value="<?php echo $rate; ?>" />
 	</div>
 
+	<div>
+			<p>
+		<label for="wpcf-label">Stream</label>
+		<p>Where can this release be streamed? Enter the Soundcloud or Spotify URL</p>
+		<input type="text" name="wpcf-stream" id="wpcf-stream" value="<?php echo $stream; ?>" />
+	</p></div>
+
 	<?php	
 
 }
@@ -887,19 +871,20 @@ function cd_release( $post )
 
 
 
-add_action( 'save_post', 'cd_meta_box_save' );
 add_action( 'save_post', 'cd_extra_box_save' );
 add_action( 'save_post', 'cd_release_box_save' );
 add_action( 'save_post', 'cd_socials_save' );
 
+add_action( 'save_post', 'cd_from_save' );
 
-function cd_meta_box_save( $post_id )
+
+function cd_from_save( $post_id )
 {
 	// Bail if we're doing an auto save
 	if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
 	
 	// if our nonce isn't there, or we can't verify it, bail
-	if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'my_meta_box_nonce' ) ) return;
+	if( !isset( $_POST['socials_box_nonce'] ) || !wp_verify_nonce( $_POST['socials_box_nonce'], 'my_socials_box_nonce' ) ) return;
 	
 	// if our current user can't edit this post, bail
 	if( !current_user_can( 'edit_post' ) ) return;
@@ -911,20 +896,11 @@ function cd_meta_box_save( $post_id )
 		)
 	);
 	
-	if( isset( $_POST['wpcf-biography'] ) )
-		update_post_meta( $post_id, 'wpcf-biography', esc_attr( $_POST['wpcf-biography'] ) );
-
 	if( isset( $_POST['wpcf-from'] ) )
-		update_post_meta( $post_id, 'wpcf-from', wp_kses( $_POST['wpcf-from'], $allowed ) );
-
-
-
-
-
-	if( isset( $_POST[ 'wpcf-photo' ] ) )
-    update_post_meta( $post_id, 'wpcf-photo', $_POST[ 'wpcf-photo' ] );
+		update_post_meta( $post_id, 'wpcf-from', esc_attr( $_POST['wpcf-from'] ) );
 
 }
+
 
 function cd_socials_save( $post_id )
 {
@@ -1013,6 +989,10 @@ function cd_release_box_save( $post_id )
 if( isset( $_POST['wpcf-genre'] ) )
 		update_post_meta( $post_id, 'wpcf-genre', wp_kses( $_POST['wpcf-genre'], $allowed ) );
 
+
+
+if( isset( $_POST['wpcf-stream'] ) )
+		update_post_meta( $post_id, 'wpcf-stream', wp_kses( $_POST['wpcf-stream'], $allowed ) );
 
 
 

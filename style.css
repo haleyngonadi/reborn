@@ -1861,11 +1861,13 @@ ul.insta-images img {
 
 
 .white-complete .full-title {
-    margin: 0px 0 10px;
-    font-family: Montserrat;
+margin: 12px 0 34px;
+    font-family: Electro, Montserrat, serif;
     font-weight: 700;
     text-transform: uppercase;
     text-align: center;
+    font-size: 44px;
+    letter-spacing: 5px;
 }
 
 .white-complete .pre-aotw {
@@ -1941,13 +1943,14 @@ p.timePosted a:before {
     margin-right: 5px;
 }
 
-
+p.interact {
+    display: none;
+}
 .container .landing-page .vinyl-container {
     position: relative;
-    left: 10%;
-    margin-top: 18px;
-    height: 157px;
-    margin-bottom: 10px;
+    height: 159px;
+    width: 207px;
+    margin: 37px auto 24px;
 
 }
 .container .landing-page .vinyl-container .album-cover {
@@ -1955,12 +1958,11 @@ p.timePosted a:before {
     z-index: 1;
 }
 .container .landing-page .vinyl-container .album-cover img {
-    width: 60%;
+    width: 159px;
 }
 .container .landing-page .vinyl-container .vinyl-record {
     position: absolute;
     left: 50px;
-    display: none;
 }
 .container .landing-page .vinyl-container .vinyl-record img {
     height: 156.2px;
@@ -1997,7 +1999,7 @@ p.timePosted a:before {
     top:0;
     left:0;
     z-index:3;
-    width:60%;
+    width:159px;
     height:100%;
     -webkit-box-shadow: inset 1px 1px 4px 0px rgba(255, 255, 255, 0.45),inset 1px 1px 2px 0px rgba(255,255, 255, 0.5),inset -1px -1px 2px 0px rgba(255,255, 255, 0.5);
     box-shadow: inset 1px 1px 4px 0px rgba(255,255, 255, 0.45),inset 1px 1px 2px 0px rgba(255,255, 255, 0.5),inset -1px -1px 2px 0px rgba(255,255, 255, 0.5);
@@ -2042,7 +2044,7 @@ p.timePosted a:before {
     justify-content: center;
     display: flex;
     border: 2px dotted #332F3E;
-    padding: 35px 20px;
+    padding: 0px 20px;
     transition: all 600ms;
 }
 
@@ -2766,7 +2768,12 @@ span.feature-credits:hover:before {
 }
 
 .social-block {
-    display: none;
+    display: block;
+    margin-top: 15px;
+}
+
+.complete-content a {
+    color: #332F3E;
 }
 
 .sidetop {
@@ -2847,7 +2854,7 @@ display: block;
 
 span.bio-title {
        background: #d91342;
-    padding: 12px 12px 6px;
+    padding:7px 12px 6px;
     display: inline-block;
     color: white;
     font-size: 14px;
@@ -2855,6 +2862,8 @@ span.bio-title {
     width: 100%;
     margin-bottom: 5px;
     position: relative;
+    max-width: 120px;
+    text-align: center;
 
 }
 
@@ -2877,9 +2886,10 @@ left: 50%;
 
 
 .artist-image {
-	height: 517px;
+	height: 375px;
 	background-size: cover;
 	background-position: top center;
+    position: relative;
 }
 
 .aotw-page {
@@ -2901,13 +2911,34 @@ left: 50%;
     transform: translateY(-50%);
 }
 
+span.from-location {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #d91342;
+    font-family: Montserrat;
+    color: white;
+        padding: 2px 8px 2px 0px;
+        display: none;
 
+}
+
+
+span.from-location:before {
+    top: 0;
+    left:0px;
+    background: #b90f37;
+    font-family: FontAwesome;
+    color: white;
+    content: "\f041";
+    padding: 5px 8px;
+}
 
 
 .white-complete .bio-text {
 		font-family: 'Frank Ruhl Libre', sans-serif !important;
 font-size: 16px;
-max-height: 131px;
+max-height: 272px;
 overflow-y: scroll;
 overflow-x: hidden;
 }
@@ -2917,17 +2948,19 @@ overflow-x: hidden;
 }
 
 
-.bio-box ul.aotw-socials {
-    max-width: 120px;
-    margin: 0 auto;
+.aotw-body ul.aotw-socials {
+    display: inline-block;
+    margin-left: 5px;
+    margin-bottom: 14px;
+    margin-top: 0;
 }
 
-.bio-box ul.aotw-socials li {
+.aotw-body ul.aotw-socials li {
     margin-bottom: 0px;
     margin-top: 6px;
 }
 
-.bio-box ul.aotw-socials a, .social-share a {
+.aotw-body ul.aotw-socials a, .social-share a {
     color: #fff;
     background: transparent;
     padding: 0;
@@ -2939,7 +2972,7 @@ overflow-x: hidden;
    display: inline-block;
 }
 
-.bio-box ul.aotw-socials i, .social-share i  {
+.aotw-body ul.aotw-socials i, .social-share i  {
 
     padding: 10px 11px;
 }
