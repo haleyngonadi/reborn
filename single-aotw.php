@@ -128,7 +128,6 @@ get_header(); ?>
                         
                             <div class="release">
                                 
-                                <?php if ( get_post_meta( $post->ID, 'wpcf-lyrics', true ) ) : ?>
 
 
                                     <strong>Title:</strong> <?php echo get_post_meta($post->ID, 'wpcf-release-title', true);?><br>
@@ -149,7 +148,7 @@ get_header(); ?>
                         
                         </div>
                     <?php else:?>
-                        <span class="no-tunes"> Sorry, we could not locate this <?php the_title()?> on iTunes at this time. </span>
+                        <div class="no-tunes"><span> Sorry, we could not locate <?php the_title()?> on iTunes at this time. </span></div>
                     <?php endif; ?>
 
                         </div>
@@ -159,7 +158,13 @@ get_header(); ?>
                             <div class="sidetop">
                                 <c><i class="fa fa-twitter"></i></c>
                                 <div class="text"> <?php _e( 'latest tweets', 'reborn' )?></div></div>
+
+                                <?php if ( get_post_meta( $post->ID, 'wpcf-twitter', true ) ) : ?>
                                 <div id="example1"></div>
+
+                                 <?php else:?>
+                        <div class="no-tunes"><span> Sorry, we could not locate <?php the_title()?> on Twitter at this time. </span></div>
+                    <?php endif; ?>
 
 
                         </div>

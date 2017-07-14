@@ -2933,6 +2933,14 @@ span.from-location:before {
     padding: 5px 8px;
 }
 
+.no-tunes {
+    padding: 30px 13px;
+    font-size: 18px;
+    text-align: center;
+    font-family: Montserrat;
+    color: #332f3e;
+}
+
 
 .white-complete .bio-text {
 		font-family: 'Arial', serif !important;
