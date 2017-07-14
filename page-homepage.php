@@ -154,7 +154,7 @@ $the_query = new WP_Query( $args ); ?>
                <a href="<?php the_permalink()?>"> <div class="aotw-image" style="background-image: url('<?php echo esc_url( get_post_meta( $post->ID, 'wpcf-photo', true ) ); ?>')" data-url="<?php the_permalink();?>"></div></a></div>
             <div class="complete-content col-sm-8 col-xs-12">
                 <span class="full-date"><?php _e( 'Spotlight', 'reborn' )?></span>
-                <div class="full-title"><a href="<?php the_permalink()?>"><span class="pre-aotw"><?php _e( 'Artist of the Week:', 'reborn' )?> </span><?php the_title();?></a></div>
+                <div class="full-title"><a href="<?php the_permalink()?>"><?php the_title();?> <span class="pre-aotw"> </span></a></div>
                 <div class="aotw-body">
 
                 <div class="col-sm-3 bio-box">

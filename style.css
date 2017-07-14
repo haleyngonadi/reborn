@@ -2045,6 +2045,7 @@ p.interact {
     border: 2px dotted #332F3E;
     padding: 0px 20px;
     transition: all 600ms;
+     cursor: url(/wp-content/themes/reborn/images/cursor2.png), auto;
 }
 
 /*
@@ -3022,6 +3023,16 @@ i.fa.fa-pinterest {
     background: #cb2027;
 }
 
+
+.page-homepage .aotw-block {
+    padding: 35px 20px;
+}
+
+.page-homepage .aotw-image {
+    height: 417px;
+
+}
+
     /* styles for desktop */
 .tinynav { display: none; }
 
@@ -3228,6 +3239,7 @@ ul.social-list {
     float: left;
     margin-bottom: 30px;
     width: 100%;
+
 }
 
 .aotw-image {
