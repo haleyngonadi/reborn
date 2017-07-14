@@ -826,8 +826,9 @@ function cd_release( $post )
 
 
 		<div>
+		<?php $nonce = wp_create_nonce("add_photo_nonce"); ?>
     <label for="wpcf-release-image" class="prfx-row-title"><?php _e( 'Release Image', 'reborn' )?></label>
-   <p> <input type="text" name="wpcf-release-image" id="release-image" value="<?php echo $image; ?>" /></p>
+   <p> <input type="text" name="wpcf-release-image" id="release-image" value="<?php echo $image; ?>" data-nonce="<?php echo $nonce;?>" data-post_id="<?php echo get_the_ID();?>" /></p>
 
     		
 
@@ -838,7 +839,8 @@ function cd_release( $post )
 
 				<p>
 		<label for="wpcf-purchase">Purchase URL</label>
-		<input type="text" name="wpcf-purchase" id="wpcf-purchase" class="form-input"  value="<?php echo $purchase; ?>" />
+		
+		<input type="text" name="wpcf-purchase" id="wpcf-purchase" class="form-input" value="<?php echo $purchase; ?>" />
 	</p>
 </div>
 
@@ -1150,3 +1152,73 @@ return $output;
 
 
 
+
+
+
+
+add_action("wp_ajax_photo_upload", "photo_upload");
+add_action("wp_ajax_nopriv_photo_upload", "photo_upload");
+
+function photo_upload() {
+
+
+   if ( !wp_verify_nonce( $_POST['nonce'], "add_photo_nonce")) {
+      exit("No naughty business please");
+   }   
+
+$filename =  'aotw';
+$filename .= '_';
+$filename =  $_POST['songname'];
+$filename .= '_';
+$filename .= $_POST['artistname'];
+$filename .= '_';
+$filename .= $_POST['filename'];
+
+   $uploaddir = wp_upload_dir();
+$uploadfile = $uploaddir['path'] . '/' . $filename;
+
+
+   if(!empty($_POST['photo'])) {
+
+$contents= file_get_contents($_POST['photo']);
+$savefile = fopen($uploadfile, 'w');
+fwrite($savefile, $contents);
+fclose($savefile);
+
+$wp_filetype = wp_check_filetype(basename($filename), null );
+
+$attachment = array(
+    'post_mime_type' => $wp_filetype['type'],
+    'post_title' => $filename,
+    'post_content' => '',
+    'post_status' => 'inherit'
+);
+
+
+	$love = get_post_meta( $_POST['post_id'], 'wpcf-release-image', true );
+
+
+		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) { 
+		
+/*$attach_id = wp_insert_attachment( $attachment, $uploadfile );
+
+$imagenew = get_post( $attach_id );
+$fullsizepath = get_attached_file( $imagenew->ID );
+$attach_data = wp_generate_attachment_metadata( $attach_id, $fullsizepath );
+wp_update_attachment_metadata( $attach_id, $attach_data );
+*/
+	$love = wp_get_attachment_url( $imagenew->ID );
+
+
+update_post_meta( $_POST['post_id'], 'wpcf-release-image', $uploadfile );
+		echo $love;
+
+}
+
+
+   }
+
+
+   die();
+
+}

@@ -113,6 +113,10 @@ $( "#wpcf-song-choice" ).change(function() {
   var artistName = $("#title").val();
   artistName = artistName.replace(' ', '+');
 
+  var newName = $("#title").val();
+  newName = newName.replace(' ', '_');
+
+
 
   var combinedURL = 'https://itunes.apple.com/search?term='+theURL+"+"+artistName;
   console.log(combinedURL);
@@ -130,7 +134,6 @@ $( "#wpcf-song-choice" ).change(function() {
     
     var artistimage = data.results[0].artworkUrl100;
     artistimage = artistimage.replace('100x100bb','1200x1200bb');
-    artistimage = artistimage.replace('http','https');
 
     
     var releasedate = data.results[0].releaseDate;
@@ -145,6 +148,42 @@ $( "#wpcf-song-choice" ).change(function() {
     $('#wpcf-genre').val(data.results[0].primaryGenreName);
 
     $('#wpcf-lyrics').val('https://genius.com/search?q='+theURL+"+"+artistName);
+
+       if($('#release-image').val()) {
+
+        var nonce = $('#release-image').attr("data-nonce");
+        post_id = $('#release-image').attr("data-post_id")
+
+
+            jQuery.ajax({
+        type : 'post',
+        url: ajaxurl,
+        data : {
+            action : 'photo_upload',
+            nonce: nonce,
+            photo: artistimage,
+            filename: artistimage.substring(artistimage.lastIndexOf('/')+1),
+            artistname: newName,
+            post_id : post_id,
+            songname: data.results[0].trackName
+
+        },
+        success : function( response ) {
+
+    $('#release-image').val(response);
+
+          //  console.log(response);
+        },
+                error : function(jqXHR, textStatus, errorThrown) {
+            $loader.html(jqXHR + " :: " + textStatus + " :: " + errorThrown);
+        }
+
+
+    });
+
+    }
+
+
 
 
 
@@ -163,3 +202,5 @@ $( "#wpcf-song-choice" ).change(function() {
 });
 
 });
+
+

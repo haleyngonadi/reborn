@@ -115,7 +115,7 @@ get_header(); ?>
                             <div class="sidetop">
                                 <c><i class="fa fa-music"></i></c>
                                 <div class="text"> <?php _e( 'featured music', 'reborn' )?></div></div>
-
+                                    <?php if ( get_post_meta( $post->ID, 'wpcf-lyrics', true ) ) : ?>
                                           <div class="landing-page">
                             <div class="vinyl-container">
                                 <div class="album-cover case">
@@ -141,13 +141,16 @@ get_header(); ?>
                                     <strong>Lyrics:</strong> <a href="<?php echo get_post_meta($post->ID, 'wpcf-lyrics', true);?>" target="_blank">Search Genius</a><br>
       <?php if ( get_post_meta( $post->ID, 'wpcf-rate-the-release', true ) ) : ?><strong>Our Rating:</strong> <?php echo get_post_meta($post->ID, 'wpcf-rate-the-release', true);?><br> <?php endif; ?>
 
-                                    <?php endif; ?>
+                                    
 
 
 
                             </div>
                         
                         </div>
+                    <?php else:?>
+                        <span class="no-tunes"> Sorry, we could not locate this <?php the_title()?> on iTunes at this time. </span>
+                    <?php endif; ?>
 
                         </div>
 
