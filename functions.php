@@ -1166,13 +1166,20 @@ function photo_upload() {
       exit("No naughty business please");
    }   
 
+
+   $s = preg_replace('/[^a-z0-9]+/i', '', $_POST['songname']);
+   $a = preg_replace('/[^a-z0-9]+/i', '', $_POST['artistname']);
+
+
 $filename =  'aotw';
 $filename .= '_';
-$filename =  $_POST['songname'];
+$filename =  $s;
 $filename .= '_';
-$filename .= $_POST['artistname'];
+$filename .= $a;
 $filename .= '_';
 $filename .= $_POST['filename'];
+
+
 
    $uploaddir = wp_upload_dir();
 $uploadfile = $uploaddir['path'] . '/' . $filename;
