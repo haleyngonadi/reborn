@@ -1008,6 +1008,12 @@ function cd_release_box_save( $post_id )
 		if( isset( $_POST['wpcf-lyrics'] ) )
 		update_post_meta( $post_id, 'wpcf-lyrics', wp_kses( $_POST['wpcf-lyrics'], $allowed ) );
 
+if( isset( $_POST['wpcf-label'] ) )
+		update_post_meta( $post_id, 'wpcf-label', wp_kses( $_POST['wpcf-label'], $allowed ) );
+
+	if( isset( $_POST['wpcf-genre'] ) )
+		update_post_meta( $post_id, 'wpcf-genre', wp_kses( $_POST['wpcf-genre'], $allowed ) );
+
 	        if( isset( $_POST[ 'ep' ] ) ) {
             update_post_meta( $post_id, 'ep', 'yes' );
         } else {
@@ -1029,10 +1035,7 @@ function cd_release_box_save( $post_id )
         }
 
 	if( isset( $_POST['wpcf-label'] ) )
-		update_post_meta( $post_id, 'wpcf-label', wp_kses( $_POST['wpcf-label'], $allowed ) );
-
-	if( isset( $_POST['wpcf-genre'] ) )
-		update_post_meta( $post_id, 'wpcf-genre', wp_kses( $_POST['wpcf-genre'], $allowed ) );
+	
 
 
 }
