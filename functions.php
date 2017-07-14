@@ -608,7 +608,7 @@ function create_aotw_type() {
       ),
       'public' => true,
       'has_archive' => false,
-      'supports'           => array( 'title', 'sharing', 'editor', 'thumbnail')
+      'supports'           => array( 'title', 'sharing', 'editor', 'thumbnail', 'tags')
     )
   );
 }

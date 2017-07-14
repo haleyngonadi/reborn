@@ -1863,7 +1863,6 @@ ul.insta-images img {
 .white-complete .full-title {
 margin: 12px 0 34px;
     font-family: Electro, Montserrat, serif;
-    font-weight: 700;
     text-transform: uppercase;
     text-align: center;
     font-size: 44px;
@@ -2768,7 +2767,7 @@ span.feature-credits:hover:before {
 }
 
 .social-block {
-    display: block;
+    display: block !important;
     margin-top: 15px;
 }
 
@@ -2936,8 +2935,8 @@ span.from-location:before {
 
 
 .white-complete .bio-text {
-		font-family: 'Frank Ruhl Libre', sans-serif !important;
-font-size: 16px;
+		font-family: 'Arial', serif !important;
+font-size: 14px;
 max-height: 272px;
 overflow-y: scroll;
 overflow-x: hidden;

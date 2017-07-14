@@ -130,6 +130,8 @@ $( "#wpcf-song-choice" ).change(function() {
     
     var artistimage = data.results[0].artworkUrl100;
     artistimage = artistimage.replace('100x100bb','1200x1200bb');
+    artistimage = artistimage.replace('http','https');
+
     
     var releasedate = data.results[0].releaseDate;
     var seconddate = moment(releasedate).format('MMMM D, YYYY');

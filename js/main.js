@@ -399,7 +399,31 @@ $("#more_posts").on("click",function(){ // When btn is pressed.
     load_posts();
 });
 
-if ($(".change-footer")[0] && !$(".single-aotw")[0]){
+
+if ($(".single-aotw")[0]){
+
+    var name = ".social-list";
+var menuYloc = null;
+ 
+
+    menuYloc = parseInt($(name).css("top").substring(0,$(name).css("top").indexOf("px")))
+    $(window).scroll(function () { 
+
+        var scroll = $(window).scrollTop();
+        var offset;
+
+                 offset = menuYloc+$(document).scrollTop()+"px";
+
+
+        $(name).animate({top:offset},{duration:500,queue:false});
+    });
+
+
+
+
+    }
+
+if ($(".change-footer")[0]){
 
 var name = ".social-list";
 var menuYloc = null;

@@ -11,6 +11,19 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
+
+
+
+                    <ul class="social-list">
+                    <li><a href="#" class="prettySocial" data-type="pinterest" data-url="<?php the_permalink();?>" data-description="<?php the_title();?>" data-media="<?php the_post_thumbnail_url();?>"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="prettySocial" data-type="facebook" data-url="<?php the_permalink();?>" data-title="Get To Know: <?php the_title();?>" data-description="<?php the_excerpt();?>" data-media="<?php the_post_thumbnail_url();?>"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="prettySocial" data-type="twitter" data-url="<?php the_permalink();?>" data-description="Get To Know: <?php the_title();?>" data-via="wearetrendio"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="mailto:?subject=Check%20out%20this%20artist%20on%20Trendio.us&amp;body=<?php the_title(); ?>:%0A%0A<?php the_permalink(); ?>"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+
+                </ul>
+
+
+
    <section class="white-complete complete animated flipInY"> 
 
 
