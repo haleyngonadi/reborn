@@ -118,7 +118,7 @@ $( "#wpcf-song-choice" ).change(function() {
 
 
 
-  var combinedURL = 'https://itunes.apple.com/search?term='+theURL+"+"+artistName;
+  var combinedURL = 'https://itunes.apple.com/search?term='+theURL+'+'+artistName;
   console.log(combinedURL);
 
 

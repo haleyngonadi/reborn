@@ -1207,7 +1207,7 @@ $fullsizepath = get_attached_file( $imagenew->ID );
 $attach_data = wp_generate_attachment_metadata( $attach_id, $fullsizepath );
 wp_update_attachment_metadata( $attach_id, $attach_data );
 */
-	$love = wp_get_attachment_url( $imagenew->ID );
+	$love =  $uploadfile;
 
 
 update_post_meta( $_POST['post_id'], 'wpcf-release-image', $uploadfile );
