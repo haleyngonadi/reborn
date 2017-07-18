@@ -547,7 +547,7 @@ add_action( 'loop_start', 'jptweak_remove_share' );
 
 
 function jetpackme_top_posts_timeframe() {
-    return '30';
+    return '7';
 }
 add_filter( 'jetpack_top_posts_days', 'jetpackme_top_posts_timeframe' );
 
@@ -1229,3 +1229,5 @@ update_post_meta( $_POST['post_id'], 'wpcf-release-image', $uploadfile );
    die();
 
 }
+
+
