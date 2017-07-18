@@ -873,7 +873,7 @@ function cd_release( $post )
 
 
 
-add_action( 'save_post', 'cd_extra_box_save' );
+
 add_action( 'save_post', 'cd_release_box_save' );
 add_action( 'save_post', 'cd_socials_save' );
 
