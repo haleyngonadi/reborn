@@ -1213,6 +1213,8 @@ border-left: 10px solid transparent;
 
 .content-full {
     margin-bottom: 35px;
+    display: table;
+    width: 100%;
 }
 
 .content-block {
