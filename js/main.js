@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 <<<<<<< refs/remotes/origin/wp
 $(document).ready(function(){
@@ -47,11 +46,6 @@ var instauser = $('.insta-user').attr('data-instagram');
 
 
 >>>>>>> Added a testing hi.
-=======
-//  hi there.
-
-
->>>>>>> master
 $.ajax({
     url: "http://query.yahooapis.com/v1/public/yql",
 
@@ -63,15 +57,11 @@ $.ajax({
 
     // Tell YQL what we want and that we want JSON
     data: {
-<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
         q: 'select items from json where url="https://www.instagram.com/' + instauser + '/media"',
 =======
         q: "select items from json where url=\"https://www.instagram.com/blanca_suarez/media\"",
 >>>>>>> Add files via upload
-=======
-        q: "select items from json where url=\"https://www.instagram.com/blanca_suarez/media\"",
->>>>>>> master
         format: "json"
     },
 
@@ -100,7 +90,6 @@ $.ajax({
 
 
 
-<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 
   
@@ -112,8 +101,6 @@ $.ajax({
 
 =======
 >>>>>>> Add files via upload
-=======
->>>>>>> master
 function screenClass() {
     //    var $clone =	$('.right-menu ul.menu').children('li').first().clone();
 
@@ -122,15 +109,11 @@ function screenClass() {
     } else {
         $('body').removeClass('mobile-active');
 
-<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
         var header = $(".show-desktop");
 =======
         var header = $("header");
 >>>>>>> Add files via upload
-=======
-        var header = $("header");
->>>>>>> master
         $(window).scroll(function() {
             var scroll = $(window).scrollTop();
 
@@ -154,30 +137,22 @@ $(window).bind('resize',function(){
 
 
 $( ".bars" ).click(function() {
-<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     $('.left-menu ul.menu').toggleClass('mobile-menu');
 =======
     $('.right-menu ul.menu').toggleClass('mobile-menu');
     console.log('Clicked');
 >>>>>>> Add files via upload
-=======
-    $('.right-menu ul.menu').toggleClass('mobile-menu');
-    console.log('Clicked');
->>>>>>> master
 
 });
 
 
 
-<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 
 
 /*
 =======
-=======
->>>>>>> master
 $.ajax({
     url: "http://itunes.apple.com/search?term=maggie+rogers",
     dataType: 'JSONP'
@@ -204,10 +179,7 @@ $.ajax({
 
 
 
-<<<<<<< HEAD
 >>>>>>> Add files via upload
-=======
->>>>>>> master
 var configProfile = {
     "profile": {"screenName": 'maggierogers'},
     "domId": 'example1',
@@ -221,7 +193,6 @@ var configProfile = {
     "showRetweet": false,
 };
 twitterFetcher.fetch(configProfile);
-<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 */
 
@@ -741,8 +712,6 @@ twitterFetcher.fetch(configProfile);
 
 
 =======
-=======
->>>>>>> master
 
 
 /*** Gallery ***/
@@ -753,7 +722,4 @@ $( ".galleries" ).click(function() {
     console.log('Clicked');
 
 });
-<<<<<<< HEAD
 >>>>>>> Add files via upload
-=======
->>>>>>> master
