@@ -2052,6 +2052,10 @@ p.interact {
 
 }
 
+.bio .more-link {
+    color: #337ab7;
+}
+
 /*
 .complete-content {
     border: 2px dotted #332F3E;
