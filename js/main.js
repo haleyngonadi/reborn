@@ -203,7 +203,6 @@ $( ".gallery-size" ).click(function() {
     var getgallery = $('.item-image').width();
         var getstage = $('.owl-main .owl-stage').css('width');
 
-    console.log(getstage);
 
 
   sessionStorage.setItem("intial_width", getgallery);
@@ -256,7 +255,6 @@ $('.expand-button').on('click',function(){
 
 
    if($('.caption-view').css('opacity') == 0) {
-    console.log('no');
      var thevalue = sessionStorage.getItem("intial_width");
     $(".owl-main .owl-item").css({width: thevalue});
      $(".owl-main .owl-stage").css({width: sessionStorage.getItem("intial_stage")});
@@ -264,7 +262,6 @@ $('.expand-button').on('click',function(){
 
 }
     else {
-        console.log('yes');
        $(".owl-main .owl-item").css({width: windowWidth + "px"});
 
           
