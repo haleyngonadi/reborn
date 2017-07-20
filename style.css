@@ -1843,10 +1843,6 @@ span.gallery-size:after {
 
 .white-complete {
     background: white;
-    position: absolute;
-    top: 102px;
-    width: 100%;
-    height: 100%;
     left: 0;
     z-index: 298;
 }
