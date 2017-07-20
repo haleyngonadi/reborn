@@ -1146,6 +1146,10 @@ span.square-date {
     border-left: 1px solid #fff;
 }
 
+.single-aotw .wrapper {
+    padding: 123px 0 0px;
+
+}
 .single-aotw .white-complete {
     position: relative;
     top: 0;
@@ -2052,21 +2056,15 @@ p.interact {
 
 }
 
-<<<<<<< HEAD
-
 h2.widget-title.side-header a {
     color: #332f3e;
 }
 
 
-
-
-=======
-.bio .more-link {
-    color: #337ab7;
+.bio a.more-link {
+    color: #397eb9;
 }
 
->>>>>>> wp
 /*
 .complete-content {
     border: 2px dotted #332F3E;
@@ -2791,7 +2789,7 @@ span.feature-credits:hover:before {
     margin-top: 15px;
 }
 
-.complete-content a {
+.complete-content .full-title a {
     color: #332F3E;
 }
 

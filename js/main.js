@@ -645,7 +645,7 @@ var getTwitterName = $('.aotwtweets').attr('data-twitter');
 var configProfile = {
   "profile": {"screenName": getTwitterName},
   "domId": 'example1',
-  "maxTweets": 4,
+  "maxTweets": 3,
   "enableLinks": true, 
   "showUser": false,
   "showTime": true,
