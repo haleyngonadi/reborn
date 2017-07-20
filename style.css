@@ -1222,6 +1222,11 @@ border-left: 10px solid transparent;
     display: table;
 }
 
+.content-block img {
+    max-width: 100%;
+    height: auto;
+}
+
 
 .content-full .content-block {
     margin-bottom: 35px;

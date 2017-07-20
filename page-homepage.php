@@ -210,8 +210,11 @@ $the_query = new WP_Query( $args ); ?>
     <!-- the loop -->
     <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
                 <div class="content-block col-sm-6">
-            <div class="square-image" style="background-image: url('<?php the_post_thumbnail_url('impress-size');?>')">
-                </div>
+
+                <img data-src="<?php the_post_thumbnail_url('impress-size');?>" class="lazyload">
+
+            <!-- <div class="square-image" style="background-image: url('<?php the_post_thumbnail_url('impress-size');?>')">
+                </div> -->
             <div class="square-content">
                 <span class="square-date"><?php $category = get_the_category();  echo $category[0]->cat_name;?></span>
                 <a class="square-title" href="<?php the_permalink()?>"><?php the_title(); ?></a>
