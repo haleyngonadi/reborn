@@ -2045,7 +2045,11 @@ p.interact {
     border: 2px dotted #332F3E;
     padding: 0px 20px;
     transition: all 600ms;
+}
+
+.home .artist-image {
      cursor: url(/wp-content/themes/reborn/images/cursor2.png), auto;
+
 }
 
 /*
