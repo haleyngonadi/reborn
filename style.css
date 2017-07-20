@@ -2052,6 +2052,14 @@ p.interact {
 
 }
 
+
+h2.widget-title.side-header a {
+    color: #332f3e;
+}
+
+
+
+
 /*
 .complete-content {
     border: 2px dotted #332F3E;
