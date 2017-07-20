@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 /*
 Theme Name: Reborn
@@ -15,6 +16,8 @@ Text Domain: trendio
 
 =======
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 /*** Font Imports ***/
 
 @font-face {
@@ -35,6 +38,7 @@ body {
 	font-family: 'Arvo', serif !important;
 	position: relative;
 	z-index: 0;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     color: #444;
       min-height: 100%;
@@ -42,6 +46,9 @@ body {
 =======
     color: #545454;
 >>>>>>> Add files via upload
+=======
+    color: #545454;
+>>>>>>> master
 }
 
 ul, ol {
@@ -50,6 +57,7 @@ padding: 0;
     list-style-type: none;
 }
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 a {
     text-decoration: none !important;
@@ -178,6 +186,8 @@ span.aotw-called {
     left: 0;
 }
 =======
+=======
+>>>>>>> master
 .wrapper {
     background: white;
     position: relative;
@@ -193,11 +203,15 @@ span.aotw-called {
 }
 
 
+<<<<<<< HEAD
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 
 /*** Header Goes Here ***/
 
 header {
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
         -webkit-transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
     -moz-transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
@@ -224,6 +238,8 @@ header.show-mobile {
     z-index: 9999;
     max-height: 103px
 =======
+=======
+>>>>>>> master
 	background-color: #332F3E;
 	padding: 5px 0;
 	transition: 0.3s;
@@ -232,13 +248,17 @@ header.show-mobile {
     z-index: 2;
     max-height: 103px
 /*    background:-webkit-linear-gradient(left,#dc1342,#332F3E);*/
+<<<<<<< HEAD
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 
 }
 
 header i{
 display: none !Important;}
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 header a {
     color: white !important;
@@ -246,6 +266,8 @@ header a {
 
 =======
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 .lines {
 	border: 1px dashed #ffffff;
 	height: 1px;
@@ -302,11 +324,15 @@ span.logo-text:before {
     width: 24px;
     height: 48px;
     content: "";
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     background: #d91342;
 =======
     background: #dc1342;
 >>>>>>> Add files via upload
+=======
+    background: #dc1342;
+>>>>>>> master
     position: absolute;
     top: 5%;
     transform: rotate(-125deg);
@@ -343,6 +369,7 @@ span.logo-text:before {
     visibility: hidden;
     width: 0;
     opacity: 0;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     transition: 0.3s;
     left: -170px;
@@ -360,6 +387,8 @@ span.logo-text:before {
 .upper .logo-small {
     background: #d91342;
 =======
+=======
+>>>>>>> master
     transition: 0.4s;
     left: -170px;
 }
@@ -369,7 +398,10 @@ span.logo-text:before {
     color: white;
     font-family: Electro, serif;
     background: #dc1342;
+<<<<<<< HEAD
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
     padding: 3px 25px;
     position: absolute;
     left: 0;
@@ -405,11 +437,15 @@ span.logo-text:before {
     width: 50px;
     height: 50px;
     position: absolute;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     background: #d91342;
 =======
     background: #dc1342;
 >>>>>>> Add files via upload
+=======
+    background: #dc1342;
+>>>>>>> master
     transform: rotate(-45deg);
     top: -9px;
     z-index: -1;
@@ -441,11 +477,15 @@ span.logo-text:before {
 
 .bars {
 position: relative;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     padding: 13px 7px;
 =======
     padding: 7px;
 >>>>>>> Add files via upload
+=======
+    padding: 7px;
+>>>>>>> master
     border-radius: 5px;
         margin-top: 13px;
 
@@ -491,15 +531,20 @@ margin-bottom: 0
     width: 63px;
     height: 12px;
     position: absolute;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     background: #d91342;
 =======
     background: #dc1342;
 >>>>>>> Add files via upload
+=======
+    background: #dc1342;
+>>>>>>> master
     z-index: -1;
     transform: translate(-50%, 50%) rotate(-25deg);
     top: 28%;
     left: 50%;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     transition: 0.3s;
 }
@@ -508,15 +553,20 @@ margin-bottom: 0
     transform: translate(-50%, 50%) rotate(25deg);
 =======
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 }
 
 .menu li a {
     color: #ffffff;
     text-decoration: none;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     text-transform: uppercase;
 =======
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 }
 
 .menu li a span {
@@ -525,10 +575,13 @@ margin-bottom: 0
     font-weight: 400;
     font-size: 12px;
     letter-spacing: 2px;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     text-transform: lowercase;
 =======
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 }
 
 .upper a span {
@@ -548,11 +601,15 @@ display: block !important;
 /*** Featured ***/
 
 .specific-image {
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 	height: 262.52px;
 =======
 	height: 150px;
 >>>>>>> Add files via upload
+=======
+	height: 150px;
+>>>>>>> master
 	background-size: cover;
 	background-position: top center;
 	position: relative;
@@ -569,16 +626,22 @@ display: block !important;
     top: 9px;
     transition: 0.3s;
     z-index: 2
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 
 =======
+=======
+>>>>>>> master
 /*
     -moz-border-image: -moz-linear-gradient(top, #3acfd5 0%, #3a4ed5 100%);
     -webkit-border-image: -webkit-linear-gradient(top, #3acfd5 0%, #3a4ed5 100%);
     border-image: linear-gradient(to right, #db1342 0%, #342f3e 100%);
     border-image-slice: 1;
 */
+<<<<<<< HEAD
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 
 }
 
@@ -595,6 +658,7 @@ display: block !important;
     
 }
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 /*** 404 ***/
 
@@ -687,6 +751,8 @@ color: #dc1342;
 
 =======
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 /*** Newsletter ***/
 
 
@@ -694,6 +760,7 @@ form.newsletter-form {
     z-index: 1;
 }
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 .hide-news {
 height: 0 !important;
@@ -705,6 +772,8 @@ opacity: 0 !important;
 
 =======
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 section.newsletter {
     background: #f3f3f3;
     padding: 32px 25px;
@@ -713,6 +782,7 @@ section.newsletter {
     text-align: center;
     border-left: 2px dotted #332F3E;
     z-index: 1;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     position: relative;
         -webkit-transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
@@ -728,6 +798,10 @@ section.newsletter {
 
 }
 >>>>>>> Add files via upload
+=======
+
+}
+>>>>>>> master
 
 .newsletter-text {
 	font-family: 'Montserrat', sans-serif;
@@ -735,34 +809,47 @@ section.newsletter {
 	text-transform: uppercase;
 	font-weight: 500;
 	color: #332F3E;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
         padding-top: 7px;
 =======
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 }
 
 button.submit {
     background: #332F3E;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     padding: 12px;
 =======
     padding: 8px 10px;
 >>>>>>> Add files via upload
+=======
+    padding: 8px 10px;
+>>>>>>> master
     color: white;
     text-transform: uppercase;
     font-family: 'Abril Fatface', cursive;
         border: 0px solid transparent;
         position: relative;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 
 }
 
 =======
+=======
+>>>>>>> master
 /*    background:-webkit-linear-gradient(left,#dc1342,#332F3E);*/
 
 
 }
+<<<<<<< HEAD
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 
 button.submit:before {
     content: "";
@@ -770,6 +857,7 @@ button.submit:before {
     width: 100%;
     height: 100%;
     border: 1px solid #332F3E;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     right: -4px;
     z-index: 0;
@@ -781,6 +869,8 @@ button.submit:before {
 
 input[type="submit"] {
 =======
+=======
+>>>>>>> master
     right: -8px;
     z-index: -1;
 /*
@@ -807,12 +897,16 @@ section.newsletter input[type="text"] {
 }
 
 button.search {
+<<<<<<< HEAD
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
     background: #332F3E;
     padding: 8px 10px;
     color: white;
     text-transform: uppercase;
     font-family: 'Abril Fatface', cursive;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     border: 0px solid transparent;
     position: relative;
@@ -849,10 +943,27 @@ p#subscribe-submit:after {
     top: 11px;
     right: 45px;
     z-index: -1;
+=======
+        border: 0px solid transparent;
+        position: relative;
+
+
+}
+
+button.search:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #332F3E;
+    right: -8px;
+
+>>>>>>> master
 }
 
 
 
+<<<<<<< HEAD
 
 
 span.close-newsletter {
@@ -1130,11 +1241,51 @@ letter-spacing: 1px;
 <<<<<<< refs/remotes/origin/wp
 margin-top: 0;
 =======
+=======
+ul.socials {
+    margin: 10px 0 0;
+    padding: 0;
+}
+
+
+
+ul.socials li {
+    list-style-type: none;
+    display: inline-block;
+    margin-right: 4px;
+    font-size: 15px;
+    margin-top: 14px;
+}
+
+
+ul.socials a {
+    color: #fff;
+    background: #d91342;
+    padding: 9px 13px;
+}
+
+ul.socials i {
+background: transparent !important;
+}
+
+
+.side-header {
+font-family: 'Abril Fatface', cursive;
+font-size: 30px;
+color: #332F3E;
+display: inline-block;
+max-width: 250px;
+border-bottom: 2px dotted #332F3E;
+letter-spacing: 1px;
+>>>>>>> master
 }
 
 .side-body {
 	margin-top: 15px;
+<<<<<<< HEAD
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 }
 
 .side-content {
@@ -1179,11 +1330,15 @@ margin-top: 0;
     display: inline-block;
     line-height: 1;
     font-family: 'Abril Fatface', cursive;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     background: -webkit-linear-gradient(left, #d91342, #332F3E);
 =======
     background: -webkit-linear-gradient(left, #dc1342, #332F3E);
 >>>>>>> Add files via upload
+=======
+    background: -webkit-linear-gradient(left, #dc1342, #332F3E);
+>>>>>>> master
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
@@ -1193,11 +1348,15 @@ margin-top: 0;
     content: "";
     position: absolute;
     top: 50%;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     border: 1px dashed #d91342;
 =======
     border: 1px dashed #dc1342;
 >>>>>>> Add files via upload
+=======
+    border: 1px dashed #dc1342;
+>>>>>>> master
     width: 99999px;
 }
 .pinline span:before {
@@ -1212,6 +1371,7 @@ margin-top: 0;
 }
 
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 .small-title {
     font-family: 'Abril Fatface', cursive;
@@ -1254,6 +1414,8 @@ margin-top: 0;
 
 =======
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 
 
 .full-title {
@@ -1265,6 +1427,7 @@ display: block;
     color: #332F3E;
 }
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 .cat-title {
     font-family: 'Abril Fatface', cursive;
@@ -1279,10 +1442,13 @@ display: block;
 
 =======
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 .full-category {
 	color: #f3f3f3
 }
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 
 
@@ -1296,12 +1462,17 @@ display: block;
     -o-transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
     transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
 =======
+=======
+>>>>>>> master
 .full-image{
     height: 188px;
     background-size: cover;
     background-position: top center;
     position: relative;
+<<<<<<< HEAD
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 }
 
 .square-image {
@@ -1313,11 +1484,15 @@ display: block;
 }
 
 span.square-date {
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     background: #d91342;
 =======
     background: #dc1342;
 >>>>>>> Add files via upload
+=======
+    background: #dc1342;
+>>>>>>> master
     padding: 3px 8px;
     color: white;
     text-transform: uppercase;
@@ -1332,11 +1507,15 @@ span.square-date {
     left: 0;
     color: #fff;
     background: #332F3E;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     padding: 9px 10px;
 =======
     padding: 5px 10px;
 >>>>>>> Add files via upload
+=======
+    padding: 5px 10px;
+>>>>>>> master
 }
 
 .categorized:before {
@@ -1371,6 +1550,7 @@ span.square-date {
     border-left: 1px solid #fff;
 }
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 .single-aotw .white-complete {
     position: relative;
@@ -1391,6 +1571,9 @@ span.square-date {
 =======
 
 >>>>>>> Add files via upload
+=======
+
+>>>>>>> master
 
 .full-date {
     background: #d91342;
@@ -1402,6 +1585,7 @@ span.square-date {
     font-family: Montserrat, sans-serif;
     font-size: 12px;
     position: relative;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     margin-top: 0px;
     display: table;
@@ -1417,6 +1601,11 @@ span.square-date {
 
 
 >>>>>>> Add files via upload
+=======
+}
+
+
+>>>>>>> master
 .full-date:before {
   content: "";
   position: absolute;
@@ -1436,6 +1625,7 @@ border-left: 10px solid transparent;
 }
 
 .full-body, .square-body {
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     font-family: 'Arvo', 'Frank Ruhl Libre', sans-serif;
   font-size: 16px;
@@ -1445,6 +1635,11 @@ border-left: 10px solid transparent;
   font-size: 16px;
     line-height: 21px;
 >>>>>>> Add files via upload
+=======
+    font-family: 'Frank Ruhl Libre', sans-serif;
+  font-size: 16px;
+    line-height: 21px;
+>>>>>>> master
     text-align: justify;
 }
 
@@ -1459,6 +1654,7 @@ border-left: 10px solid transparent;
 
 /*** Footer ***/
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 footer {
         background-color:#332F3E;
@@ -1527,6 +1723,30 @@ padding: 10px;
     color: white;
     letter-spacing: 4px;
     z-index: -1;
+=======
+footer{
+    min-height: 350px;
+	color:#ccc;
+	font-size:12px;
+	position:relative;
+	z-index:-2;
+    background-color:#332F3E;
+
+}
+
+footer .inner-footer {
+ width: 100%;   
+    position:fixed;
+    bottom:0;
+    background: rgba(255,255,255,0.03);
+    text-align: center;
+    font-family: Montserrat;
+padding: 10px;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 4px;
+    z-index: -1;
+>>>>>>> master
     font-size: 10px;
 
 }
@@ -1539,11 +1759,15 @@ footer > ul{
 	margin-left:-480px;
     padding-bottom: 70px;
 	z-index:-1;
+<<<<<<< HEAD
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 }
 
 /* The four columns of links */
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 footer.stick ul li{
     font-family: Montserrat;
@@ -1567,6 +1791,11 @@ footer > ul > li{
     font-family: Montserrat;
     float: left;
 >>>>>>> Add files via upload
+=======
+footer > ul > li{
+    font-family: Montserrat;
+    float: left;
+>>>>>>> master
     border-bottom: 1px dashed white;
     margin-right: 15px;
     margin-bottom: 15px;
@@ -1575,6 +1804,7 @@ footer > ul > li{
     text-transform: uppercase;
     font-weight: 300;
     letter-spacing: 1px;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     display: inline-block;
     font-size: 12px;
@@ -1588,6 +1818,10 @@ footer > ul > li{
 }
 
 >>>>>>> Add files via upload
+=======
+}
+
+>>>>>>> master
 footer ul{
 	list-style: none;
 }
@@ -1597,6 +1831,7 @@ footer a {
  color: white;   
 }
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 /*.tag-slide {
     width: 100%;
@@ -1629,6 +1864,8 @@ footer a {
     content: "";
     top: 67px;
 =======
+=======
+>>>>>>> master
 
 
 /*** Load More ***/
@@ -1660,6 +1897,7 @@ section.more-stories {
     border-left: 25px solid transparent;
     content: "";
     top: -8px;
+<<<<<<< HEAD
 >>>>>>> Add files via upload
     transform: translateX(-50%);
     left: 50%;
@@ -1737,10 +1975,13 @@ section.more-stories {
     border-left: 25px solid transparent;
     content: "";
     top: -8px;
+=======
+>>>>>>> master
     transform: translateX(-50%);
     left: 50%;
 }
 
+<<<<<<< HEAD
 .load-block {
 
         width: 32%;
@@ -1861,16 +2102,25 @@ article.format-gallery .entry-content {
 =======
 /*** Gallery ***/
 
+=======
+
+/*** Gallery ***/
+
+>>>>>>> master
 .photo-button {
     background: #dc1342;
     color: white;
     padding: 8px 18px;
     font-size: 20px;
+<<<<<<< HEAD
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 }
 .galleries {
     position: relative;
     background: #332f3e;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     visibility: hidden;
     opacity: 0;
@@ -1917,6 +2167,10 @@ div#next-photo {
     min-height: 536px;
     transition: .5s;
 >>>>>>> Add files via upload
+=======
+    min-height: 536px;
+    transition: .5s;
+>>>>>>> master
 }
 
 .gallery-button {
@@ -1925,6 +2179,7 @@ div#next-photo {
     width: 100%;
     transform: translateY(-50%);
     z-index: 9999;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     max-width: 75%
 }
@@ -1936,26 +2191,36 @@ div#next-photo {
 
 /*.galleries img {
 =======
+=======
+>>>>>>> master
 }
 
 
 .galleries img {
+<<<<<<< HEAD
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
     max-height: 500px;
     left: 50%;
     position: absolute;
     transform: translateX(-50%);
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 }*/
 =======
 }
 >>>>>>> Add files via upload
+=======
+}
+>>>>>>> master
 
 .below {
     position: absolute;
     bottom: 0;
     background: #2c2935;
     color: white;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     width: 75%;
     padding: 8px 12px;
@@ -2047,13 +2312,18 @@ height: 0;
 }
 
 =======
+=======
+>>>>>>> master
     width: 100%;
     padding: 8px 12px;
     font-family: Montserrat;
 }
 
 
+<<<<<<< HEAD
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 .gallery-active {
     overflow: hidden;
 }
@@ -2065,6 +2335,7 @@ height: 0;
     height: 100%;
     top: 0;
     left: 0;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     visibility: visible;
     opacity: 1;
@@ -2094,6 +2365,8 @@ a.pinit {
 
 .gallery-active .inner-gallery {
 =======
+=======
+>>>>>>> master
 }
 
 .gallery-active .galleries img {
@@ -2103,6 +2376,7 @@ a.pinit {
     transform: translateX(-50%);
 }
 
+<<<<<<< HEAD
 .gallery-active .inner-gallery {
        max-width: 70%;
     position: absolute;
@@ -2281,6 +2555,31 @@ margin: 12px 0 34px;
     margin-bottom: 50px;
     padding: 15px;
 >>>>>>> Add files via upload
+=======
+.gallery-active .inner-gallery {
+       max-width: 70%;
+    position: absolute;
+    display: flex;
+    max-height: 100%;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-active header {
+    display: none;
+}
+
+
+/*** Complete Block ***/
+
+.complete {
+    width: 100%;
+    float: left;
+    margin-bottom: 50px;
+    padding: 15px;
+>>>>>>> master
 }
 
 div#example1 li {
@@ -2302,11 +2601,15 @@ p.tweet {
 }
 
 p.tweet a {
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     color: #d91342;
 =======
     color: #dc1342;
 >>>>>>> Add files via upload
+=======
+    color: #dc1342;
+>>>>>>> master
 }
 
 ul.news-aotw {
@@ -2328,6 +2631,7 @@ p.timePosted a:before {
     margin-right: 5px;
 }
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 p.interact {
     display: none;
@@ -2338,6 +2642,8 @@ p.interact {
     width: 207px;
     margin: 37px auto 24px;
 =======
+=======
+>>>>>>> master
 
 .container .landing-page .vinyl-container {
     position: relative;
@@ -2345,7 +2651,10 @@ p.interact {
     margin-top: 18px;
     height: 157px;
     margin-bottom: 10px;
+<<<<<<< HEAD
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 
 }
 .container .landing-page .vinyl-container .album-cover {
@@ -2353,19 +2662,27 @@ p.interact {
     z-index: 1;
 }
 .container .landing-page .vinyl-container .album-cover img {
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     width: 159px;
 =======
     width: 60%;
 >>>>>>> Add files via upload
+=======
+    width: 60%;
+>>>>>>> master
 }
 .container .landing-page .vinyl-container .vinyl-record {
     position: absolute;
     left: 50px;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 =======
     display: none;
 >>>>>>> Add files via upload
+=======
+    display: none;
+>>>>>>> master
 }
 .container .landing-page .vinyl-container .vinyl-record img {
     height: 156.2px;
@@ -2391,11 +2708,15 @@ p.interact {
 }
 
 .landing-page strong  {
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     color: #d91342;
 =======
     color: #dc1432;
 >>>>>>> Add files via upload
+=======
+    color: #dc1432;
+>>>>>>> master
 
 }
 
@@ -2406,11 +2727,15 @@ p.interact {
     top:0;
     left:0;
     z-index:3;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     width:159px;
 =======
     width:60%;
 >>>>>>> Add files via upload
+=======
+    width:60%;
+>>>>>>> master
     height:100%;
     -webkit-box-shadow: inset 1px 1px 4px 0px rgba(255, 255, 255, 0.45),inset 1px 1px 2px 0px rgba(255,255, 255, 0.5),inset -1px -1px 2px 0px rgba(255,255, 255, 0.5);
     box-shadow: inset 1px 1px 4px 0px rgba(255,255, 255, 0.45),inset 1px 1px 2px 0px rgba(255,255, 255, 0.5),inset -1px -1px 2px 0px rgba(255,255, 255, 0.5);
@@ -2455,6 +2780,7 @@ p.interact {
     justify-content: center;
     display: flex;
     border: 2px dotted #332F3E;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     padding: 0px 20px;
     transition: all 600ms;
@@ -2462,6 +2788,9 @@ p.interact {
 =======
     padding: 35px 20px;
 >>>>>>> Add files via upload
+=======
+    padding: 35px 20px;
+>>>>>>> master
 }
 
 /*
@@ -2515,6 +2844,7 @@ h3.footer-text {
 
 /*** Inner Pages ***/
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 .single-content .entry-content {
     float: left;
@@ -2592,6 +2922,8 @@ div#feelbox-title:before {
     position: fixed;
     background: #332f3e;
 =======
+=======
+>>>>>>> master
 .oldposts i {
     padding: 12px 10px;
     background: #332f3e;
@@ -2601,11 +2933,15 @@ div#feelbox-title:before {
 div#prev-post {
     position: fixed;
     background: #25222d;
+<<<<<<< HEAD
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
     font-family: Montserrat;
     text-transform: uppercase;
     color: white;
     letter-spacing: 2px;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     top: 20%;
     transition: all 600ms;
@@ -2690,6 +3026,8 @@ div#next-post a:after {
 
 
 =======
+=======
+>>>>>>> master
     padding: 0px 11px 0px 0px;
     top: 49%;
     transform: translateY(-49%);
@@ -2718,7 +3056,10 @@ div#next-post i {
  margin-left: 5px;   
 }
 
+<<<<<<< HEAD
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 .tags {
 margin: 30px 0;
     text-align: center
@@ -2729,11 +3070,15 @@ margin: 30px 0;
     font-size: 12px;
     font-weight: 400;
     position: relative !important;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     background: #d91342;
 =======
     background: #dc1342;
 >>>>>>> Add files via upload
+=======
+    background: #dc1342;
+>>>>>>> master
     display: inline-block;
     padding: 7px 3px;
     margin: 0 5px 5px 0;
@@ -2822,6 +3167,7 @@ margin: 30px 0;
         0 1px 0 rgba(255,255,255,0.3);
 }
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 #mdr-e1 {
     background-image: url(//trendio.us/images/2.png) !important; }
@@ -2886,13 +3232,18 @@ li#mdr-e6 {
 
 
 =======
+=======
+>>>>>>> master
 .single-content {
     max-width: 780px;
     margin: 0 auto;
 
 }
 
+<<<<<<< HEAD
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 .single-header {
     text-align: center;
 
@@ -2901,6 +3252,7 @@ li#mdr-e6 {
 .single-text {
  font-size: 14.5px;
     line-height: 24px;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     margin: 5px 0;
     text-align: justify
@@ -2913,6 +3265,9 @@ li#mdr-e6 {
 =======
     margin: 25px 0;
 >>>>>>> Add files via upload
+=======
+    margin: 25px 0;
+>>>>>>> master
     text-align: justify
 }
 
@@ -2931,11 +3286,15 @@ li#mdr-e6 {
 
 .single-content .full-title {
     font-family: 'Abril Fatface', cursive;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     font-size: 30px;
 =======
     font-size: 32px;
 >>>>>>> Add files via upload
+=======
+    font-size: 32px;
+>>>>>>> master
     display: block;
     line-height: 30px;
     margin: 10px 0;
@@ -2957,6 +3316,7 @@ li#mdr-e6 {
 
 }
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 .page-content {
     max-width: 780px;
@@ -3005,6 +3365,8 @@ footer.default .inner-footer {
 
 =======
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 .nav-links .nav-previous:before {
     border-right: 2px dotted #332F3E;
     position: absolute;
@@ -3050,11 +3412,15 @@ span.smtxt {
 
 
 .related-post .related-image {
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     height: 262.5px;
 =======
     height: 255px;
 >>>>>>> Add files via upload
+=======
+    height: 255px;
+>>>>>>> master
     background-size: cover;
     background-position: top center;
     position: relative;
@@ -3062,10 +3428,13 @@ span.smtxt {
     display: flex;
     align-items: center;
     justify-content: center;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     cursor: pointer;
 =======
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
     
 }
 
@@ -3132,11 +3501,15 @@ span.smtxt {
 }
 
 li.share-button {
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     background: #d91342;
 =======
     background: #dc1342;
 >>>>>>> Add files via upload
+=======
+    background: #dc1342;
+>>>>>>> master
     padding: 0px 0 0 15px;
     font-family: Montserrat;
     text-transform: uppercase;
@@ -3158,16 +3531,21 @@ span.itext {
 
 
 .social-list {
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
         position:absolute;
     top:240px;
 =======
     position: fixed;
 >>>>>>> Add files via upload
+=======
+    position: fixed;
+>>>>>>> master
     left: 1.6%;
     text-align: Center;
     margin-top: 0px;
     display: block;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 
 }
@@ -3178,6 +3556,10 @@ ul.social-list li {
     top: 30%;
     transform: translateY(-30%);
 >>>>>>> Add files via upload
+=======
+    top: 30%;
+    transform: translateY(-30%);
+>>>>>>> master
 }
 
 .social-list a {
@@ -3203,6 +3585,7 @@ span.details {
     padding: 3px 8px;
 }
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 .details a {
     color: #332F3E;
@@ -3210,6 +3593,8 @@ span.details {
 
 =======
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 span.feature-credits {
     position: absolute;
     bottom: 0;
@@ -3242,6 +3627,7 @@ span.feature-credits:hover:before {
     display: inline-block;
 }
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 .inner-feed {
     margin-bottom: 26px;
@@ -3249,10 +3635,13 @@ span.feature-credits:hover:before {
 }
 =======
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 
 
 .featured-image {
     max-width: 600px;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     margin: 5px 0 2px;
 =======
@@ -3266,10 +3655,14 @@ span.feature-credits:hover:before {
 .cat-image {
     max-width: 300px;
     margin: 5px 0 2px;
+=======
+    margin: 33px 0 2px;
+>>>>>>> master
     position: relative;
     padding-left: 0;
 }
 
+<<<<<<< HEAD
 .aside-image {
     margin-bottom: 20px;
 }
@@ -3291,11 +3684,16 @@ span.feature-credits:hover:before {
 }
 
 =======
+=======
+>>>>>>> master
 .featured-image img {
     max-width: 100%;
 }
 
+<<<<<<< HEAD
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 .sidetop {
     background-color: #332F3E;
     height: 43px;
@@ -3309,11 +3707,15 @@ span.feature-credits:hover:before {
 }
 
 c {
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     background: #d91342;
 =======
     background: #dc1342;
 >>>>>>> Add files via upload
+=======
+    background: #dc1342;
+>>>>>>> master
     width: 44px;
     text-align: center;
     padding: 10px 6px;
@@ -3369,6 +3771,7 @@ c:after {
 .bio-box {
     text-align: center;
     padding-right: 0 !important;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     display: none;
 }
@@ -3381,12 +3784,17 @@ span.bio-title {
        background: #d91342;
     padding:7px 12px 6px;
 =======
+=======
+>>>>>>> master
 }
 
 span.bio-title {
        background: #dc1342;
     padding: 12px 12px 6px;
+<<<<<<< HEAD
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
     display: inline-block;
     color: white;
     font-size: 14px;
@@ -3394,11 +3802,14 @@ span.bio-title {
     width: 100%;
     margin-bottom: 5px;
     position: relative;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     max-width: 120px;
     text-align: center;
 =======
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 
 }
 
@@ -3421,6 +3832,7 @@ left: 50%;
 
 
 .artist-image {
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 	height: 375px;
 	background-size: cover;
@@ -3431,6 +3843,11 @@ left: 50%;
 	background-size: cover;
 	background-position: top center;
 >>>>>>> Add files via upload
+=======
+	height: 517px;
+	background-size: cover;
+	background-position: top center;
+>>>>>>> master
 }
 
 .aotw-page {
@@ -3444,11 +3861,15 @@ left: 50%;
 
 .aotw-page span.logo-text:before {
     content: "";
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
     background: #d91342;
 =======
     background: #dc1342;
 >>>>>>> Add files via upload
+=======
+    background: #dc1342;
+>>>>>>> master
     width: 100%;
     height: 16px;
     position: absolute;
@@ -3456,6 +3877,7 @@ left: 50%;
     transform: translateY(-50%);
 }
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 span.from-location {
     position: absolute;
@@ -3494,6 +3916,8 @@ span.from-location:before {
 font-size: 14px;
 max-height: 272px;
 =======
+=======
+>>>>>>> master
 
 
 
@@ -3501,7 +3925,10 @@ max-height: 272px;
 		font-family: 'Frank Ruhl Libre', sans-serif !important;
 font-size: 16px;
 max-height: 131px;
+<<<<<<< HEAD
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 overflow-y: scroll;
 overflow-x: hidden;
 }
@@ -3511,6 +3938,7 @@ overflow-x: hidden;
 }
 
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 .aotw-body ul.aotw-socials {
     display: inline-block;
@@ -3521,22 +3949,31 @@ overflow-x: hidden;
 
 .aotw-body ul.aotw-socials li {
 =======
+=======
+>>>>>>> master
 .bio-box ul.aotw-socials {
     max-width: 120px;
     margin: 0 auto;
 }
 
 .bio-box ul.aotw-socials li {
+<<<<<<< HEAD
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
     margin-bottom: 0px;
     margin-top: 6px;
 }
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 .aotw-body ul.aotw-socials a, .social-share a {
 =======
 .bio-box ul.aotw-socials a, .social-share a {
 >>>>>>> Add files via upload
+=======
+.bio-box ul.aotw-socials a, .social-share a {
+>>>>>>> master
     color: #fff;
     background: transparent;
     padding: 0;
@@ -3548,15 +3985,20 @@ overflow-x: hidden;
    display: inline-block;
 }
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 .aotw-body ul.aotw-socials i, .social-share i  {
 =======
 .bio-box ul.aotw-socials i, .social-share i  {
 >>>>>>> Add files via upload
+=======
+.bio-box ul.aotw-socials i, .social-share i  {
+>>>>>>> master
 
     padding: 10px 11px;
 }
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 .white-complete i.fa.fa-twitter-square, .social-share i.fa.fa-twitter-square{
     background: #00aced;
@@ -3572,6 +4014,8 @@ overflow-x: hidden;
 
 .white-complete i.fa.fa-youtube {
 =======
+=======
+>>>>>>> master
 i.fa.fa-twitter-square {
     background: #00aced;
 }
@@ -3585,11 +4029,15 @@ i.fa.fa-instagram {
 }
 
 i.fa.fa-youtube {
+<<<<<<< HEAD
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
     background: #bb0000;
 }
 
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 .white-complete i.fa.fa-soundcloud {
     background: #ff3a00;
@@ -3608,6 +4056,8 @@ background: #d34836;
 
 }
 =======
+=======
+>>>>>>> master
 i.fa.fa-soundcloud {
     background: #ff3a00;
 }
@@ -3620,12 +4070,16 @@ i.fa.fa-envelope {
     background: #332F3E;
 }
 
+<<<<<<< HEAD
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 
 i.fa.fa-pinterest {
     background: #cb2027;
 }
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 
 .page-homepage .aotw-block {
@@ -3648,6 +4102,8 @@ i.fa.fa-pinterest {
 
 =======
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
 /*** Responsive ***/
 
 
@@ -3663,6 +4119,7 @@ i.fa.fa-pinterest {
 
     }
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 
 
@@ -3802,10 +4259,16 @@ header.show-mobile {
     @media only screen and (max-width : 768px) {
 
 >>>>>>> Add files via upload
+=======
+    /* Small Devices, Tablets */
+    @media only screen and (max-width : 768px) {
+
+>>>>>>> master
    .featured-block {
     margin-bottom: 30px;
 }
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 .mobile-menu li:before {
     display: none;
@@ -3841,6 +4304,10 @@ ul.social-list {
 
 
 >>>>>>> Add files via upload
+=======
+
+
+>>>>>>> master
 
     	form.newsletter-form {
     display: inline-block;
@@ -3852,6 +4319,7 @@ ul.social-list {
 }
 
 .aotw-block {
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
        display: block;
     float: left;
@@ -3861,6 +4329,9 @@ ul.social-list {
 =======
     display: block;
 >>>>>>> Add files via upload
+=======
+    display: block;
+>>>>>>> master
 }
 
 .aotw-image {
@@ -3869,6 +4340,7 @@ ul.social-list {
 
 
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 footer {
             min-height: 50px;
@@ -3898,6 +4370,10 @@ footer {
 .pt-page-current {
     padding-top: 84px;
 >>>>>>> Add files via upload
+=======
+.pt-page-current {
+    padding-top: 84px;
+>>>>>>> master
 }
 
     	.menu {
@@ -3916,12 +4392,15 @@ footer {
     max-height: 1000px !important;
     opacity: 1;
     transition: 0.3s;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 
     background: #332f3e;
         margin-top: -2px;
 =======
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
     	}
 
     	.logo {
@@ -3943,21 +4422,29 @@ footer {
 
 .logo-text {
 float: left;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 margin-top: 4px;
 =======
 margin-top: -5px;
 >>>>>>> Add files via upload
+=======
+margin-top: -5px;
+>>>>>>> master
 font-size: 50px;
 padding: 0;
 	}
 
 	header {
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 		background: #d91342;
 =======
 		background: #dc1342;
 >>>>>>> Add files via upload
+=======
+		background: #dc1342;
+>>>>>>> master
 		padding-bottom: 0;
 	}
 
@@ -4003,6 +4490,7 @@ display: none;
     /* Extra Small Devices, Phones */ 
     @media only screen and (max-width : 480px) {
 
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
         .wrapper {
      padding: 63px 0 0;
@@ -4050,6 +4538,8 @@ display: none;
 
 =======
 >>>>>>> Add files via upload
+=======
+>>>>>>> master
     }
 
     /* Custom, iPhone Retina */ 
@@ -4101,6 +4591,7 @@ display: none;
     -ms-animation: rotating 4s linear infinite;
     -o-animation: rotating 4s linear infinite;
     animation: rotating 4s linear infinite;
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/wp
 }
 
@@ -4358,3 +4849,6 @@ display: none;
 =======
 }
 >>>>>>> Add files via upload
+=======
+}
+>>>>>>> master
