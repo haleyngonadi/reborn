@@ -165,6 +165,7 @@ $the_query = new WP_Query( $args ); ?>
 
               <div class="bio-text">  <?php the_content(); ?></div>
 
+
                 </div>
 
 
