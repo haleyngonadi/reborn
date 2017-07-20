@@ -1096,6 +1096,11 @@ display: block;
 }
 
 span.square-date {
+        margin-top: 15px;
+    display: inline-block;
+}
+
+span.square-date {
     background: #d91342;
     padding: 3px 8px;
     color: white;
