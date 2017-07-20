@@ -60,7 +60,7 @@ $.ajax({
         
         for (var i = 0; i < 3; i++) {
             var obj = response.query.results.json[i];
-            items.push('<li class="col-md-4"><a href="' + obj.items.link + '" target="_blank"><img src="' + obj.items.images.standard_resolution.url + '" width="100%"/></a></li>');
+            items.push('<li class="col-sm-4 col-xs-4"><a href="' + obj.items.link + '" target="_blank"><img src="' + obj.items.images.standard_resolution.url + '" width="100%"/></a></li>');
         }
                 
             $( "<ul/>", {

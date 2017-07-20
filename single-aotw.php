@@ -38,7 +38,7 @@ get_header(); ?>
 
                  <div class="full-title"><span class="pre-aotw"><?php _e( 'Artist of the Week:', 'reborn' )?> </span><?php the_title();?></div>
         <div class="aotw-block row">
-            <div class="aotw-photo col-sm-5">
+            <div class="aotw-photo col-md-5 col-sm-12">
                 <div class="artist-image" style="background-image: url('<?php the_post_thumbnail_url(); ?>')" data-url="<?php the_permalink();?>">
                     
                     <?php if ( get_post_meta( $post->ID, 'wpcf-from', true ) ) : ?>
@@ -46,7 +46,7 @@ get_header(); ?>
                     <?php endif; ?>
 
                 </div></div>
-            <div class="complete-content col-sm-7">
+            <div class="complete-content col-md-7 col-sm-12">
                 <span class="full-date"><?php _e( 'Spotlight', 'reborn' )?></span>
                
                 <div class="aotw-body inner-bio">
@@ -91,7 +91,7 @@ get_header(); ?>
                                 <div class="social-block col-sm-12">
 
                     <div class="row">
-                        <div class="twitter-block col-sm-4 col-xs-4">
+                        <div class="twitter-block col-sm-4 col-xs-12">
                             <div class="sidetop">
                                 <c><i class="fa fa-instagram"></i></c>
                                 <div class="text"> <?php _e( 'Instagram', 'reborn' )?></div></div>
@@ -111,7 +111,7 @@ get_header(); ?>
 
                         </div>
 
-                        <div class="spotify-block col-sm-4 col-xs-4">
+                        <div class="spotify-block col-sm-4 col-xs-12">
                             <div class="sidetop">
                                 <c><i class="fa fa-music"></i></c>
                                 <div class="text"> <?php _e( 'featured music', 'reborn' )?></div></div>
@@ -154,7 +154,7 @@ get_header(); ?>
                         </div>
 
 
-                        <div class="facebook-block col-sm-4 col-xs-4">
+                        <div class="facebook-block col-sm-4 col-xs-12">
                             <div class="sidetop">
                                 <c><i class="fa fa-twitter"></i></c>
                                 <div class="text"> <?php _e( 'latest tweets', 'reborn' )?></div></div>

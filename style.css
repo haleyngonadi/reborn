@@ -1856,7 +1856,7 @@ span.gallery-size:after {
 }
 
 ul.insta-images img {
-    max-height: 85px;
+/*    max-height: 85px;*/
 }
 
 
@@ -3075,6 +3075,20 @@ i.fa.fa-pinterest {
 
     /* Small Devices, Tablets */
     @media only screen and (max-width : 768px) {
+
+        .single-aotw .wrapper {
+    padding: 53px 0 0px;
+}
+
+        .artist-image {
+    height: 300px;
+    background-size: cover;
+    background-position: top center;
+    position: relative;
+    width: 300px;
+    margin-bottom: 13px;
+    margin: 10px auto 30px;
+}
 
        .error404 span.screen-reader-text {
     display: none;
