@@ -163,7 +163,7 @@ $the_query = new WP_Query( $args ); ?>
                                
                             </div>
 
-              <div class="bio-text">  <?php the_content()); ?></div>
+              <div class="bio-text">  <?php the_content(); ?></div>
 
                 </div>
 
