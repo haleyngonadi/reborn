@@ -2432,6 +2432,16 @@ li#mdr-e6 {
     line-height: 26px;
 }
 
+.single-format-video 
+    .youtube {
+    background-color: #000;
+    margin-bottom: 0px;
+}
+
+.single-format-video  .single-content .entry-content {
+    float: none;
+    margin: 22px 0 25px;
+}
 
 
 .single-header {
