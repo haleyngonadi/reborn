@@ -1095,6 +1095,11 @@ display: block;
     margin-bottom: 15px;
 }
 
+.aotw-photo img {
+    max-width: 100%;
+    height: auto;
+}
+
 span.square-date {
         margin-top: 15px;
     display: inline-block;
