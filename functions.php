@@ -1028,7 +1028,7 @@ if( isset( $_POST['wpcf-stream'] ) )
 
 function more_post_ajax(){
 
-    $ppp = (isset($_POST["ppp"])) ? $_POST["ppp"] : 4;
+    $ppp = (isset($_POST["ppp"])) ? $_POST["ppp"] : 6;
     $page = (isset($_POST['pageNumber'])) ? $_POST['pageNumber'] : 0;
     $offset  = (isset($_POST['offset'])) ? $_POST['offset'] : 0;
 
