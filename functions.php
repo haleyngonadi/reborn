@@ -47,6 +47,8 @@ add_action( 'init', 'register_my_menus' );
 	set_post_thumbnail_size( 600, 600, true );
 	add_image_size( 'single-size', 500, 500, array( 'top', 'center' ) );
 		add_image_size( 'impress-size', 825, 510, array( 'top', 'center' ) );
+		add_image_size( 'medium-size', 320, 320, array( 'top', 'center' ) );
+
 
 		/*
 	 * Enable support for Post Formats.
