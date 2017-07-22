@@ -27,7 +27,7 @@ $the_query = new WP_Query( array( 'category_name' => 'featured', 'posts_per_page
         
             <div class="col-sm-3 col-xs-6 featured-block">
             <a href="<?php the_permalink() ?>" rel="bookmark"> 
-            <div class="specific-image"> <?php the_post_thumbnail('single-size');?></div>
+            <div class="specific-image"> <?php the_post_thumbnail();?></div>
             <span class="specific-text"><?php the_title() ?> </span>
            </a></div>
 
