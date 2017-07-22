@@ -1054,7 +1054,7 @@ function more_post_ajax(){
 
     if ($loop -> have_posts()) :  while ($loop -> have_posts()) : $loop -> the_post();
         $out .= '
-        <div class="animated flipInX load-block">
+        <div class="animated tada load-block">
         <div class="small-image" style="background-image: url(' . get_the_post_thumbnail_url($post_id, array( 300, 300) ) .')"><div class="categorized">'.get_the_date('m-d').'</div></div>
     <div class="full-content">
         <a class="small-title" href="'.get_the_permalink().'">'.get_the_title().'</a>

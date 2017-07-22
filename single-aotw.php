@@ -24,7 +24,7 @@ get_header(); ?>
 
 
 
-   <section class="white-complete complete animated flipInY"> 
+   <section class="white-complete complete animated fadeIn"> 
 
 
 
