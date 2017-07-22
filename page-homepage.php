@@ -227,7 +227,7 @@ $the_query = new WP_Query( $args ); ?>
     </section>
 
 
-        <section class="content-row row">
+        <section class="content-row">
 
 
 
@@ -243,6 +243,10 @@ $the_query = new WP_Query( $args ); ?>
 
 <?php if ( $the_query->have_posts() ) : ?>
 
+    <h3 class="pinline conline"><span>concert reviews</span></h3>
+
+    <div class="row">
+
    
 
     <!-- the loop -->
@@ -254,7 +258,7 @@ $the_query = new WP_Query( $args ); ?>
             <!-- <div class="square-image" style="background-image: url('<?php the_post_thumbnail_url('impress-size');?>')">
                 </div> -->
             <div class="square-content">
-                <span class="square-date"><?php $category = get_the_category();  echo $category[0]->cat_name;?></span>
+                <span class="square-date"><?php the_date();?></span>
                 <a class="square-title" href="<?php the_permalink()?>"><?php the_title(); ?></a>
                 <!--span class="square-body"><?php echo wp_trim_words( get_the_content(), 15, '...' ); ?></span-->
             </div></div>
@@ -264,6 +268,8 @@ $the_query = new WP_Query( $args ); ?>
     <!-- pagination here -->
 
     <?php wp_reset_postdata(); ?>
+
+    </div>
 
 <?php else : ?>
     <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>

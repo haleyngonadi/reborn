@@ -2627,6 +2627,10 @@ vertical-align: middle;
     letter-spacing: 0.1rem;
 }
 
+h3.pinline.conline {
+    margin-bottom: 50px;
+}
+
 
 span.smtxt {
     font-family: Montserrat;
