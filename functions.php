@@ -1236,3 +1236,21 @@ update_post_meta( $_POST['post_id'], 'wpcf-release-image', $uploadfile );
 }
 
 
+
+
+/**** Dequeue scripts ***/
+
+add_action( 'wp_enqueue_scripts', 'remove_default_stylesheet', 20 );
+
+function remove_default_stylesheet() {
+
+
+    wp_dequeue_style( 'feelbox-custom-style' );
+    wp_deregister_style( 'feelbox-custom-style' );
+
+     wp_dequeue_style( 'feelbox-icons-style' );
+    wp_deregister_style( 'feelbox-icons-style' );
+
+
+
+}
