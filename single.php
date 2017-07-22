@@ -87,7 +87,8 @@ if ( $related_posts ) {
 
         <div class="col-lg-3 col-sm-6 col-md-6 col-xs-12 featured-block">
 
-          <a href="<?php the_permalink();?>"> <div class="related-image" style="background-image: url('<?php the_post_thumbnail_url('medium-size');?>')"></div></a>
+          <a href="<?php the_permalink();?>"> 
+          <div class="related-image"><img data-src="<?php the_post_thumbnail_url('medium-size');?>" class="lazyload"></div></a>
                     </div>
 
     <?php endwhile; wp_reset_query(); ?>

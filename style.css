@@ -2643,16 +2643,14 @@ span.smtxt {
 
 
 .related-post .related-image {
-    height: 262.5px;
-    background-size: cover;
-    background-position: top center;
-    position: relative;
     margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+    position: relative;
     
+}
+
+.related-image img {
+    max-width: 100%;
+    height: auto;
 }
 
 
