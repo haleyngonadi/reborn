@@ -158,7 +158,7 @@ $get_description = get_post(get_post_thumbnail_id())->post_excerpt;
 
 <?php 
 $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-size' ); ?>
-    <img src="<?php echo $image[0]; ?>" alt="" />
+    <img data-src="<?php echo $image[0]; ?>" alt="<?php $get_description;?>" class="lazyload" />
 
 
 </div>	<?php endif; ?>
