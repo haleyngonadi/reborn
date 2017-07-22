@@ -1091,6 +1091,8 @@ display: block;
     -moz-transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
     -o-transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
     transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
+        padding-left: 0;
+    padding-right: 0;
 }
 
 .square-image {
