@@ -82,7 +82,7 @@ $the_query = new WP_Query( array('posts_per_page' => 2 ) ); ?>
 			<div class="content-block">
         <div class="full-image col-sm-4 col-xs-12">
 
-     <a href="<?php the_permalink()?>">   <?php the_post_thumbnail('medium-size');?></a>
+     <a href="<?php the_permalink()?>">    <img data-src="<?php the_post_thumbnail_url('medium-size'); ?>" class="lazyload"></a>
 
         	<?php
 				$categories = get_categories();
@@ -146,7 +146,7 @@ $the_query = new WP_Query( $args ); ?>
     <!-- the loop -->
     <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
                 <div class="content-block col-sm-3 col-xs-6">
-            <?php the_post_thumbnail('medium-size');?>
+            <img data-src="<?php the_post_thumbnail_url('medium-size'); ?>" class="lazyload">
             <div class="square-content">
                 <span class="square-date"><?php $category = get_the_category();  echo $category[0]->cat_name;?></span>
                 <a class="square-title" href="<?php the_permalink()?>"><?php the_title(); ?></a>
