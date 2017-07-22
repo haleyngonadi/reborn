@@ -450,6 +450,12 @@ var menuYloc = null;
 
          }
 
+         else {
+             offset = menuYloc+$(document).scrollTop()+"px";
+         }
+
+
+
 
         $(name).animate({top:offset},{duration:500,queue:false});
     });
@@ -563,6 +569,8 @@ $('#next-photo').on('click',function(){
 
 
 
+if ($(".aotw-page")[0]){
+
 
 /*** Get Tweets ***/
 
@@ -652,3 +660,5 @@ var configProfile = {
 };
 twitterFetcher.fetch(configProfile);
 
+
+}

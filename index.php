@@ -10,6 +10,17 @@
 
 get_header(); ?>
 
+   <ul class="social-list">
+                    <li><a href="https://www.instagram.com/trendio.us/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    <!--li><a href="https://www.bloglovin.com/blog/2322714" target="_blank"><i class="fa fa-heart" aria-hidden="true"></i></a></li-->
+                    <li><a href="https://www.facebook.com/wearetrendio" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="https://twitter.com/wearetrendio" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="mailto:contact@trendio.us" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.spotify.com/user/trendio/" target="_blank"><i class="fa fa-spotify" aria-hidden="true"></i></a></li>
+
+                </ul>
+
+
 <div class="row">
 
 	<div id="primary" class="content-area col-sm-9">

@@ -779,12 +779,31 @@ input[type="search"] {
     width: auto !important;
 }
 
+.side-body ul li {
+    border-left: 5px solid #332f3e;
+    padding-left: 8px;
+    margin-bottom: 9px;
+}
+
+.side-body ul li a {
+    color: #332f3e;
+    display: block;
+    font-family: Montserrat;
+}
+
+
 
 ul.widgets-list-layout.no-grav li {
     display: table;
     margin-bottom: 14px;
+        border-left: 3px solid #332f3e;
+    padding-left: 18px;
+
 }
 
+.widgets-list-layout .widgets-list-layout-blavatar {
+    display: none !important;
+}
 
 .widgets-list-layout-links a {
     font-family: Montserrat;
@@ -1081,6 +1100,7 @@ display: block;
 
 .body h3.pinline {
     max-width: 736px;
+    margin-top: 0
 }
 
 
@@ -1230,7 +1250,6 @@ border-left: 10px solid transparent;
 }
 
 .content-full {
-    margin-bottom: 35px;
     display: table;
     width: 100%;
 }
