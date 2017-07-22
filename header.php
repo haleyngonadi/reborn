@@ -26,7 +26,7 @@
 
 
 	<!-- Fonts-->
-<link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Arvo|Old+Standard+TT:400,400i,700|Coming+Soon|Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Frank+Ruhl+Libre:300,400,500,700,900" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Arvo|Coming+Soon|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
 <!-- Required JS-->
 

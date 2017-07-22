@@ -448,7 +448,7 @@ margin-bottom: 0
 
 .menu li a span {
     display: block;
-    font-family: 'Old Standard TT', serif;
+    font-family: 'Arvo', serif;
     font-weight: 400;
     font-size: 12px;
     letter-spacing: 2px;
@@ -730,7 +730,7 @@ span.close-newsletter {
 section.newsletter input[type="email"]{
     border: 1px solid #ddd;
     padding: 8px;
-     font-family: 'Old Standard TT', serif;
+     font-family: 'Arvo', serif;
      width: 100%;
      outline: 0;
 }
@@ -738,7 +738,7 @@ section.newsletter input[type="email"]{
 input[type="search"] {
     border: 1px solid #ddd;
     padding: 8px;
-     font-family: 'Old Standard TT', serif;
+     font-family: 'Arvo', serif;
      outline: 0;
 }
 
@@ -1243,7 +1243,7 @@ border-left: 10px solid transparent;
 }
 
 .full-body, .square-body {
-    font-family: 'Arvo', 'Frank Ruhl Libre', sans-serif;
+    font-family: 'Arvo', 'Arvo', sans-serif;
   font-size: 16px;
     line-height: 24px;
     text-align: justify;
@@ -1445,7 +1445,7 @@ section.more-stories {
 }
 
 .more-stories span {
-    font-family: 'Old Standard TT', serif;
+    font-family: 'Arvo', serif;
     text-transform: lowercase;
     font-size: 20px;
     position: relative
@@ -1453,7 +1453,7 @@ section.more-stories {
 
 .more-stories button {
       background: transparent;
-    font-family: 'Old Standard TT', serif;
+    font-family: 'Arvo', serif;
     text-transform: lowercase;
     font-size: 20px;
     position: relative;
@@ -2157,7 +2157,7 @@ h3.footer-text {
     margin-bottom: 22px;
     letter-spacing: 2px;
     font-weight: normal;
-    font-family: 'Old Standard TT', serif;
+    font-family: 'Arvo', serif;
     font-style: italic;
     display: none;
 }
