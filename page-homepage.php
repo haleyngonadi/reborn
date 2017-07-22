@@ -258,7 +258,7 @@ $the_query = new WP_Query( $args ); ?>
             <!-- <div class="square-image" style="background-image: url('<?php the_post_thumbnail_url('impress-size');?>')">
                 </div> -->
             <div class="square-content">
-                <span class="square-date"><?php the_date();?></span>
+                <span class="square-date"><?php echo get_the_date();?></span>
                 <a class="square-title" href="<?php the_permalink()?>"><?php the_title(); ?></a>
                 <!--span class="square-body"><?php echo wp_trim_words( get_the_content(), 15, '...' ); ?></span-->
             </div></div>
