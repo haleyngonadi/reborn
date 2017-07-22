@@ -234,7 +234,7 @@ $the_query = new WP_Query( $args ); ?>
                 <?php 
 
     $args = array(
-    'posts_per_page' => 6,
+    'posts_per_page' => 8,
     'category_name' => 'concert-review'
 );
 
@@ -247,7 +247,7 @@ $the_query = new WP_Query( $args ); ?>
 
     <!-- the loop -->
     <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-                <div class="content-block col-sm-4">
+                <div class="content-block col-sm-3 col-md-3 col-xs-12">
 
                 <img data-src="<?php the_post_thumbnail_url('impress-size');?>" class="lazyload">
 
@@ -256,7 +256,7 @@ $the_query = new WP_Query( $args ); ?>
             <div class="square-content">
                 <span class="square-date"><?php $category = get_the_category();  echo $category[0]->cat_name;?></span>
                 <a class="square-title" href="<?php the_permalink()?>"><?php the_title(); ?></a>
-                <span class="square-body"><?php echo wp_trim_words( get_the_content(), 15, '...' ); ?></span>
+                <!--span class="square-body"><?php echo wp_trim_words( get_the_content(), 15, '...' ); ?></span-->
             </div></div>
         
     <?php endwhile; ?>
