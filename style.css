@@ -1482,6 +1482,7 @@ section.more-stories {
 
 #more_posts {
     position: relative;
+    outline: none;
 }
 
 

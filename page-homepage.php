@@ -229,13 +229,12 @@ $the_query = new WP_Query( $args ); ?>
 
         <section class="content-row row">
 
-        <div class="col-sm-9">
- <div class="row">
+
 
                 <?php 
 
     $args = array(
-    'posts_per_page' => 4,
+    'posts_per_page' => 6,
     'category_name' => 'concert-review'
 );
 
@@ -248,7 +247,7 @@ $the_query = new WP_Query( $args ); ?>
 
     <!-- the loop -->
     <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-                <div class="content-block col-sm-6">
+                <div class="content-block col-sm-4">
 
                 <img data-src="<?php the_post_thumbnail_url('impress-size');?>" class="lazyload">
 
@@ -273,13 +272,8 @@ $the_query = new WP_Query( $args ); ?>
 
 
 
-</div>
         
-        </div>
-        
-        <aside id="sidebar" class="sidebar widget-area col-sm-3" role="complementary">
-<?php dynamic_sidebar( 'sidebar-2' ); ?>
-        </aside>
+
 
     </section>
 
