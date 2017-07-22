@@ -472,11 +472,13 @@ display: block !important;
 /*** Featured ***/
 
 .specific-image {
-    height: 262.52px;
-    background-size: cover;
-    background-position: top center;
+
     position: relative;
-    margin-bottom: 15px;
+}
+
+.specific-image img {
+    max-width: 100%;
+    height: auto;
 }
 
 .specific-image:before {
@@ -503,6 +505,8 @@ display: block !important;
     font-family: 'Abril Fatface', cursive;
     font-size: 15px;
     color: #332F3E;
+    margin-top: 17px;
+    display: inline-block;
     
 }
 
@@ -1075,11 +1079,13 @@ display: block;
 }
 
 
+.body h3.pinline {
+    max-width: 736px;
+}
+
 
 .full-image{
-    height: 282.33px;
-    background-size: cover;
-    background-position: top center;
+
     position: relative;
         -webkit-transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;
     -moz-transition: all 0.4s cubic-bezier(0.2, 0.6, 0.3, 1) 0s;

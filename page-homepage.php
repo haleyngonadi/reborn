@@ -10,7 +10,42 @@
 
 get_header('home'); ?>
 
-<?php echo wpb_postsbycategory() ?>
+
+
+    <section class="featured row">
+
+
+<?php 
+// the query
+$the_query = new WP_Query( array( 'category_name' => 'featured', 'posts_per_page' => 4 ) ); ?>
+
+<?php if ( $the_query->have_posts() ) : ?>
+
+
+    <!-- the loop -->
+    <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+        
+            <div class="col-sm-3 col-xs-6 featured-block">
+            <a href="<?php the_permalink() ?>" rel="bookmark"> 
+            <div class="specific-image"> <?php the_post_thumbnail('single-size');?></div>
+            <span class="specific-text"><?php the_title() ?> </span>
+           </a></div>
+
+
+
+    <?php endwhile; ?>
+    <!-- end of the loop -->
+
+
+
+    <?php wp_reset_postdata(); ?>
+
+<?php else : ?>
+    <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+<?php endif; ?>
+    </section>
+
+
 
 <section class="newsletter">
 
@@ -45,7 +80,9 @@ $the_query = new WP_Query( array('posts_per_page' => 2 ) ); ?>
 	<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 
 			<div class="content-block">
-        <div class="full-image col-sm-4 col-xs-12" style="background-image: url('<?php the_post_thumbnail_url();?>')">
+        <div class="full-image col-sm-4 col-xs-12">
+
+     <a href="<?php the_permalink()?>">   <?php the_post_thumbnail();?></a>
 
         	<?php
 				$categories = get_categories();
@@ -81,6 +118,13 @@ $the_query = new WP_Query( array('posts_per_page' => 2 ) ); ?>
 <?php endif; ?>
 
     
+
+
+</div>
+
+<?php get_sidebar('sidebar-1'); ?></div>
+
+
     <h3 class="pinline"><span>continue reading</span></h3>
     
     <div class="content-square row">
@@ -88,8 +132,8 @@ $the_query = new WP_Query( array('posts_per_page' => 2 ) ); ?>
     <?php 
 
     $args = array(
-	'posts_per_page' => 3,
-	'offset' => 2
+    'posts_per_page' => 4,
+    'offset' => 2
 );
 
 
@@ -97,38 +141,33 @@ $the_query = new WP_Query( $args ); ?>
 
 <?php if ( $the_query->have_posts() ) : ?>
 
-	<!-- pagination here -->
+    <!-- pagination here -->
 
-	<!-- the loop -->
-	<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-		        <div class="content-block col-sm-4 col-xs-6">
-            <div class="square-image" style="background-image: url('<?php the_post_thumbnail_url('medium-size');?>')">
-                </div>
+    <!-- the loop -->
+    <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                <div class="content-block col-sm-3 col-xs-6">
+            <?php the_post_thumbnail();?>
             <div class="square-content">
                 <span class="square-date"><?php $category = get_the_category();  echo $category[0]->cat_name;?></span>
                 <a class="square-title" href="<?php the_permalink()?>"><?php the_title(); ?></a>
                 <span class="square-body"><?php echo wp_trim_words( get_the_content(), 25, '...' ); ?></span>
             </div></div>
         
-	<?php endwhile; ?>
-	<!-- end of the loop -->
+    <?php endwhile; ?>
+    <!-- end of the loop -->
 
-	<!-- pagination here -->
+    <!-- pagination here -->
 
-	<?php wp_reset_postdata(); ?>
+    <?php wp_reset_postdata(); ?>
 
 <?php else : ?>
-	<p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+    <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
 <?php endif; ?>
 
 
 
         
     </div>
-
-</div>
-
-<?php get_sidebar('sidebar-1'); ?></div>
 
     
     <section class="complete">

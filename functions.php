@@ -133,8 +133,8 @@ if ( $the_query->have_posts() ) {
 		$the_query->the_post();
 			if ( has_post_thumbnail() ) {
 			$string .= '<div class="col-sm-3 col-xs-6 featured-block">';
-			$string .= '<a href="' . get_the_permalink() .'" rel="bookmark"><div class="specific-image" style="background-image: url(' . get_the_post_thumbnail_url($post_id, array( 300, 300) ) .')"></div>';
-			$string .= '<span class="specific-text">'. get_the_title() .'</span>';
+			$string .= '<a href="' . get_the_permalink() .'" rel="bookmark"> <div class="specific-image">' .the_post_thumbnail('single-size');
+			$string .= '</div><span class="specific-text">'. get_the_title() .'</span>';
 			$string .='</a></div>';
 			} else { 
 			// if no featured image is found
