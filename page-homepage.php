@@ -256,7 +256,7 @@ $the_query = new WP_Query( $args ); ?>
             <div class="square-content">
                 <span class="square-date"><?php $category = get_the_category();  echo $category[0]->cat_name;?></span>
                 <a class="square-title" href="<?php the_permalink()?>"><?php the_title(); ?></a>
-                <span class="square-body"><?php echo wp_trim_words( get_the_content(), 40, '...' ); ?></span>
+                <span class="square-body"><?php echo wp_trim_words( get_the_content(), 15, '...' ); ?></span>
             </div></div>
         
     <?php endwhile; ?>
