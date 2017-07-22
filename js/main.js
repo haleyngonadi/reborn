@@ -1,6 +1,16 @@
 $(document).ready(function(){
 
+
+    if ($(".single")[0]){
+
         $('.prettySocial').prettySocial();
+
+        $('.caption-text').readmore({
+  lessLink: '<a href="#">Read less</a>'
+});
+
+
+    }
 
 
  $("#nav").tinyNav(
@@ -225,9 +235,6 @@ $( ".close-button" ).click(function() {
 
 
 
-$('.caption-text').readmore({
-  lessLink: '<a href="#">Read less</a>'
-});
 
 
 
