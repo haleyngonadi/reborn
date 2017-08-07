@@ -132,7 +132,7 @@ $the_query = new WP_Query( array('posts_per_page' => 2 ) ); ?>
     <?php 
 
     $args = array(
-    'posts_per_page' => 3,
+    'posts_per_page' => 4,
     'offset' => 2
 );
 
@@ -145,7 +145,7 @@ $the_query = new WP_Query( $args ); ?>
 
     <!-- the loop -->
     <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-                <div class="content-block col-sm-3 col-xs-6">
+                <div class="col-sm-3 col-xs-6">
             <img data-src="<?php the_post_thumbnail_url('medium-size'); ?>" class="lazyload">
             <div class="square-content">
                 <span class="square-date"><?php $category = get_the_category();  echo $category[0]->cat_name;?></span>
